@@ -1,0 +1,21 @@
+\documentclass[10pt]{report}
+\usepackage[utf8]{inputenc}
+\usepackage{pxfonts}
+\usepackage{graphicx}
+\usepackage[none]{hyphenat}
+\usepackage{ragged2e}
+\usepackage{titlesec}
+\sloppy
+\graphicspath{{images/}}
+\usepackage[a5paper, margin=2.54cm, bindingoffset=6mm]{geometry}
+% \titleformat{\chapter}[display]{\centering\normalfont\fontsize{12}{12}\selectfont\bfseries}{\chaptertitlename\ \thechapter}{20pt}{\fontsize{12}{12}\selectfont}
+\titleformat{\chapter}[display]{\centering\normalfont\fontsize{12}{12}\selectfont\bfseries}{\thechapter}{12pt}{\fontsize{12}{12}\selectfont}
+\titlespacing*{\chapter}{0pt}{0pt}{5pt}
+
+\begin{document}
+  \input{title}
+  \chapter*{KATA PENGANTAR}
+  \input{chapters/katapengantar.tex}
+  \chapter*{BAB I PENDAHULUAN}
+  \chapter*{BAB II KAJIAN PUSTAKA}
+\end{document}
