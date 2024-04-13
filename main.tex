@@ -7,6 +7,7 @@
 \usepackage{titlesec}
 \usepackage{indentfirst}
 \usepackage{changepage}
+\usepackage{enumitem}
 \tolerance=10000
 \sloppy
 \graphicspath{{images/}}
@@ -38,7 +39,7 @@
 	Otomasi Sistem Operasi GNU/Linux Antara Ansible dengan NixOS” ini
 	dapat terselesaikan. Penulis juga mengucapkan terima kasih kepada seluruh
 	yang telah membantu dalam pembuatan proposal penelitian ini.
-	\begin{enumerate}
+  \begin{enumerate}[leftmargin=0.45cm]
 		\item Kedua orang tua atas segala bantuan, bimbingan, dorongan serta doa restu yang diberikan.
 		\item Bapak Agus Prihanto, S.T., M. Kom. selaku dosen pembimbing yang telah memberikan arahan dan bimbingan dalam penyusunan proposal ini,.
 		\item Teman-teman Mahasiswa yang telah membantu dalam pengumpulan data dan informasi
@@ -53,88 +54,103 @@
 \chapter{PENDAHULUAN}
 \section{Latar Belakang}
 \begin{adjustwidth}{0.70cm}{}
-  \vspace{-3mm}
-  \hspace{\parindent}
-  Pentingnya melakukan manajemen konfigurasi dengan tujuan untuk menghindari
-  penulisan manual konfigurasi sistem operasi secara manual setiap kali
-  menyiapkan sistem operasi. Manajemen konfigurasi juga digunakan untuk
-  mencapai konsistensi dalam setiap kali penerapan sehingga hasil akhir yang
-  diinginkan akan sama setiap kali dilakukan. 
+	\vspace{-3mm}
+	\hspace{\parindent}
+	Pentingnya melakukan manajemen konfigurasi dengan tujuan untuk menghindari
+	penulisan manual konfigurasi sistem operasi secara manual setiap kali
+	menyiapkan sistem operasi. Manajemen konfigurasi juga digunakan untuk
+	mencapai konsistensi dalam setiap kali penerapan sehingga hasil akhir yang
+	diinginkan akan sama setiap kali dilakukan.
 
-  Terdapat beberapa alat untuk melakukan manajemen konfigurasi sistem operasi,
-  terutama untuk sistem operasi berbasis GNU/Linux. Ansible dan NixOS menjadi
-  dua dari banyak pilihan untuk melakukan manajemen sistem operasi. Keduanya
-  memiliki tujuan memudahkan proses manajemen konfigurasi dan memastikan hasil
-  akhir yang diinginkan akan sama setiap kali eksekusi.
+	Terdapat beberapa alat untuk melakukan manajemen konfigurasi sistem operasi,
+	terutama untuk sistem operasi berbasis GNU/Linux. Ansible dan NixOS menjadi
+	dua dari banyak pilihan untuk melakukan manajemen sistem operasi. Keduanya
+	memiliki tujuan memudahkan proses manajemen konfigurasi dan memastikan hasil
+	akhir yang diinginkan akan sama setiap kali eksekusi.
 
-  Ansible adalah perangkat lunak otomatisasi TI baris perintah yang ditulis
-  dalam bahasa Python. Aplikasi ini dapat mengonfigurasi sistem, menerapkan
-  perangkat lunak, dan mengatur alur kerja tingkat lanjut untuk mendukung
-  penerapan aplikasi, pembaruan sistem, dan banyak lagi (RedHat, 2022a). 
-  
-  Ansible memungkinkan kita mendeklarasikan konfigurasi sistem kita dalam
-  sebuah Ansible Playbook. Ansible Playbook akan dijalankan pada sebuah sistem
-  yang telah memiliki sistem operasi. Konfigurasi Ansible Playbook ditulis
-  menggunakan format yml yang merupakan format khusus untuk konfigurasi baik
-  sistem }aupun aplikasi. Ansible akan menjalankan setiap perintah pada sistem
-  operasi yang telah di install secara otomatis satu per satu. Ansible
-  memungkinkan kita melakukan setup banyak sistem sekaligus dengan konfigurasi
-  yang telah ada. Diharapkan dari Ansible adalah sistem-sistem yang terdaftar
-  memiliki hasil akhir yang sama. 
+	Ansible adalah perangkat lunak otomatisasi TI baris perintah yang ditulis
+	dalam bahasa Python. Aplikasi ini dapat mengonfigurasi sistem, menerapkan
+	perangkat lunak, dan mengatur alur kerja tingkat lanjut untuk mendukung
+	penerapan aplikasi, pembaruan sistem, dan banyak lagi (RedHat, 2022a).
 
-  NixOS adalah sistem operasi berbasis GNU/Linux yang dibangun dengan Nix build
-  system. NixOS menggunakan file dalam format “.nix” yang disebut sebagai NixOS
-  module untuk mendeklarasikan sebuah sistem. Dalam file tersebut terdapat
-  seluruh konfigurasi sistem mulai dari bootloader, packages, users, system
-  services.
-  
-  Apa yang tertulis dalam module tersebut adalah manifestasi dari sistem yang
-  dideklarasikan menggunakan bahasa nix yang merupakan bahasa pemrograman
-  fungsional. Ini menghasilkan konfigurasi sistem operasi yang reproducible
-  sehingga dapat digunakan berkali-kali pada waktu yang berbeda dan
-  menghasilkan manifestasi yang tetap. 
+	Ansible memungkinkan kita mendeklarasikan konfigurasi sistem kita dalam
+	sebuah Ansible Playbook. Ansible Playbook akan dijalankan pada sebuah sistem
+	yang telah memiliki sistem operasi. Konfigurasi Ansible Playbook ditulis
+	menggunakan format yml yang merupakan format khusus untuk konfigurasi baik
+	sistem aupun aplikasi. Ansible akan menjalankan setiap perintah pada sistem
+	operasi yang telah di install secara otomatis satu per satu. Ansible
+	memungkinkan kita melakukan setup banyak sistem sekaligus dengan konfigurasi
+	yang telah ada. Diharapkan dari Ansible adalah sistem-sistem yang terdaftar
+	memiliki hasil akhir yang sama.
 
-  Banyak kelebihan dan beberapa kekurangan yang dimiliki oleh metode deklaratif
-  dari NixOS dan metode campuran (imperatif dan deklaratif) dari Ansible.
-  Berdasarkan landasan tersebut, maka penulis ingin meneliti dan membandingkan
-  baik dari segi performa yang dimiliki oleh masing-masing alat manajemen
-  konfigurasi.
+	NixOS adalah sistem operasi berbasis GNU/Linux yang dibangun dengan Nix build
+	system. NixOS menggunakan file dalam format “.nix” yang disebut sebagai NixOS
+	module untuk mendeklarasikan sebuah sistem. Dalam file tersebut terdapat
+	seluruh konfigurasi sistem mulai dari bootloader, packages, users, system
+	services.
+
+	Apa yang tertulis dalam module tersebut adalah manifestasi dari sistem yang
+	dideklarasikan menggunakan bahasa nix yang merupakan bahasa pemrograman
+	fungsional. Ini menghasilkan konfigurasi sistem operasi yang reproducible
+	sehingga dapat digunakan berkali-kali pada waktu yang berbeda dan
+	menghasilkan manifestasi yang tetap.
+
+	Banyak kelebihan dan beberapa kekurangan yang dimiliki oleh metode deklaratif
+	dari NixOS dan metode campuran (imperatif dan deklaratif) dari Ansible.
+	Berdasarkan landasan tersebut, maka penulis ingin meneliti dan membandingkan
+	baik dari segi performa yang dimiliki oleh masing-masing alat manajemen
+	konfigurasi.
 \end{adjustwidth}
 \vspace{3mm}
 \section{Rumusan Masalah}
 \vspace{-3mm}
 \begin{adjustwidth}{0.70cm}{}
-Adapun rumusan masalah berdasarkan latar belakang diatas yaitu:
-\begin{enumerate}
-  \item Bagaimana membuat sistem GNU/Linux yang terdeklarasi menggunakan alat
-    manajemen konfigurasi.
-  \item Bagaimana performa alat manajemen konfigurasi yang diimplementasikan.
-\end{enumerate}
+	Adapun rumusan masalah berdasarkan latar belakang diatas yaitu:
+	\begin{enumerate}[leftmargin=0.45cm]
+		\item Bagaimana membuat sistem GNU/Linux yang terdeklarasi menggunakan alat
+		      manajemen konfigurasi.
+		\item Bagaimana performa alat manajemen konfigurasi yang diimplementasikan.
+	\end{enumerate}
 \end{adjustwidth}
 % \input{chapters/pendahuluan.tex}
 \section{Tujuan}
 \vspace{-3mm}
 \begin{adjustwidth}{0.70cm}{}
-  \begin{enumerate}
-    \item Membuat sistem GNU/Linux yang terdeklarasi menggunakan NixOS dan 
-      Ansible
-    \item Mengukur performa \it{time execution} alat manajemen konfigurasi
-      NixOS dan Ansible
-  \end{enumerate}
+	Adapun tujuan dalam penelitian ini adalah:
+	\begin{enumerate}[leftmargin=0.45cm]
+		\item Membuat sistem GNU/Linux yang terdeklarasi menggunakan NixOS dan
+		      Ansible
+		\item Mengukur performa \it{time execution} alat manajemen konfigurasi
+		      NixOS dan Ansible
+	\end{enumerate}
 \end{adjustwidth}
 \vspace{3mm}
 \section{Manfaat}
 \vspace{-3mm}
 \begin{adjustwidth}{0.70cm}{}
-  Manfaat yang dapat dihasilkan dari penelitian ini antara lain:
-  \begin{enumerate}
-    \item Efisiensi waktu dalam melakukan manajemen konfigurasi sistem operasi berbasis GNU/Linux.
-    \item Konfigurasi sebuah sistem menjadi deklaratif dalam baris kode.
-    \item Mengurangi terjadinya human error dalam mengerjakan konfigurasi dan tugas yang berulang-ulang.
-    \item Mendapatkan hasil akhir yang konsisten dari penerapan alat manajemen konfigurasi.
-
-  \end{enumerate}
-  
-\end{adjustwidth} 
-\chapter*{BAB II KAJIAN PUSTAKA}
+	Manfaat yang dapat dihasilkan dari penelitian ini antara lain:
+	\begin{enumerate}[leftmargin=0.45cm]
+		\item Efisiensi waktu dalam melakukan manajemen konfigurasi sistem operasi berbasis GNU/Linux.
+		\item Konfigurasi sebuah sistem menjadi deklaratif dalam baris kode.
+		\item Mengurangi terjadinya human error dalam mengerjakan konfigurasi dan tugas yang berulang-ulang.
+		\item Mendapatkan hasil akhir yang konsisten dari penerapan alat manajemen konfigurasi.
+	\end{enumerate}
+\end{adjustwidth}
+\vspace{3mm}
+\section{Batasan Masalah}
+\vspace{-3mm}
+\begin{adjustwidth}{0.70cm}{}
+	Adapun batasan masalah yang digunakan untuk menghindari penyimpangan dari judul dan tujuan adalah sebagai berikut:
+	\begin{enumerate}[leftmargin=0.45cm]
+		\item Tools yang digunakan untuk manajemen konfigurasi adalah Ansible dan
+		      NixOS.
+		\item Kasus studi dalam menggunakan NixOS menggunakan file konfigurasi
+		      dasar, flake, dan home-manager.
+		\item Manajemen konfigurasi yang dilakukan meliputi setup dari sistem
+		      kosong ke konfigurasi yang diinginkan oleh penulis.
+		\item Perbandingan akan dilihat berdasarkan waktu yang dibutuhkan untuk
+		      menerapkan konfigurasi.
+	\end{enumerate}
+\end{adjustwidth}
+\chapter{KAJIAN PUSTAKA}
 \end{document}
