@@ -8,6 +8,9 @@
 \usepackage{indentfirst}
 \usepackage{changepage}
 \usepackage{enumitem}
+\usepackage{longtable}
+\usepackage{caption}
+\usepackage{xcolor}
 \tolerance=10000
 \sloppy
 \graphicspath{{images/}}
@@ -28,6 +31,11 @@
   \addcontentsline{toc}{chapter}{\protect\numberline{\thesection}#1}% Opsi untuk menambahkan ke ToC
 }
 \titlespacing*{\section}{0pt}{0pt}{10pt}
+\DeclareCaptionFormat{custom}
+{
+  \textit{#1#2#3}
+}
+\captionsetup[table]{name=Tabel,format=custom, font={color=gray}}
 
 
 \begin{document}
@@ -39,7 +47,7 @@
 	Otomasi Sistem Operasi GNU/Linux Antara Ansible dengan NixOS” ini
 	dapat terselesaikan. Penulis juga mengucapkan terima kasih kepada seluruh
 	yang telah membantu dalam pembuatan proposal penelitian ini.
-  \begin{enumerate}[leftmargin=0.45cm]
+	\begin{enumerate}[leftmargin=0.45cm]
 		\item Kedua orang tua atas segala bantuan, bimbingan, dorongan serta doa restu yang diberikan.
 		\item Bapak Agus Prihanto, S.T., M. Kom. selaku dosen pembimbing yang telah memberikan arahan dan bimbingan dalam penyusunan proposal ini,.
 		\item Teman-teman Mahasiswa yang telah membantu dalam pengumpulan data dan informasi
@@ -55,7 +63,7 @@
 \section{Latar Belakang}
 \begin{adjustwidth}{0.70cm}{}
 	\vspace{-3mm}
-	\hspace{\parindent}
+	\hspace\parindent
 	Pentingnya melakukan manajemen konfigurasi dengan tujuan untuk menghindari
 	penulisan manual konfigurasi sistem operasi secara manual setiap kali
 	menyiapkan sistem operasi. Manajemen konfigurasi juga digunakan untuk
@@ -77,7 +85,7 @@
 	sebuah Ansible Playbook. Ansible Playbook akan dijalankan pada sebuah sistem
 	yang telah memiliki sistem operasi. Konfigurasi Ansible Playbook ditulis
 	menggunakan format yml yang merupakan format khusus untuk konfigurasi baik
-	sistem aupun aplikasi. Ansible akan menjalankan setiap perintah pada sistem
+	sistem maupun aplikasi. Ansible akan menjalankan setiap perintah pada sistem
 	operasi yang telah di install secara otomatis satu per satu. Ansible
 	memungkinkan kita melakukan setup banyak sistem sekaligus dengan konfigurasi
 	yang telah ada. Diharapkan dari Ansible adalah sistem-sistem yang terdaftar
@@ -86,12 +94,11 @@
 	NixOS adalah sistem operasi berbasis GNU/Linux yang dibangun dengan Nix build
 	system. NixOS menggunakan file dalam format “.nix” yang disebut sebagai NixOS
 	module untuk mendeklarasikan sebuah sistem. Dalam file tersebut terdapat
-	seluruh konfigurasi sistem mulai dari bootloader, packages, users, system
-	services.
+	seluruh konfigurasi sistem mulai dari \textit{bootloader, packages, users, system services.}
 
 	Apa yang tertulis dalam module tersebut adalah manifestasi dari sistem yang
 	dideklarasikan menggunakan bahasa nix yang merupakan bahasa pemrograman
-	fungsional. Ini menghasilkan konfigurasi sistem operasi yang reproducible
+	fungsional. Ini menghasilkan konfigurasi sistem operasi yang \textit{reproducible}
 	sehingga dapat digunakan berkali-kali pada waktu yang berbeda dan
 	menghasilkan manifestasi yang tetap.
 
@@ -153,4 +160,66 @@
 	\end{enumerate}
 \end{adjustwidth}
 \chapter{KAJIAN PUSTAKA}
+\section{Penelitian Terdahulu}
+\begin{adjustwidth}{0.70cm}{}
+	\vspace{-3mm}
+	\hspace\parindent
+	Sudah ada penelitian terdahulu terkait otomasi menggunakan Ansible. Salah
+	satu diantaranya adalah yang dilakukan oleh Thufail Qolba Aufar yang
+	berjudul \textit{“Configuration Management dengan Ansible dan Telegram Untuk
+		Automasi Laboratorium Komputer di JTIK”} pada tahun 2023. Dalam penelitia
+	tersebut menggunakan Ansible sebagai alat manajemen konfigurasi
+	laboratorium komputer. Sistem operasi yang digunakan oleh target host
+	adalah Windows dan Ansible Module yang digunakan adalah win\_chocolatey yang
+	merupakan modul untuk chocolatey \textit{package manager} di Windows.
+
+	Sistem Configuration Management dengan Ansible dan Telegram berhasil dibuat
+	sesuai dengan fungsionalitas dan rancangan yang telah dibuat. Hal Ini
+	dibuktikan dari pengujian fungsionalitas dengan black box testing yang telah
+	dilakukan bahwa setiap tugas dieksekusi dapat berjalan dengan persentase
+	keberhasilan sebesar 100\%.
+
+	Penelitian untuk otomasi dan manajemen konfigurasi distribusi GNU/Linux
+	ditulis oleh Putu Hariyadi dan Khairan Marzuki dengan judul \textit{“Implementation
+		Of Configuration Management Virtual Private Server Using Ansible”} pada
+	tahun 2020. Pada penelitian tersebut, Ansible digunakan untuk melakukan
+	otomasi pembuatan container pada PVE (Proxmox Virtual Environment) yang
+  bertujuan untuk menyiapkan lingkungan \textit{high availability} sebagai media
+	praktikum kelompok untuk dosen, mahasiswa, dan asisten laboratorium.
+
+  Hasilnya adalah manajemen otomasi VPS secara keseluruhan bekerja dengan baik
+  dan dapat diterapkan di Proxmox Virtual Environment (PVE) cluster. Playbook
+  dapat memulai dan menghentikan containers per kelompok siswa secara dinamis
+  berdasarkan jadwal praktikum.
+
+  Penelitian terkait penggunaan NixOS sebagai manajemen konfigurasi telah
+  dijabarkan oleh Kalle Kumpulainen dalam tesis ber judul \textit{“NixOS:
+  Järjestelmäkonfiguraation Hallintaan Erikoistunut Linux-jakelu”} pada tahun
+  2019. Dalam tesis tersebut dituliskan bagaimana NixOS menjadi sebuah
+  distribusi GNU/Linux yang hampir keseluruhan sistemnya terdeklarasi dalam
+  bentuk konfigurasi.Terkait apa saja perbedaan dibandingkan dengan
+  distribusi GNU/Linux yang telah ada.
+
+  Ansible juga pernah diteliti dan dibandingkan dengan metode manajemen
+  konfigurasi konvensional yaitu shell scripting dengan BASH. Penelitian ini
+  dilakukan oleh Tedi Alfiandi, T.M Diansyah, dan Risko Liza yang tertuang
+  dalam “Analisis Perbandingan Manajemen Konfigurasi Menggunakan Ansible dan
+  Shell Script Pada Cloud Server Deployment AWS” pada tahun 2020. Didapat
+  kesimpulan bahwa penggunaan tool manajemen konfigurasi dapat memperingkas
+  pekerjaan dalam membangun \textit{web server}.
+
+  Dalam penelitian lain yang dilakukan oleh Muh. Akromi Arya Pratama dan I Putu
+  Hariyadi, dalam sebuah jurnal berjudul “Otomasi Manajemen dan Pengawasan
+  Linux Container (LXC) Pada Proxmox VE Menggunakan Ansible”. Ansible digunakan
+  untuk mempermudah proses otomasi pembuatan LXC pada proxmox untuk praktikum
+  SMKN 6 Mataram. Kesimpulan yang didapat ialah Ansible mampu melakukan otomasi
+  untuk membuat, menjalankan, menghentikan dan menghapus LXC serta mengatur
+  \textit{user permission} dalam lingkup \textit{batch.}
+
+  \begin{longtable}[c]{|c|c|c}
+    \caption{\textit{Penelitian Terdahulu}}
+    
+  \end{longtable} 
+\end{adjustwidth}
+
 \end{document}
