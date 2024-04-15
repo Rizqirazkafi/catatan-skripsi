@@ -11,6 +11,10 @@
 \usepackage{longtable}
 \usepackage{caption}
 \usepackage{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{adjustbox} 
+\usepackage{booktabs}
 \tolerance=10000
 \sloppy
 \graphicspath{{images/}}
@@ -18,25 +22,27 @@
 \titleformat{\chapter}[display]{\centering\normalfont\fontsize{12}{12}\selectfont\bfseries}{\thechapter}{12pt}{\fontsize{12}{12}\selectfont}
 \titlespacing*{\chapter}{0pt}{0pt}{10pt}
 \renewcommand\thesection{\Alph{section}.}
+\renewcommand\thesubsection{\arabic{subsection}.}
 
 \titleformat{\section}[block]{\normalfont\bfseries\fontsize{12}{12}}{\thesection}{10pt}{\fontsize{10}{10}\selectfont}
+\titleformat{\subsection}[block]{\normalfont\fontsize{12}{12}}{\thesubsection}{10pt}{\fontsize{10}{10}\selectfont}
 \titleformat{\chapter}[block]
-  {\normalfont\bfseries\filcenter}
-  {BAB \Roman{chapter} \break}
-  {0em}
-  {}
+{\normalfont\bfseries\filcenter}
+{BAB \Roman{chapter} \break}
+{0em}
+{}
 \newcommand{\chapterNoBab}[1]{
   \par\refstepcounter{chapter}% Menambahkan counter section tapi tidak menampilkannya
   \section*{#1}% Membuat section tanpa nomor
   \addcontentsline{toc}{chapter}{\protect\numberline{\thesection}#1}% Opsi untuk menambahkan ke ToC
-}
-\titlespacing*{\section}{0pt}{0pt}{10pt}
-\DeclareCaptionFormat{custom}
-{
-  \textit{#1#2#3}
-}
-\captionsetup[table]{name=Tabel,format=custom, font={color=gray}}
-
+  }
+  \titlespacing*{\section}{0pt}{0pt}{10pt}
+  \DeclareCaptionFormat{custom}
+  {
+    \textit{#1#2#3}
+    }
+    \captionsetup[table]{name=Tabel,format=custom, font={color=gray}}
+    \captionsetup[figure]{name=Gambar,format=custom, font={color=gray}}
 
 \begin{document}
 \input{title}
@@ -59,6 +65,8 @@
 \begin{FlushRight}
 	penulis
 \end{FlushRight}
+\chapter*{DAFTAR ISI}
+\tableofcontents
 \chapter{PENDAHULUAN}
 \section{Latar Belakang}
 \begin{adjustwidth}{0.70cm}{}
@@ -119,7 +127,6 @@
 		\item Bagaimana performa alat manajemen konfigurasi yang diimplementasikan.
 	\end{enumerate}
 \end{adjustwidth}
-% \input{chapters/pendahuluan.tex}
 \section{Tujuan}
 \vspace{-3mm}
 \begin{adjustwidth}{0.70cm}{}
@@ -184,42 +191,262 @@
 		Of Configuration Management Virtual Private Server Using Ansible”} pada
 	tahun 2020. Pada penelitian tersebut, Ansible digunakan untuk melakukan
 	otomasi pembuatan container pada PVE (Proxmox Virtual Environment) yang
-  bertujuan untuk menyiapkan lingkungan \textit{high availability} sebagai media
+	bertujuan untuk menyiapkan lingkungan \textit{high availability} sebagai media
 	praktikum kelompok untuk dosen, mahasiswa, dan asisten laboratorium.
 
-  Hasilnya adalah manajemen otomasi VPS secara keseluruhan bekerja dengan baik
-  dan dapat diterapkan di Proxmox Virtual Environment (PVE) cluster. Playbook
-  dapat memulai dan menghentikan containers per kelompok siswa secara dinamis
-  berdasarkan jadwal praktikum.
+	Hasilnya adalah manajemen otomasi VPS secara keseluruhan bekerja dengan baik
+	dan dapat diterapkan di Proxmox Virtual Environment (PVE) cluster. Playbook
+	dapat memulai dan menghentikan containers per kelompok siswa secara dinamis
+	berdasarkan jadwal praktikum.
 
-  Penelitian terkait penggunaan NixOS sebagai manajemen konfigurasi telah
-  dijabarkan oleh Kalle Kumpulainen dalam tesis ber judul \textit{“NixOS:
-  Järjestelmäkonfiguraation Hallintaan Erikoistunut Linux-jakelu”} pada tahun
-  2019. Dalam tesis tersebut dituliskan bagaimana NixOS menjadi sebuah
-  distribusi GNU/Linux yang hampir keseluruhan sistemnya terdeklarasi dalam
-  bentuk konfigurasi.Terkait apa saja perbedaan dibandingkan dengan
-  distribusi GNU/Linux yang telah ada.
+	Penelitian terkait penggunaan NixOS sebagai manajemen konfigurasi telah
+	dijabarkan oleh Kalle Kumpulainen dalam tesis ber judul \textit{“NixOS:
+		Järjestelmäkonfiguraation Hallintaan Erikoistunut Linux-jakelu”} pada tahun
+	2019. Dalam tesis tersebut dituliskan bagaimana NixOS menjadi sebuah
+	distribusi GNU/Linux yang hampir keseluruhan sistemnya terdeklarasi dalam
+	bentuk konfigurasi.Terkait apa saja perbedaan dibandingkan dengan
+	distribusi GNU/Linux yang telah ada.
 
-  Ansible juga pernah diteliti dan dibandingkan dengan metode manajemen
-  konfigurasi konvensional yaitu shell scripting dengan BASH. Penelitian ini
-  dilakukan oleh Tedi Alfiandi, T.M Diansyah, dan Risko Liza yang tertuang
-  dalam “Analisis Perbandingan Manajemen Konfigurasi Menggunakan Ansible dan
-  Shell Script Pada Cloud Server Deployment AWS” pada tahun 2020. Didapat
-  kesimpulan bahwa penggunaan tool manajemen konfigurasi dapat memperingkas
-  pekerjaan dalam membangun \textit{web server}.
+	Ansible juga pernah diteliti dan dibandingkan dengan metode manajemen
+	konfigurasi konvensional yaitu shell scripting dengan BASH. Penelitian ini
+	dilakukan oleh Tedi Alfiandi, T.M Diansyah, dan Risko Liza yang tertuang
+	dalam “Analisis Perbandingan Manajemen Konfigurasi Menggunakan Ansible dan
+	Shell Script Pada \textit{Cloud Server Deployment} AWS” pada tahun 2020. Didapat
+	kesimpulan bahwa penggunaan tool manajemen konfigurasi dapat memperingkas
+	pekerjaan dalam membangun \textit{web server}.
 
-  Dalam penelitian lain yang dilakukan oleh Muh. Akromi Arya Pratama dan I Putu
-  Hariyadi, dalam sebuah jurnal berjudul “Otomasi Manajemen dan Pengawasan
-  Linux Container (LXC) Pada Proxmox VE Menggunakan Ansible”. Ansible digunakan
-  untuk mempermudah proses otomasi pembuatan LXC pada proxmox untuk praktikum
-  SMKN 6 Mataram. Kesimpulan yang didapat ialah Ansible mampu melakukan otomasi
-  untuk membuat, menjalankan, menghentikan dan menghapus LXC serta mengatur
-  \textit{user permission} dalam lingkup \textit{batch.}
+	Dalam penelitian lain yang dilakukan oleh Muh. Akromi Arya Pratama dan I Putu
+	Hariyadi, dalam sebuah jurnal berjudul “Otomasi Manajemen dan Pengawasan
+	Linux Container (LXC) Pada Proxmox VE Menggunakan Ansible”. Ansible digunakan
+	untuk mempermudah proses otomasi pembuatan LXC pada proxmox untuk praktikum
+	SMKN 6 Mataram. Kesimpulan yang didapat ialah Ansible mampu melakukan otomasi
+	untuk membuat, menjalankan, menghentikan dan menghapus LXC serta mengatur
+	\textit{user permission} dalam lingkup \textit{batch.}\\
+\end{adjustwidth}
 
-  \begin{longtable}[c]{|c|c|c}
-    \caption{\textit{Penelitian Terdahulu}}
-    
-  \end{longtable} 
+\vspace{3cm}
+
+\begin{longtable}[r]{|c|p{0.2\textwidth}|p{0.15\textwidth}|p{0.34\textwidth}|}
+	\caption{Penelitian Terdahulu} \tabularnewline  \hline
+	\textbf{No.}                            & \centering{\textbf{Judul}}                                                                                                                                      & \centering{\textbf{Nama Peneliti}}       & \centering{\textbf{Kesimpulan}} \\
+	\endfirsthead
+	\hline
+	\textbf{No.}                            & \centering{\textbf{Judul}}                                                                                                                                      & \centering{\textbf{Nama Peneliti}}       & \centering{\textbf{Kesimpulan}} \\
+	\endhead
+
+	\hline
+	1                                       & \textit{Configuration Management} dengan Ansible dan Telegram Untuk
+	Automasi Laboratorium Komputer di JTIK  & Thufail Qolba Aufar                                                                                                                                             & Sistem
+	Configuration Management dengan Ansible dan Telegram berhasil dibuat sesuai
+	dengan fungsionalitas dan rancangan yang telah dibuat. Hal Ini dibuktikan
+	dari pengujian fungsionalitas dengan black box testing yang telah dilakukan
+	bahwa setiap tugas dieksekusi dapat berjalan dengan persentase keberhasilan
+	sebesar 100.                                                                                                                                                                                                                                                                           \\
+
+	\hline
+	2                                       & \textit{Implementation Of Configuration Management Virtual Private Server
+	Using Ansible}                          & Putu Hariyadi, Khairan Marzuki                                                                                                                                  & Manajemen otomasi VPS
+	secara keseluruhan bekerja dengan baik dan dapat diterapkan di Proxmox
+	Virtual Environment (PVE) cluster. Playbook dapat memulai dan menghentikan
+	containers per kelompok siswa secara dinamis berdasarkan jadwal praktikum.                                                                                                                                                                                                             \\
+
+	\hline
+	3                                       & \textit{NixOS: Järjestelmä konfiguraation Hallintaan Erikoistunut Linux
+	jakelu}                                 & Kalle Kumpulai nen                                                                                                                                              & Distribusi ini pada awalnya dibuat untuk
+	memecahkan masalah asli distribusi perangkat lunak dan manajemen konfigurasi
+	sistem operasi, seperti keamanan dan determinisme fungsi yang diinginkan.
+	Untuk mengatasi masalah ini, NixOS diimplementasikan sejak awal dengan cara
+	yang sangat tidak biasa dibandingkan dengan distribusi Linux terkenal
+	lainnya.                                                                                                                                                                                                                                                                               \\
+
+	\hline
+	4                                       & Analisis Perbandingan Manajemen Konfigurasi Menggunakan Ansible dan Shell
+	Script Pada Cloud Server Deployment AWS & Tedi Alfiandi, T.M Diansyah, Risko
+	Liza                                    & Penggunaan tool manajemen konfigurasi dapat memperingkas pekerjaan
+	dalam membangun web server                                                                                                                                                                                                                                                             \\
+	\hline
+
+	5                                       & Otomasi Manajemen dan Pengawasan Linux Container (LXC) Pada Proxmox VE Menggunakan Ansible
+	                                        & Muh. Akromi Arya Pratama dan I Putu Hariyadi
+	                                        & Ansible mampu melakukan otomasi untuk membuat, menjalankan, menghentikan dan menghapus LXC serta mengatur \textit{user permission} dalam lingkup \textit{batch}                                                                              \\
+	\hline
+\end{longtable}
+
+\section{Manajemen Konfigurasi}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Manajemen konfigurasi adalah metode dimana sebuah sistem di manajemen
+	menggunakan file-file yang mendeskripsikan apa yang harus dilakukan sistem
+	tersebut. Harapan dari hasil file-file konfigurasi ini adalah konsistensi
+	pada hasil akhir setelah konfigurasi tersebut dijalankan. Metode ini juga
+	bertujuan untuk meningkatkan efisiensi dalam replikasi dan manajemen sistem
+	sehingga administrator tidak melakukan konfigurasi dari nol hingga selesai
+	secara berulang.
+\end{adjustwidth}
+\section{Imperatif}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Dalam konteks manajemen konfigurasi, imperatif merupakan metode dimana
+	administrator menetapkan langkah-langkah yang perlu dilakukan sebuah sistem
+	untuk mencapai keadaan tertentu. Dalam kasus penelitian ini adalah Ansible
+	dimana setiap definisi yang kita tulis dalam Ansible Playbook akan dijalankan
+	satu persatu dari awal hingga akhir dengan harapan bahwa apa yang kita
+	definisikan dalam Playbook tercapai.
+\end{adjustwidth}
+\section{Deklaratif}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Dalam konteks manajemen konfigurasi, deklaratif merupakan metode dimana
+	administrator menetapkan rincian tentang keadaan akhir sistem dalam file-file
+	konfigurasi. Dalam kasus penelitian ini adalah NixOS Module yang berisikan
+	rincian hasil akhir yang kita inginkan dalam NixOS. NixOS Module akan di
+	evaluasi oleh Nix build system untuk menggapai tujuan ini.
+\end{adjustwidth}
+\section{Immutable Distro}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Immutable Distro adalah kategori distribusi GNU/Linux yang dimana sistem
+	operasi read-only yang tidak mengijinkan modifikasi di root file system. Ini
+	berarti kita tidak bisa dengan mudah memodifikasi OS. Ini termasuk file
+	sistem, berkas, aplikasi, bahkan konfigurasi. Bahkan sebagai administrator,
+	kita tidak bisa memodifikasi distribusi tersebut.
+\end{adjustwidth}
+\section{Reproducible}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Dalam konteks manajemen konfigurasi, reproducible merujuk pada hasil akhir
+	yang konsisten setiap kali konfigurasi diterapkan.
+\end{adjustwidth}
+\section{Repeatable}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Dalam konteks manajemen konfigurasi, repeatable merujuk pada tahapan-tahapan
+	yang dapat diulang dengan tujuan hasil serupa.
+\end{adjustwidth}
+\section{NixOS}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Distribusi sistem operasi GNU/Linux yang terintegrasi dengan Nix package
+	manager dimana konfigurasi sistem operasi dideklarasikan dalam Nix Module.
+\end{adjustwidth}
+\section{Ansible}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Ansible adalah perangkat lunak otomatisasi TI baris perintah yang ditulis dalam
+	bahasa Python. Aplikasi ini dapat mengonfigurasi sistem, menerapkan perangkat
+	lunak, dan mengatur alur kerja tingkat lanjut untuk mendukung penerapan
+	aplikasi, pembaruan sistem, dan banyak lagi (RedHat, 2022a)
+\end{adjustwidth}
+\section{YAML}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Bahasa serialisasi data yang bisa dibaca oleh manusia. YAML umumnya digunakan
+	untuk file konfigurasi dan aplikasi dimana data disimpan atau
+	ditransmisikan.(Wikipedia)
+\end{adjustwidth}
+\section{BASH}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Bourne-Again Shell (BASH) adalah Unix-shell dan bahasa perintah yang biasanya
+	berjalan di jendela text dimana pengguna mengetik perintah yang mengakibatkan
+	aksi
+\end{adjustwidth}
+\section{NixOS Module}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Module yang berisi Nix expression dengan struktur yang spesifik dan digunakan
+	untuk membangun konfigurasi Nix yang utuh.
+\end{adjustwidth}
+\section{Flake}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm} Nix flakes menyediakan cara standar untuk menulis ekspresi Nix (dan juga paket-paket) yang ketergantungannya disematkan dalam file kunci, sehingga meningkatkan kemampuan reproduksi instalasi Nix.
+\end{adjustwidth}
+\section{Home Manager}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Home Manager adalah sistem untuk mengelola lingkungan pengguna dengan
+	menggunakan manajer paket Nix. Dengan kata lain, Home Manager memungkinkan
+	Anda menginstall perangkat lunak secara deklaratif pada profil user Anda,
+	daripada menggunakan nix-env,mengelola dotfile di direktori home pengguna
+	Anda.
+\end{adjustwidth}
+\section{Virtualisasi}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	Virtualisasi merupakan proses berbasis perangkat lunak yang membagi komputer
+	tunggal menjadi beberapa mesin virtual / virtual machine, tiap-tiap mesin
+	virtual memiliki sistem operasi dan aplikasi miliknya sendiri (IBM, 2024)
+\end{adjustwidth}
+
+
+\chapter{METODE PENELITIAN}
+Metodologi yang digunakan untuk penelitian ini memiliki beberapa tahapan
+sebagai pedoman agar hasil yang dicapai sesuai dan tidak menyimpang dari tujuan
+yang telah ditentukan sebelumnya.\\
+
+\section{Metode Penelitian}
+\begin{adjustwidth}{7mm}{}
+	\vspace{-3mm}
+	\hspace\parindent
+	Metode yang diterapkan pada penelitian ini adalah metode experimental design.
+	Penerapan metode bertujuan untuk menganalisa perbandingan manajemen
+	konfigurasi sistem operasi GNU/Linux antara Ansible dengan NixOS.
+	% \vspace{-6mm}
+
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.8\textwidth]{images/metpen.png}
+		\caption{Daigram \textit{experimental design}}
+	\end{figure}
+
+\end{adjustwidth}
+\begin{adjustwidth}{7mm}{}
+	\hspace\parindent
+	Berikut merupakan alur tahapan yang dilakukan dalam penelitian ini.
+	Pada gambar 3.1, dapat diketahui tahapan penelitian yang akan diterapkan
+	pada penelitian ini, yaitu:
+\end{adjustwidth}
+\begin{adjustwidth}{7mm}{}
+	\subsection{Identifikasi Masalah}
+	\vspace{-3mm}
+	\begin{adjustwidth}{6mm}{}
+		Tahapan awal untuk melakukan penelitian merupakan identifikasi masalah. Pada
+		tahapan ini, permasalahan yang diidentifikasi mengenai manajemen konfigurasi
+		di GNU/Linux untuk mempersingkat waktu konfigurasi dan membuat sistem yang
+		terdeklarasi. Peneliti akan membuat konfigurasi sistem operasi GNU/Linux
+		menggunakan Ansible dan NixOS dengan kebutuhan yang sama dengan tujuan untuk
+		membandingkan efisiensi kecepatan penerapan alat manajemen konfigurasi.
+	\end{adjustwidth}
+\end{adjustwidth}
+\begin{adjustwidth}{7mm}{}
+	\subsection{Studi Literatur}
+	\vspace{-3mm}
+	\begin{adjustwidth}{6mm}{}
+		Peneliti mencari literatur yang relevan untuk menjadi referensi pendukung dalam
+		penelitian. Literatur yang digunakan dalam penelitian ini berhubungan
+		dengan penerapan manajemen konfigurasi yang didapat dari berbagai macam
+		sumber seperti buku, artikel, jurnal nasional maupun internasional.
+	\end{adjustwidth}
+\end{adjustwidth}
+\begin{adjustwidth}{7mm}{}
+	\subsection{Analisis Kebutuhan}
+	\vspace{-3mm}
+	\begin{adjustwidth}{6mm}{}
+		Tahap ini bertujuan untuk mendapatkan pemahaman yang menyeluruh dan terperinci
+		tentang kebutuhan utama sistem seperti yang didefinisikan agar tujuan
+		tercapai, yang kemudian secara jelas didefinisikan, ditinjau dan disepakati
+		bersama.
+	\end{adjustwidth}
+\end{adjustwidth}
+\begin{adjustwidth}{7mm}{}
+	\subsection{Perancangan Sistem}
+	\vspace{-3mm}
+	\begin{adjustwidth}{6mm}{}
+		Perancangan dilakukan dengan menerapkan manajemen konfigurasi pada mesin
+		virtual agar mendapatkan hasil waktu yang dibutuhkan untuk menerapkan
+		konfigurasi. Berikut flowchart proses dari penerapan konfigurasi yang akan
+		dibuat:
+	\end{adjustwidth}
 \end{adjustwidth}
 
 \end{document}
