@@ -14,6 +14,9 @@
 \usepackage{array}
 \usepackage{tabularx}
 \usepackage{adjustbox} 
+\usepackage{booktabs}
+\usepackage{tikz}
+\usetikzlibrary{shapes.geometric, arrows}
 \tolerance=10000
 \sloppy
 \graphicspath{{images/}}
@@ -42,7 +45,6 @@
     }
     \captionsetup[table]{name=Tabel,format=custom, font={color=gray}}
     \captionsetup[figure]{name=Gambar,format=custom, font={color=gray}}
-\newcolumntype{R}{>{\raggedright\arraybackslash}p{0.3\textwidth}}  
 
 \begin{document}
 \input{title}
@@ -226,7 +228,7 @@
 
 \vspace{3cm}
 
-\begin{longtable}[r]{|c|p{0.22\textwidth}|p{0.15\textwidth}|R|}
+\begin{longtable}[r]{|c|p{0.2\textwidth}|p{0.15\textwidth}|p{0.34\textwidth}|}
 	\caption{Penelitian Terdahulu} \tabularnewline  \hline
 	\textbf{No.}                            & \centering{\textbf{Judul}}                                                                                                                                      & \centering{\textbf{Nama Peneliti}}       & \centering{\textbf{Kesimpulan}} \\
 	\endfirsthead
@@ -289,7 +291,7 @@
 	Dalam konteks manajemen konfigurasi, imperatif merupakan metode dimana
 	administrator menetapkan langkah-langkah yang perlu dilakukan sebuah sistem
 	untuk mencapai keadaan tertentu. Dalam kasus penelitian ini adalah Ansible
-	dimana setiap definisi yang kita tulis dalam Ansible Playbook akan dijalankan\\
+	dimana setiap definisi yang kita tulis dalam Ansible Playbook akan dijalankan
 	satu persatu dari awal hingga akhir dengan harapan bahwa apa yang kita
 	definisikan dalam Playbook tercapai.
 \end{adjustwidth}
@@ -526,43 +528,24 @@ yang telah ditentukan sebelumnya.\\
 	\subsection{Kebutuhan perangkat lunak\{\textit{software}\} }
 	\vspace{-2mm}
 	\begin{adjustwidth}{6mm}{}
-		Perangkat lunak berfungsi untuk pengoperasian sistem pada penelitian ini.
-		Pada penelitian ini, sistem operasi yang digunakan berbasis GNU/Linux.\\
-		\begin{longtable}[r]{|c|p{2cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
-			\caption{Kebutuhan perangkat lunak} \tabularnewline  \hline
-			\textbf{No.} & \textbf{Nama Perangkat Lunak} & \textbf{Keterangan}                                                       \\
-			\endfirsthead
-			\textbf{No.} & \textbf{Nama Perangkat Lunak} & \textbf{Keterangan}                                                       \\
-			\hline
-			\endhead
-			\hline
-			1            & Ansible                       & Alat yang digunakan untuk manajemen konfigurasi                           \\
-			\hline
-			2            & NixOS                         & Sistem Operasi dengan fitur manajemen konfigurasi                         \\
-			\hline
-			3            & Debian                        & Sistem Operasi yang digunakan untuk target Ansible                        \\
-			\hline
-			4            & Nix Flakes                    & Alat yang digunakan untuk manajemen \textit{inputs} pada NixOS            \\
-			\hline
-			5            & Home Manager                  & Alat yang digunakan untuk manajemen konfigurasi level pengguna pada NixOS \\
-			\hline
-			6            & \textit{time}                 & Alat yang digunakan untuk mencatat lama waktu eksekusi perintah
-			\hline
-		\end{longtable}
+    Perangkat lunak berfungsi untuk pengoperasian sistem pada penelitian ini.
+    Pada penelitian ini, sistem operasi yang digunakan berbasis GNU/Linux.
 	\end{adjustwidth}
+  \begin{table}
+    \caption{Kebutuhan perangkat lunak}
+    \begin{center}
+      \begin{tabular}[!c]{l|l}
+        \hline
+        \multicolumn{1}{c|}{\textbf{}} & 
+        \multicolumn{1}{c}{\textbf{}} \\
+        \hline
+        a & b \\
+        c & d \\
+
+        \hline
+      \end{tabular}
+    \end{center}
+  \end{table}
 \end{adjustwidth}
 
-\section{Perancangan Sistem}
-\vspace{-3mm}
-\begin{adjustwidth}{7mm}{}
-	Perancangan sistem dilakukan untuk membuat desain perencanaan arsitektur
-	sistem yang akan dibangun dapat berjalan sesuai dengan tujuan penelitian.
-	\subsection{Perancangan Virtual Machine}
-	\begin{adjustwidth}{6mm}{}
-    Perancangan sistem pada penelitian ini secara keseluruhan menggunakan dua
-    \textit{virtual machine}, yang terdiri dari satu \textit{instance} Debian
-    12 minimal sebagai host dan target Ansible. \textit{Virtual machine} kedua
-    merupakan guest kosong yang akan digunakan sebagai instalasi NixOS minimal.
-	\end{adjustwidth}
-\end{adjustwidth}
 \end{document}
