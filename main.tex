@@ -1,11 +1,6 @@
 \documentclass[10pt,]{report}
 \usepackage[utf8]{inputenc}
-\usepackage{pxfonts}
-\usepackage{graphicx}
-\usepackage[none]{hyphenat}
-\usepackage{ragged2e}
-\usepackage{titlesec}
-\usepackage{indentfirst}
+\usepackage{pxfonts} \usepackage{graphicx} \usepackage[none]{hyphenat} \usepackage{ragged2e} \usepackage{titlesec} \usepackage{indentfirst}
 \usepackage{changepage}
 \usepackage{enumitem}
 \usepackage{longtable}
@@ -13,8 +8,12 @@
 \usepackage{xcolor}
 \usepackage{array}
 \usepackage{tabularx}
-\usepackage{adjustbox} 
+\usepackage[export]{adjustbox} 
+\usepackage{multirow}
+\usepackage{float}
+\usepackage{xcolor,colortbl}
 \tolerance=10000
+\renewcommand\arraystretch{1.3}
 \sloppy
 \graphicspath{{images/}}
 \usepackage[a5paper, left=2.3cm, right=2cm, top=2.3cm, bottom=2cm, bindingoffset=6mm]{geometry}
@@ -546,7 +545,7 @@ yang telah ditentukan sebelumnya.\\
 			\hline
 			5            & Home Manager                  & Alat yang digunakan untuk manajemen konfigurasi level pengguna pada NixOS \\
 			\hline
-			6            & \textit{time}                 & Alat yang digunakan untuk mencatat lama waktu eksekusi perintah
+			6            & \textit{time}                 & Alat yang digunakan untuk mencatat lama waktu eksekusi perintah           \\
 			\hline
 		\end{longtable}
 	\end{adjustwidth}
@@ -559,10 +558,134 @@ yang telah ditentukan sebelumnya.\\
 	sistem yang akan dibangun dapat berjalan sesuai dengan tujuan penelitian.
 	\subsection{Perancangan Virtual Machine}
 	\begin{adjustwidth}{6mm}{}
-    Perancangan sistem pada penelitian ini secara keseluruhan menggunakan dua
-    \textit{virtual machine}, yang terdiri dari satu \textit{instance} Debian
-    12 minimal sebagai host dan target Ansible. \textit{Virtual machine} kedua
-    merupakan guest kosong yang akan digunakan sebagai instalasi NixOS minimal.
+		Perancangan sistem pada penelitian ini secara keseluruhan menggunakan dua
+		\textit{virtual machine}, yang terdiri dari satu \textit{instance} Debian
+		12 minimal sebagai host dan target Ansible. \textit{Virtual machine} kedua
+		merupakan guest kosong yang akan digunakan sebagai instalasi NixOS minimal.
+	\end{adjustwidth}
+	\begin{table}[!htbp]
+		\caption{\textit{Spesifikasi Instance}}
+		\begin{center}
+
+			\begin{tabular}{|l|l|}
+				\hline
+				\multicolumn{2}{|c|}{Instance Target Ansible} \\
+				\hline
+				Sistem Operasi           & Debian 12          \\
+				\hline
+				Processor                & 2                  \\
+				\hline
+				Memory                   & 4 GB               \\
+				\hline
+				Storage                  & 50 GB              \\
+				\hline
+				Jumlah \textit{instance} & 2                  \\
+				\hline
+				\multicolumn{2}{|c|}{Instance Target NixOS}   \\
+				\hline
+				Sistem Operasi           & NixOS 23.11        \\
+				\hline
+				Processor                & 2                  \\
+				\hline
+				Memory                   & 4 GB               \\
+				\hline
+				Storage                  & 50 GB              \\
+				\hline
+				Jumlah \textit{instance} & 2                  \\
+				\hline
+			\end{tabular}
+		\end{center}
+	\end{table}
+	\subsection{Perancangan Topologi}
+	\begin{adjustwidth}{7mm}{}
+		\hspace\parindent
+		Perancangan topologi untuk penelitian ini adalah dengan sistem master dan
+		target. Sistem ini akan membuat satu perangkat sebagai pusat kendali dari
+		beberapa target yang menjadi endpoint dari manajemen konfigurasi.\\
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=3cm]{images/topologi.png}
+			\captionof{figure}{Topologi Pengujian}
+		\end{figure}
+		Dengan topologi ini, diharapkan penerapan manajemen konfigurasi terpusat
+		dan dapat diterapkan di dua mesin target dan memiliki hasil akhir yang sama
+		dan konsisten antar mesin.\\
 	\end{adjustwidth}
 \end{adjustwidth}
+\section{Perancangan Pengujian}
+\begin{adjustwidth}{7mm}{}
+	\hspace\parindent
+	Perancangan pengujian pada penelitian ini akan melakukan instalasi berbagai
+	macam perangkat lunak. Perangkat lunak yang diinstall adalah tmux, vim,
+	neovim, htop. Kemudian akan dilakukan beberapa konfigurasi perangkat lunak
+	yaitu konfigurasi untuk tmux, vim, neovim, openssh, firewall.
+
+	Kemudian akan dihadirkan service tambahan yaitu berupa \textit{web server}
+	menggunakan Nginx. Nginx juga akan dikonfigurasi untuk menampilkan
+	\textit{website} sederhana yang kode sumbernya diambil dari
+	\textit{repository} Github.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{images/Topologi-NixOS.png}
+		\caption{Alur Penerapan Konfigurasi NixOS}
+	\end{figure}
+
+	Pada gambar 3.3 merupakan alur penerapan konfigurasi menggunakan NixOS.
+	Master akan melakukan \textit{clone} dari \textit{repository} nixpkgs,
+	home-manager dan website-testing untuk mengambil konfigurasi sistem serta
+	file \textit{website} yang akan di \textit{deploy}. Kemudian \textit{master}
+	akan melakukan build untuk konfigurasi keseluruhan sistem sehingga
+	menghasilkan nix derivation yang membentuk NixOS. Hasil dari derivation
+	tersebut kemudian akan di \textit{copy} dan diterapkan ke dua mesin target.
+
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=\textwidth]{images/Topologi-Ansible.png}
+		\caption{Alur Penerapan Konfigurasi Ansible}
+	\end{figure}
+	Pada gambar 3.5 merupakan alur penerapan konfigurasi menggunakan Ansible.
+	\textit{Master} akan melakukan \textit{clone} dari \textit{repository} github
+	website-testing. Kemudian \textit{master} akan mulai menerapkan konfigurasi
+	untuk target dan menginstall semua paket yang di definisikan dan melakukan
+	konfigurasi yang diinginkan. Setelah konfigurasi sistem selesai diterapkan
+	kemudian Ansible akan menyalin file \textit{website} yang ada di master ke
+	target.
+
+	Setiap kali perintah untuk melakukan konfigurasi di eksekusi, waktu eksekusi
+	akan dicatat menggunakan perintah “time”. Eksekusi akan dilakukan secara
+	berulang untuk mendapatkan rata-rata waktu yang dibutuhkan untuk menerapkan
+	konfigurasi.\\
+\end{adjustwidth}
+\section{Time Schedule}
+\begin{adjustwidth}{7mm}{}
+	Berikut \textit{time schedule} yang penulis susun sebagai acuan pelaksanaan
+	kegiatan:
+	\begin{table}[H]
+		\caption{Time Schedule}
+		\begin{tabular}{|p{2cm}|c|c|c|c|c|c|}
+			\hline
+      \multicolumn{1}{|c|}{\multirow{2}{*}{\centering{\textbf{Kegiatan}}}} & \textbf{2023}     & \multicolumn{5}{|c|}{\textbf{2024}}                                                                                 \\
+			\cline{2-7}
+			                                               & Des               & Jan                                 & Feb               & Mar               & Apr               & Mei               \\
+			\hline
+			Identifikasi Masalah                           & \cellcolor{green} &                                     &                   &                   &                   &                   \\
+			\hline
+			Studi Literatur                                &                   & \cellcolor{green}                   &                   &                   &                   &                   \\
+			\hline
+			Analisis Kebutuhan                             &                   & \cellcolor{green}                   &                   &                   &                   &                   \\
+			\hline
+			Perancangan Sistem                             &                   &                                     & \cellcolor{green} & \cellcolor{green} &                   &                   \\
+			\hline
+			Implementasi dan Pengujian                     &                   &                                     &                   &                   & \cellcolor{green} &                   \\
+			\hline
+			Analisis Hasil                                 &                   &                                     &                   &                   &                   & \cellcolor{green} \\
+			\hline
+			Kesimpulan                                     &                   &                                     &                   &                   &                   & \cellcolor{green} \\
+			\hline
+		\end{tabular}
+	\end{table}
+
+\end{adjustwidth}
+
+
 \end{document}
