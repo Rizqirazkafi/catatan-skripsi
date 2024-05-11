@@ -20,6 +20,29 @@ NixOS merupakan ...
 * Forum is not that big
 * Hard to learn
 
+## Hasil Experiment NixOS
+### Laptop to Existing Server
+__First Run__
+* Connection speed 20Mbps
+* No Nginx and Web
+* 52 sec download, build time and copy
+* 2 sec copy 
+
+__Second Run__
+* Removed ncdu
+* Build and copy took 17 sec
+
+### Server to server
+__First Run__
+* Connection speed 1Gbps
+* With nginx
+* Already built
+* 1m10s
+
+__ Second Run__
+* Unchanged
+* 3 sec to copy
+
 
 
 ## Ansible
