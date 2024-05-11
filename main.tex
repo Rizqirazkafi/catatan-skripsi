@@ -14,10 +14,14 @@
 \usepackage{xcolor,colortbl}
 \usepackage{hyperref}
 \usepackage{titletoc}
+\usepackage{minted}
+\usepackage[backend=biber,style=apa]{biblatex}
+\usepackage[nottoc,numbib]{tocbibind}
 \tolerance=10000
 \renewcommand\arraystretch{1.3}
 \sloppy
 \graphicspath{{images/}}
+\addbibresource{bibliography/reference.bib}
 \usepackage[a5paper, left=2.3cm, right=2cm, top=2.3cm, bottom=2cm, bindingoffset=6mm]{geometry}
 \titleformat{\chapter}[display]{\centering\normalfont\fontsize{12}{12}\selectfont\bfseries}{\thechapter}{12pt}{\fontsize{12}{12}\selectfont}
 \titlespacing*{\chapter}{0pt}{0pt}{10pt}
@@ -25,6 +29,8 @@
 \renewcommand\thesubsection{\arabic{subsection}.}
 \renewcommand{\contentsname}{DAFTAR ISI}
 \renewcommand{\thechapter}{\Roman{chapter}}
+\renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
+\renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 
 \titleformat{\section}[block]{\normalfont\bfseries\fontsize{12}{12}}{\thesection}{10pt}{\fontsize{10}{10}\selectfont}
 \titleformat{\subsection}[block]{\normalfont\fontsize{12}{12}}{\thesubsection}{10pt}{\fontsize{10}{10}\selectfont}
@@ -59,8 +65,8 @@
 \pagenumbering{roman}
 \begin{justify}
 	Puji syukur kepada Tuhan Yang Maha Esa yang telah melimpahkan rahmat dan
-	hidayah-Nya sehingga proposal penelitian dengan judul “Analisis Perbandingan
-	Otomasi Sistem Operasi GNU/Linux Antara Ansible dengan NixOS” ini
+	hidayah-Nya sehingga proposal penelitian dengan judul “Perbandingan
+	Waktu Eksekusi Otomasi Manajemen Konfigurasi Sistem Operasi GNU/Linux Antara Ansible dengan NixOS” ini
 	dapat terselesaikan. Penulis juga mengucapkan terima kasih kepada seluruh
 	yang telah membantu dalam pembuatan proposal penelitian ini.
 	\begin{enumerate}[leftmargin=0.45cm]
@@ -98,7 +104,7 @@
 	Ansible adalah perangkat lunak otomatisasi TI baris perintah yang ditulis
 	dalam bahasa Python. Aplikasi ini dapat mengonfigurasi sistem, menerapkan
 	perangkat lunak, dan mengatur alur kerja tingkat lanjut untuk mendukung
-	penerapan aplikasi, pembaruan sistem, dan banyak lagi (RedHat, 2022a).
+	penerapan aplikasi, pembaruan sistem, dan banyak lagi \parencite{AnsibleRedHat}.
 
 	Ansible memungkinkan kita mendeklarasikan konfigurasi sistem kita dalam
 	sebuah Ansible Playbook. Ansible Playbook akan dijalankan pada sebuah sistem
@@ -111,7 +117,7 @@
 	memiliki hasil akhir yang sama.
 
 	NixOS adalah sistem operasi berbasis GNU/Linux yang dibangun dengan Nix build
-	system. NixOS menggunakan file dalam format “.nix” yang disebut sebagai NixOS
+	system \parencite{hownixworks} . NixOS menggunakan file dalam format “.nix” yang disebut sebagai NixOS
 	module untuk mendeklarasikan sebuah sistem. Dalam file tersebut terdapat
 	seluruh konfigurasi sistem mulai dari \textit{bootloader, packages, users, system services.}
 
@@ -124,7 +130,7 @@
 	Banyak kelebihan dan beberapa kekurangan yang dimiliki oleh metode deklaratif
 	dari NixOS dan metode campuran (imperatif dan deklaratif) dari Ansible.
 	Berdasarkan landasan tersebut, maka penulis ingin meneliti dan membandingkan
-	baik dari segi performa yang dimiliki oleh masing-masing alat manajemen
+	dari segi performa waktu eksekusi yang dibutuhkan oleh masing-masing alat manajemen
 	konfigurasi.
 \end{adjustwidth}
 \vspace{3mm}
@@ -135,7 +141,7 @@
 	\begin{enumerate}[leftmargin=0.45cm]
 		\item Bagaimana membuat sistem GNU/Linux yang terdeklarasi menggunakan alat
 		      manajemen konfigurasi.
-		\item Bagaimana performa alat manajemen konfigurasi yang diimplementasikan.
+		\item Berapa lama waktu eksekusi alat manajemen konfigurasi yang diimplementasikan.
 	\end{enumerate}
 \end{adjustwidth}
 \section{Tujuan}
@@ -145,8 +151,7 @@
 	\begin{enumerate}[leftmargin=0.45cm]
 		\item Membuat sistem GNU/Linux yang terdeklarasi menggunakan NixOS dan
 		      Ansible
-		\item Mengukur performa \it{time execution} alat manajemen konfigurasi
-		      NixOS dan Ansible
+		\item Mengukur waktu eksekusi alat manajemen konfigurasi NixOS dan Ansible
 	\end{enumerate}
 \end{adjustwidth}
 \vspace{3mm}
@@ -174,7 +179,7 @@
 		\item Manajemen konfigurasi yang dilakukan meliputi setup dari sistem
 		      kosong ke konfigurasi yang diinginkan oleh penulis.
 		\item Perbandingan akan dilihat berdasarkan waktu yang dibutuhkan untuk
-		      menerapkan konfigurasi.
+		      eksekusi penerapan konfigurasi.
 	\end{enumerate}
 \end{adjustwidth}
 \chapter{KAJIAN PUSTAKA}
@@ -185,7 +190,7 @@
 	Sudah ada penelitian terdahulu terkait otomasi menggunakan Ansible. Salah
 	satu diantaranya adalah yang dilakukan oleh Thufail Qolba Aufar yang
 	berjudul \textit{“Configuration Management dengan Ansible dan Telegram Untuk
-		Automasi Laboratorium Komputer di JTIK”} pada tahun 2023. Dalam penelitia
+		Automasi Laboratorium Komputer di JTIK”} pada tahun 2023 \parencite{thufail23}. Dalam penelitia
 	tersebut menggunakan Ansible sebagai alat manajemen konfigurasi
 	laboratorium komputer. Sistem operasi yang digunakan oleh target host
 	adalah Windows dan Ansible Module yang digunakan adalah win\_chocolatey yang
@@ -200,7 +205,7 @@
 	Penelitian untuk otomasi dan manajemen konfigurasi distribusi GNU/Linux
 	ditulis oleh Putu Hariyadi dan Khairan Marzuki dengan judul \textit{“Implementation
 		Of Configuration Management Virtual Private Server Using Ansible”} pada
-	tahun 2020. Pada penelitian tersebut, Ansible digunakan untuk melakukan
+	tahun 2020 \parencite{hariyadi2020}. Pada penelitian tersebut, Ansible digunakan untuk melakukan
 	otomasi pembuatan container pada PVE (Proxmox Virtual Environment) yang
 	bertujuan untuk menyiapkan lingkungan \textit{high availability} sebagai media
 	praktikum kelompok untuk dosen, mahasiswa, dan asisten laboratorium.
@@ -216,7 +221,7 @@
 	2019. Dalam tesis tersebut dituliskan bagaimana NixOS menjadi sebuah
 	distribusi GNU/Linux yang hampir keseluruhan sistemnya terdeklarasi dalam
 	bentuk konfigurasi.Terkait apa saja perbedaan dibandingkan dengan
-	distribusi GNU/Linux yang telah ada.
+	distribusi GNU/Linux yang telah ada \parencite{kumpulainen_2019_nixos}.
 
 	Ansible juga pernah diteliti dan dibandingkan dengan metode manajemen
 	konfigurasi konvensional yaitu shell scripting dengan BASH. Penelitian ini
@@ -224,7 +229,7 @@
 	dalam “Analisis Perbandingan Manajemen Konfigurasi Menggunakan Ansible dan
 	Shell Script Pada \textit{Cloud Server Deployment} AWS” pada tahun 2020. Didapat
 	kesimpulan bahwa penggunaan tool manajemen konfigurasi dapat memperingkas
-	pekerjaan dalam membangun \textit{web server}.
+	pekerjaan dalam membangun \textit{web server} \parencite{alfiandi_2020_analisis}.
 
 	Dalam penelitian lain yang dilakukan oleh Muh. Akromi Arya Pratama dan I Putu
 	Hariyadi, dalam sebuah jurnal berjudul “Otomasi Manajemen dan Pengawasan
@@ -232,7 +237,7 @@
 	untuk mempermudah proses otomasi pembuatan LXC pada proxmox untuk praktikum
 	SMKN 6 Mataram. Kesimpulan yang didapat ialah Ansible mampu melakukan otomasi
 	untuk membuat, menjalankan, menghentikan dan menghapus LXC serta mengatur
-	\textit{user permission} dalam lingkup \textit{batch.}\\
+	\textit{user permission} dalam lingkup \textit{batch} \parencite{pratama_2021_otomasi}.\\
 \end{adjustwidth}
 
 \vspace{3cm}
@@ -300,7 +305,7 @@
 	Dalam konteks manajemen konfigurasi, imperatif merupakan metode dimana
 	administrator menetapkan langkah-langkah yang perlu dilakukan sebuah sistem
 	untuk mencapai keadaan tertentu. Dalam kasus penelitian ini adalah Ansible
-	dimana setiap definisi yang kita tulis dalam Ansible Playbook akan dijalankan\\
+	dimana setiap definisi yang kita tulis dalam Ansible Playbook akan dijalankan
 	satu persatu dari awal hingga akhir dengan harapan bahwa apa yang kita
 	definisikan dalam Playbook tercapai.
 \end{adjustwidth}
@@ -475,7 +480,7 @@ yang telah ditentukan sebelumnya.\\
 		dan konfigurasi dilakukan sesuai referensi dokumentasi dari masing-masing
 		alat manajemen konfigurasi. Kustomisasi dari perangkat lunak yang
 		diperlukan tergantung pada kebutuhan penelitian. Parameter pengujian yang
-		akan dilakukan adalah menguji kecepatan dan \textit{reproducibility} dari
+		akan dilakukan adalah menguji kecepatan waktu eksekusi dan \textit{reproducibility} dari
 		masing-masing alat manajemen konfigurasi.
 	\end{adjustwidth}
 \end{adjustwidth}
@@ -485,7 +490,7 @@ yang telah ditentukan sebelumnya.\\
 	\begin{adjustwidth}{6mm}{}
 		Pada tahap ini, hasil dari implementasi dan pengujian akan dianalisis untuk
 		mengetahui kecepatan penerapan konfigurasi dan konsistensi alat manajemen
-		konfigurasi. Untuk mengetahui waktu yang dibutuhkan oleh alat manajemen
+		konfigurasi.Untuk mengetahui waktu yang dibutuhkan oleh alat manajemen
 		konfigurasi untuk menerapkan konfigurasi, akan digunakan perintah “time”.
 		Untuk mengetahui konsistensi penerapan, akan dilihat berdasarkan versi
 		paket yang di install dalam rentan waktu yang berbeda.
@@ -676,28 +681,151 @@ yang telah ditentukan sebelumnya.\\
 		\caption{Time Schedule}
 		\begin{tabular}{|p{2cm}|c|c|c|c|c|c|}
 			\hline
-      \multicolumn{1}{|c|}{\multirow{2}{*}{\centering{\textbf{Kegiatan}}}} & \textbf{2023}     & \multicolumn{5}{|c|}{\textbf{2024}}                                                                                 \\
+			\multicolumn{1}{|c|}{\multirow{2}{*}{\centering{\textbf{Kegiatan}}}} & \textbf{2023}     & \multicolumn{5}{|c|}{\textbf{2024}}                                                                                 \\
 			\cline{2-7}
-			                                               & Des               & Jan                                 & Feb               & Mar               & Apr               & Mei               \\
+			                                                                     & Des               & Jan                                 & Feb               & Mar               & Apr               & Mei               \\
 			\hline
-			Identifikasi Masalah                           & \cellcolor{green} &                                     &                   &                   &                   &                   \\
+			Identifikasi Masalah                                                 & \cellcolor{green} &                                     &                   &                   &                   &                   \\
 			\hline
-			Studi Literatur                                &                   & \cellcolor{green}                   &                   &                   &                   &                   \\
+			Studi Literatur                                                      &                   & \cellcolor{green}                   &                   &                   &                   &                   \\
 			\hline
-			Analisis Kebutuhan                             &                   & \cellcolor{green}                   &                   &                   &                   &                   \\
+			Analisis Kebutuhan                                                   &                   & \cellcolor{green}                   &                   &                   &                   &                   \\
 			\hline
-			Perancangan Sistem                             &                   &                                     & \cellcolor{green} & \cellcolor{green} &                   &                   \\
+			Perancangan Sistem                                                   &                   &                                     & \cellcolor{green} & \cellcolor{green} &                   &                   \\
 			\hline
-			Implementasi dan Pengujian                     &                   &                                     &                   &                   & \cellcolor{green} &                   \\
+			Implementasi dan Pengujian                                           &                   &                                     &                   &                   & \cellcolor{green} &                   \\
 			\hline
-			Analisis Hasil                                 &                   &                                     &                   &                   &                   & \cellcolor{green} \\
+			Analisis Hasil                                                       &                   &                                     &                   &                   &                   & \cellcolor{green} \\
 			\hline
-			Kesimpulan                                     &                   &                                     &                   &                   &                   & \cellcolor{green} \\
+			Kesimpulan                                                           &                   &                                     &                   &                   &                   & \cellcolor{green} \\
 			\hline
 		\end{tabular}
 	\end{table}
 
 \end{adjustwidth}
+\chapter{HASIL PENELITIAN DAN PEMBAHASAN}
+Hasil dari penelitian peneliti berupa data-data terkait waktu eksekusi yang
+dibutuhkan untuk penerapan manajemen konfigurasi dari eksekusi nixos-rebuild
+dan ansible-playbook. Peneliti membangun dua jenis konfigurasi, yaitu
+konfigurasi untuk NixOS dan Ansible. Untuk konfigurasi NixOS menggunakan flake
+untuk mencapai \textit{reproducibility} dan Home-Manager untuk mengkonfigurasi
+aplikasi pengguna.
+
+Untuk konfigurasi Ansible dibuat semirip mungkin dengan konfigurasi NixOS.
+Perbedaan nya adalah metode file konfigurasi pada Ansible menggunakan
+ansible.posix.synchronize dan ansible.builtin.copy untuk menyalin /
+mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
+\vspace{3mm}
+\section{Implementasi}
+\begin{adjustwidth}{7mm}{}
+	\subsection{Struktur Konfigurasi NixOS}
+	\begin{adjustwidth}{6.3mm}{}
+		\vspace{-3mm}
+		Untuk struktur konfigurasi yang digunakan adalah sebagai berikut:
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.4\textwidth]{images/directory-tree.png}
+			\caption{Directory-tree}
+		\end{figure}
+
+		Dalam konfigurasi ini, flake.nix dan flake.lock diletakkan di parent
+		directory yang memang menjadi basis untuk dieksekusinya perintah
+		"nixos-rebuild switch -{}- flake .\#nixos-vm", dimana opsi -{}-flake sendiri
+		terdiri dari flake-uri[\#hostname]
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.5\textwidth]{images/flake.nix.png}
+			\caption{flake.nix}
+		\end{figure}
+
+		Flake.nix berisi tiga inputs yang dimana terdiri dari nixpkgs, home-manager,
+		dan testing-website. Hasil dari inputs tadi digunakan dalam output untuk
+		sistem yang didefinisikan dalam nixosConfiguration dengan nixos-vm sebagai
+		hostname dari sistem.
+
+		Dengan flake, versi paket yang dihasilkan dalam output tidak akan berubah
+		baik dari channel maupun hash. Ini dikarenakan, informasi tersebut disimpan
+		dalam flake.lock. Dengan ini, sistem yang dihasilkan akan konsisten dan
+		dapat disebut sebagai sistem yang \textit{reproducible}.
+
+		Konten flake.lock adalah sebagai berikut:
+
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.8\textwidth]{images/lock-nixpkgs.png}
+			\caption{nixpkgs}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.8\textwidth]{images/lock-home-manager.png}
+			\caption{home-manager}
+		\end{figure}
+		\begin{figure}[H]
+			\centering
+			\includegraphics[width=0.8\textwidth]{images/lock-testing-website.png}
+			\caption{testing-website}
+		\end{figure}
+
+	\end{adjustwidth}
+	\subsection{Configuration.nix}
+	\vspace{-3mm}
+	\begin{adjustwidth}{6.3mm}{}
+		Dalam file configuration.nix, terdapat beberapa konfigurasi sistem dasar
+		yang diterapkan. Adapun beberapa file atau nixos module yang di import
+		adalah sebagai berikut:
+    \begin{minted}[breaklines]{nix}
+imports = [
+  # Include the results of the hardware scan.
+  ./hardware-configuration.nix
+  ./vim.nix
+  inputs.home-manager.nixosModules.home-manager
+  ./nginx.nix
+];
+    \end{minted}
+    Kemudian, flake dan home-manager akan di aktifkan dengan konfigurasi
+    berikut:
+    \begin{minted}[breaklines]{nix}
+nix.settings.experimental-features = [ "nix-command" "flakes" ];
+nix.settings.trusted-users = [ "root" "rizqirazkafi" ];
+nix.package = pkgs.nixFlakes;
+home-manager = {
+  useGlobalPkgs = true;
+  useUserPackages = true;
+  extraSpecialArgs = { inherit inputs; };
+  users.rizqirazkafi = import ../home.nix;
+};
+    \end{minted}
+    Setelah itu, ada konfigurasi untuk menambahkan \textit{authorized} ssh keys:
+    \begin{minted}[breaklines]{nix}
+users.users.rizqirazkafi = {
+  isNormalUser = true;
+  extraGroups = [ "wheel" ]; # enable ‘sudo’ for the user.
+  packages = with pkgs; [ tree ];
+  openssh.authorizedKeys.keys = [
+    # Nitro
+    "ssh-ed25519 AAAAC3Nxxxx"
+    # nixosvm-efi
+    "ssh-ed25519 AAAAC3xxxx"
+  ];
+
+};
+users.users.root.openssh.authorizedKeys.keys = [
+  # Nitro
+  "ssh-ed25519 AAAAC3NzaC1xxxx"
+  # nixosvm-efi
+  "ssh-ed25519 AAAAC3NzaC1lZxxxx"
+];
+    \end{minted}
+	\end{adjustwidth}
+
+
+
+\end{adjustwidth}
+\newpage
+
+\addcontentsline{toc}{chapter}{\textbf{DAFTAR PUSTAKA}}
+\printbibliography[title={DAFTAR PUSTAKA}]
+
 
 
 \end{document}
