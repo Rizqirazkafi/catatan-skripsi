@@ -1,0 +1,12 @@
+#!/bin/sh
+
+echo "Compile pdf" &&
+pdflatex  main.tex &&
+
+echo "Add bib" &&
+biber main
+
+echo "Compile pdf" &&
+pdflatex -shell-escape main.tex 
+
+
