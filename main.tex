@@ -14,13 +14,12 @@
 \usepackage{xcolor,colortbl}
 \usepackage{hyperref}
 \usepackage{titletoc}
-\usepackage{minted}
+% \usepackage{minted}
 \usepackage[backend=biber,style=apa]{biblatex}
 \usepackage[nottoc,numbib]{tocbibind}
 \tolerance=10000
 \renewcommand\arraystretch{1.3}
-\sloppy
-\graphicspath{{images/}}
+\sloppy \graphicspath{{images/}}
 \addbibresource{bibliography/reference.bib}
 \usepackage[a5paper, left=2.3cm, right=2cm, top=2.3cm, bottom=2cm, bindingoffset=6mm]{geometry}
 \titleformat{\chapter}[display]{\centering\normalfont\fontsize{12}{12}\selectfont\bfseries}{\thechapter}{12pt}{\fontsize{12}{12}\selectfont}
@@ -748,76 +747,63 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		dalam flake.lock. Dengan ini, sistem yang dihasilkan akan konsisten dan
 		dapat disebut sebagai sistem yang \textit{reproducible}.
 
-		Konten flake.lock adalah sebagai berikut:
+		Contoh konten flake.lock adalah sebagai berikut:
 
 		\begin{figure}[H]
 			\centering
 			\includegraphics[width=0.8\textwidth]{images/lock-nixpkgs.png}
 			\caption{nixpkgs}
 		\end{figure}
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\textwidth]{images/lock-home-manager.png}
-			\caption{home-manager}
-		\end{figure}
-		\begin{figure}[H]
-			\centering
-			\includegraphics[width=0.8\textwidth]{images/lock-testing-website.png}
-			\caption{testing-website}
-		\end{figure}
 
 	\end{adjustwidth}
-	\subsection{Configuration.nix}
+	\subsection{Konfigurasi inti configuration.nix}
 	\vspace{-3mm}
 	\begin{adjustwidth}{6.3mm}{}
-		Dalam file configuration.nix, terdapat beberapa konfigurasi sistem dasar
-		yang diterapkan. Adapun beberapa file atau nixos module yang di import
-		adalah sebagai berikut:
-    \begin{minted}[breaklines]{nix}
-imports = [
-  # Include the results of the hardware scan.
-  ./hardware-configuration.nix
-  ./vim.nix
-  inputs.home-manager.nixosModules.home-manager
-  ./nginx.nix
-];
-    \end{minted}
-    Kemudian, flake dan home-manager akan di aktifkan dengan konfigurasi
-    berikut:
-    \begin{minted}[breaklines]{nix}
-nix.settings.experimental-features = [ "nix-command" "flakes" ];
-nix.settings.trusted-users = [ "root" "rizqirazkafi" ];
-nix.package = pkgs.nixFlakes;
-home-manager = {
-  useGlobalPkgs = true;
-  useUserPackages = true;
-  extraSpecialArgs = { inherit inputs; };
-  users.rizqirazkafi = import ../home.nix;
-};
-    \end{minted}
-    Setelah itu, ada konfigurasi untuk menambahkan \textit{authorized} ssh keys:
-    \begin{minted}[breaklines]{nix}
-users.users.rizqirazkafi = {
-  isNormalUser = true;
-  extraGroups = [ "wheel" ]; # enable ‘sudo’ for the user.
-  packages = with pkgs; [ tree ];
-  openssh.authorizedKeys.keys = [
-    # Nitro
-    "ssh-ed25519 AAAAC3Nxxxx"
-    # nixosvm-efi
-    "ssh-ed25519 AAAAC3xxxx"
-  ];
-
-};
-users.users.root.openssh.authorizedKeys.keys = [
-  # Nitro
-  "ssh-ed25519 AAAAC3NzaC1xxxx"
-  # nixosvm-efi
-  "ssh-ed25519 AAAAC3NzaC1lZxxxx"
-];
-    \end{minted}
+    File configuration.nix berisikan konfigurasi sistem seperti \textit{system
+    packages, services, user packages, ssh option, }dan lain-lain. File ini 
+    bisa dibilang merupakan file inti dari konfigurasi sistem secara menyeluruh
+    dimana file inilah yang di evaluasi oleh nixos-rebuild. Semua module yang
+    dibutuhkan sistem harus di referensikan dalam file ini agar konfigurasi
+    dapat diterapkan ke sistem.
+    Ini merupakan sebagian konten file configuration.nix yang digunakan pada 
+    penelitian ini:
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.7\textwidth]{images/configuration.nix-pkgs.png}
+      \caption{Definisi paket dalam configuration.nix}
+    \end{figure}
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.7\textwidth]{images/configuration.nix-ssh.png}
+      \caption{Definisi opsi ssh configuration.nix}
+    \end{figure}
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.7\textwidth]{images/configuration.nix-boot.png}
+      \caption{Definisi opsi bootloader configuration.nix}
+    \end{figure}
 	\end{adjustwidth}
+  \subsection{Home Manager}
+  \vspace{-3mm}
+  \begin{adjustwidth}{6.3mm}{}
+    Untuk konfigurasi Home Manager, ada beberapa yang dimasukkan yaitu : 
+    \begin{enumerate}
+      \item LSP server yang dibutuhkan untuk Neovim
+      \item plugin untuk Neovim
+      \item userName dan userEmail git
+      \item enableCompletion untuk BASH
+    \end{enumerate}
 
+    Berikut merupakan sebagian dari konfigurasi yang dipakai untuk penelitian ini:
+    \begin{figure*}
+      \centering
+      \includegraphics[width=0.7\textwidth]{images/home.nix.png}
+      \caption{Konfigurasi home.nix}
+    \end{figure*}
+    
+
+    
+  \end{adjustwidth}
 
 
 \end{adjustwidth}
