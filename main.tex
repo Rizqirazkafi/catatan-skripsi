@@ -14,6 +14,7 @@
 \usepackage{xcolor,colortbl}
 \usepackage{hyperref}
 \usepackage{titletoc}
+\usepackage{tocloft}
 % \usepackage{minted}
 \usepackage[backend=biber,style=apa]{biblatex}
 \usepackage[nottoc,numbib]{tocbibind}
@@ -27,10 +28,15 @@
 \renewcommand\thesection{\Alph{section}.}
 \renewcommand\thesubsection{\arabic{subsection}.}
 \renewcommand{\contentsname}{DAFTAR ISI}
+\renewcommand{\listtablename}{DAFTAR TABEL}
+\renewcommand{\listfigurename}{DAFTAR GAMBAR}
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
-
+\renewcommand{\cftloftitlefont}{\hfill\Large\bfseries} % Center align and increase size of "List of Figures" title
+\renewcommand{\cftlottitlefont}{\hfill\Large\bfseries} % Center align and increase size of "Tables Overview" title
+\renewcommand{\cftafterloftitle}{\hfill} % Center align "List of Figures" title
+\renewcommand{\cftafterlottitle}{\hfill} % Center align "Tables Overview" title
 \titleformat{\section}[block]{\normalfont\bfseries\fontsize{12}{12}}{\thesection}{10pt}{\fontsize{10}{10}\selectfont}
 \titleformat{\subsection}[block]{\normalfont\fontsize{12}{12}}{\thesubsection}{10pt}{\fontsize{10}{10}\selectfont}
 \titleformat{\chapter}[block]
@@ -55,9 +61,18 @@
 \titlecontents{chapter}% <section-type>
   [0pt]% <left>
   {\addvspace{1em}}% <above-code>
-  {\bfseries BAB \thecontentslabel\enspace}% <numbered-entry-format>
-  {}% <numberless-entry-format>
-  {\bfseries\hfill\contentspage}% <filler-page-format
+  {\bfseries BAB \thecontentslabel}% <numbered-entry-format>
+  {\bfseries\thecontentslabel}% <numberless-entry-format>
+  {\dotfill\bfseries\contentspage}% <filler-page-format
+
+\titlecontents{table}
+  [0pt]
+  {}
+  {Tabel \thecontentslabel\enspace}
+  {}
+  {\dotfill\bfseries\contentspage}
+  
+
 \begin{document}
 \input{title}
 \chapter*{KATA PENGANTAR}
@@ -81,6 +96,10 @@
 	penulis
 \end{FlushRight}
 \tableofcontents
+\newpage
+\listoftables
+\newpage
+\listoffigures
 \newpage
 \chapter{PENDAHULUAN}
 \pagenumbering{arabic}
@@ -555,7 +574,7 @@ yang telah ditentukan sebelumnya.\\
 			\hline
 			2            & NixOS                         & Sistem Operasi dengan fitur manajemen konfigurasi                         \\
 			\hline
-			3            & Debian                        & Sistem Operasi yang digunakan untuk target Ansible                        \\
+			3            & Ubuntu Server 24.04 LTS                        & Sistem Operasi yang digunakan untuk target Ansible                        \\
 			\hline
 			4            & Nix Flakes                    & Alat yang digunakan untuk manajemen \textit{inputs} pada NixOS            \\
 			\hline
@@ -580,7 +599,7 @@ yang telah ditentukan sebelumnya.\\
 		merupakan guest kosong yang akan digunakan sebagai instalasi NixOS minimal.
 	\end{adjustwidth}
 	\begin{table}[!htbp]
-		\caption{\textit{Spesifikasi Instance}}
+		\caption{Spesifikasi Instance}
 		\begin{center}
 
 			\begin{tabular}{|l|l|}
@@ -795,19 +814,77 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
     \end{enumerate}
 
     Berikut merupakan sebagian dari konfigurasi yang dipakai untuk penelitian ini:
-    \begin{figure*}
+
+    \begin{figure}[H]
       \centering
       \includegraphics[width=0.7\textwidth]{images/home.nix.png}
       \caption{Konfigurasi home.nix}
-    \end{figure*}
-    
-
-    
+    \end{figure}
   \end{adjustwidth}
+  \subsection{Konfigurasi Ansible}
+  \vspace{-3mm}
+  \begin{adjustwidth}{6.3mm}{}
+    \hspace\parindent
+    Untuk Ansible menggunakan konfigurasi yang lebih sederhana dengan menyalin
+    file konfigurasi dari vim, neovim, tmux, ssh, dan nginx ke
+    \textit{directory} konfigurasi sesuai Filesystem Hierarchial Standard
+    (FHS). Untuk paket yang dibutuhkan di definisikan secara \textit{global
+    packages} dimana paket di install untuk semua \textit{user}.
 
+    Untuk \textit{Language Server Protocol} (LSP) \textit{server} akan 
+    ditangani oleh Lazy.nvim dan Mason agar terinstall secara otomatis
+    saat Neovim dijalankan.
 
+    Rincian konfigurasinya adalah sebagai berikut:
+
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.45\textwidth]{images/ansible-packages.png}
+      \caption{Installed Packages}
+    \end{figure}
+    \begin{figure}[H]
+      \centering
+      \includegraphics[width=0.45\textwidth]{images/ansible-copy.png}
+      \caption{Copy Configuration}
+    \end{figure}
+  \end{adjustwidth}
 \end{adjustwidth}
 \newpage
+\section{Pengujian}
+\begin{adjustwidth}{7mm}{}
+  \hspace\parindent
+  Tahap pengujian yang dilakukan dalam penelitian ini dimaksudkan untuk mengetahui
+  waktu eksekusi yang dibutuhkan dari Ansible dan NixOS untuk menerapkan manajemen
+  konfigurasi yang telah dibuat. Pengujian dilakukan dengan menggunakan perintah
+  "\textit{time}" pada eksekusi setiap kali dijalankan perintah untuk penerapan manajemen
+  konfigurasi.
+  \subsection{Pasca Install}
+  \begin{adjustwidth}{6.3mm}{}
+    Pengujian dilakukan dengan menjalankan Ansible Playbook dan nixos-rebuild
+    ke dua Virtual Machine yang baru saja di install. Tidak ada konfigurasi 
+    tambahan selain konfigurasi untuk IP menggunakan NetworkManager dan SSH. 
+    Masing-masing sistem juga berjalan di mode shell tanpa GUI. Pengujian ini 
+    akan dijalankan sebanyak satu kali.
+  \end{adjustwidth}
+  \subsection{Penerapan ulang setelah pasca install.}
+  \begin{adjustwidth}{6.3mm}{}
+    Pengujian ini dilakukan dengan cara menjalankan Ansible Playbook dan nixos-rebuild
+    setelah pengujian Pasca Install tanpa perubahan apapun pada file konfigurasi. Pengujian ini
+    akan dijalankan sebanyak tiga kali.
+  \end{adjustwidth}
+  \subsection{Penambahan Paket}
+  \begin{adjustwidth}{6.3mm}{}
+    Pengujian dilakukan dengan menambahkan paket tambahan yaitu Go compiler. 
+    Pengujian ini akan dilakukan tiga kali dengan satu kali perubahan pada file 
+    konfigurasi.
+  \end{adjustwidth}
+  \subsection{Penghapusan Paket}
+  \begin{adjustwidth}{6.3mm}{}
+    Pengujian dilakukan dengan menghapus paket yaitu Go compiler. 
+    Pengujian ini akan dilakukan tiga kali dengan satu kali perubahan pada file 
+    konfigurasi.
+  \end{adjustwidth}
+\end{adjustwidth}
 
 \addcontentsline{toc}{chapter}{\textbf{DAFTAR PUSTAKA}}
 \printbibliography[title={DAFTAR PUSTAKA}]
