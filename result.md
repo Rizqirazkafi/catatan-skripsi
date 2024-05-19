@@ -17,6 +17,12 @@ case : cache already built
 1m4.684s|0m4.152s|0m5.701s|
 0m14.432s|0m0.190s|0m0.092s|
 
+case : cache not built
+|real | user | sys|
+|-----|------|----|
+2m7.863s | 0m8.449s | 0m3.204s|
+0m3.189s | 0m0.225s | 0m0.083s |
+
 Single target nix-target-3 192.168.30.25 
 case : cache already built
 
@@ -24,6 +30,12 @@ case : cache already built
 |-----|------|----|
 1m11.445s | 0m4.325s | 0m6.508
 0m4.131s|0m0.189s|0m0.094s|
+
+case : cache not built
+|real | user | sys|
+|-----|------|----|
+3m23.585s | 0m11.772s | 0m11.070s
+0m4.489s | 0m0.232s | 0m0.081s
 
 ### NixOS 2
 Penerapan ulang setelah pasca install
