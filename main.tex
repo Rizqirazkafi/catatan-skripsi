@@ -1,6 +1,11 @@
 \documentclass[10pt,]{report}
 \usepackage[utf8]{inputenc}
-\usepackage{pxfonts} \usepackage{graphicx} \usepackage[none]{hyphenat} \usepackage{ragged2e} \usepackage{titlesec} \usepackage{indentfirst}
+\usepackage{pxfonts} 
+\usepackage{graphicx} 
+\usepackage[none]{hyphenat} 
+\usepackage{ragged2e} 
+\usepackage{titlesec} 
+\usepackage{indentfirst}
 \usepackage{changepage}
 \usepackage{enumitem}
 \usepackage{longtable}
@@ -1082,7 +1087,6 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 					\multicolumn{1}{c|}{\textbf{sys}}                         \\
 					\hline
 					1m4.684s                            & 0m4.152s & 0m5.701s \\
-
 					\hline
 				\end{tabular}
 			\end{center}
@@ -1102,6 +1106,25 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\end{tabular}
 			\end{center}
 			\caption{nixos-rebuild second target}
+		\end{table}
+	\end{adjustwidth}
+	\subsubsection{Ansible Single Target}
+	\begin{adjustwidth}{20pt}{}
+		Pada percobaan ini, dijalankan menggunakan perintah ansible-playbook dengan
+		satu target pada satu waktu. Total target yang di tuju adalah dua.
+		\begin{table}[H]
+			\begin{center}
+				\begin{tabular}[c]{|c|c|c|}
+					\hline
+					\multicolumn{1}{|c|}{\textbf{real}} &
+					\multicolumn{1}{c|}{\textbf{user}}  &
+					\multicolumn{1}{c|}{\textbf{sys}}                         \\
+					\hline
+					3m9.988s                            & 0m8.048s & 0m2.277s \\
+					\hline
+				\end{tabular}
+			\end{center}
+			\caption{ansible first target}
 		\end{table}
 	\end{adjustwidth}
 	\subsection{Penerapan ulang setelah pasca install.}
