@@ -7,21 +7,24 @@ link local maupun outbound.
 ### NixOS 1
 Skenario pertama yaitu pasca install dengan sistem kosong
 
-18 Mei 2024
+__!!PORT 22!!__
 
-Single target (server -> server) nix-target-2 192.168.30.20
+Single target (server -> server) nix-target-4 192.168.30.20
 case : cache already built
 
 |real | user | sys|
 |-----|------|----|
-1m4.684s|0m4.152s|0m5.701s|
-0m14.432s|0m0.190s|0m0.092s|
+0m8.709s |0m0.264s | 0m0.133s|
+0m8.314s | 0m0.259s | 0m0.127s|
+0m8.215s | 0m0.274s | 0m0.141s |
 
 case : cache not built
+
 |real | user | sys|
 |-----|------|----|
-2m7.863s | 0m8.449s | 0m3.204s|
-0m3.189s | 0m0.225s | 0m0.083s |
+1m47.661s | 0m8.998s | 0m4.256s |
+1m48.931s | 0m9.025s | 0m4.146s |
+1m50.640s | 0m9.050s | 0m4.117s |
 
 Single target nix-target-3 192.168.30.25 
 case : cache already built
