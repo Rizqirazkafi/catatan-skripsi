@@ -72,3 +72,64 @@ nix-uefi -> nix-target-4 192.168.100.25
 0m3.007s| 0m0.219s | 0m0.078s|
 0m2.918s| 0m0.219s | 0m0.085s |
 0m3.190s | 0m0.218s | 0m0.088s |
+
+
+# Ansible Single Target
+## Ansible 1
+
+ansible-master -> ansible-target-1 192.168.100.27
+|real | user | sys|
+|-----|------|----|
+3m16.849s | 0m8.208s | 0m2.255s |
+2m45.881s | 0m7.431s | 0m2.095s |
+2m57.825s | 0m7.761s | 0m2.115s |
+
+ansible-master -> ansible-target-2 192.168.100.28
+|real | user | sys|
+|-----|------|----|
+2m48.054s | 0m7.488s | 0m2.119s |
+2m53.974s | 0m7.598s | 0m2.123s |
+2m.13.947s | 0m7.341s | 0m2.040s |
+
+## Ansible 2 
+ansible-target-1
+|real | user | sys|
+|-----|------|----|
+0m16.252s | 0m4.075s | 0m0.997s
+0m12.563s | 0m3.931s | 0m0.921s
+0m13.220s | 0m3.965s | 0m0.975s
+ansible-target-2
+|real | user | sys|
+|-----|------|----|
+0m13.381s | 0m4.021s|0m0.976s |
+0m12.683s | 0m3.924s | 0m0.968s |
+0m12.958s | 0m3.883s | 0m0.951s |
+
+## Ansible 3
+ansible-target-1
+|real | user | sys|
+|-----|------|----|
+0m31.965s | 0m4.378s | 0m1.145s |
+0m23.455s | 0m4.274s | 0m1.025s |
+0m24.020s | 0m4.283s | 0m1.003s |
+ansible-target-2
+|real | user | sys|
+|-----|------|----|
+0m26.637s | 0m4.281s | 0m1.120s |
+0m26.256s| 0m4.327s | 0m1.027s |
+0m25.256s | 0m4.310s | 0m1.046s |
+
+## Ansible 4 
+ansible-target-1
+|real | user | sys|
+|-----|------|----|
+0m15.627s | 0m3.954s | 0m0.988s
+0m15.153s | 0m3.928s | 0m0.960s
+0m15.504s | 0m3.925s | 0m0.979s
+
+ansible-target-2 
+|real | user | sys|
+|-----|------|----|
+0m16.187s | 0m4.021s | 0m1.028s
+0m15.441s | 0m3.892s | 0m1.019s
+0m15.391s | 0m3.925s | 0m0.989s
