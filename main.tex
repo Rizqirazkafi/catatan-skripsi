@@ -1031,7 +1031,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		ke dua Virtual Machine yang baru saja di install. Tidak ada konfigurasi
 		tambahan selain konfigurasi untuk IP menggunakan NetworkManager dan SSH.
 		Masing-masing sistem juga berjalan di mode shell tanpa GUI. Pengujian ini
-		akan dijalankan sebanyak satu kali.
+		akan dijalankan sebanyak tiga kali.
 	\end{adjustwidth}
 
 	\subsubsection{NixOS tanpa cache}
@@ -1041,22 +1041,6 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\textit{derivation} yang telah di definisikan oleh nixpkgs. Hasil dari
 		\textit{derivation} berupa \textit{closure} yang disalin ke target.
 	\end{adjustwidth}
-	\vspace{-3mm}
-	\begin{table}[H]
-		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
-				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
-				\hline
-				2m7.863s                            & 0m8.449s & 0m3.204s \\
-				\hline
-			\end{tabular}
-		\end{center}
-		\caption{nixos-rebuild first target}
-	\end{table}
-	\vspace{-3mm}
 	\begin{table}[H]
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|}
@@ -1065,7 +1049,29 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\multicolumn{1}{c|}{\textbf{user}}  &
 				\multicolumn{1}{c|}{\textbf{sys}}                           \\
 				\hline
-				3m23.585s                           & 0m11.772s & 0m11.070s \\
+				3m38.709s                           & 0m12.379s & 0m11.836s \\
+				\hline
+				3m34.648s                           & 0m12.282s & 0m11.082s \\
+				\hline
+				3m39.477s                           & 0m12.199s & 0m11.162s \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\caption{nixos-rebuild first target}
+	\end{table}
+	\begin{table}[H]
+		\begin{center}
+			\begin{tabular}[c]{|c|c|c|}
+				\hline
+				\multicolumn{1}{|c|}{\textbf{real}} &
+				\multicolumn{1}{c|}{\textbf{user}}  &
+				\multicolumn{1}{c|}{\textbf{sys}}                           \\
+				\hline
+				3m31.792s                           & 0m12.334s & 0m11.336s \\
+				\hline
+				3m33.855s                           & 0m12.200s & 0m11.512s \\
+				\hline
+				3m35.859s                           & 0m12.278s & 0m11.968s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1077,7 +1083,6 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\textit{dependency} kemudian akan melakukan \textit{build} berdasarkan
 		\textit{derivation} yang telah di definisikan oleh nixpkgs. Hasil dari
 		\textit{derivation} berupa \textit{closure} yang disalin ke target.
-		\vspace{-3mm}
 		\begin{table}[H]
 			\begin{center}
 				\begin{tabular}[c]{|c|c|c|}
@@ -1086,22 +1091,29 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 					\multicolumn{1}{c|}{\textbf{user}}  &
 					\multicolumn{1}{c|}{\textbf{sys}}                         \\
 					\hline
-					1m4.684s                            & 0m4.152s & 0m5.701s \\
+					1m40.721s                           & 0m3.563s & 0m6.304s \\
+					\hline
+					1m39.842s                           & 0m3.500s & 0m6.616s \\
+					\hline
+					1m40.714s                           & 0m3.463s & 0m6.367s \\
 					\hline
 				\end{tabular}
 			\end{center}
 			\caption{nixos-rebuild first target}
 		\end{table}
-		\vspace{-3mm}
 		\begin{table}[H]
 			\begin{center}
 				\begin{tabular}[c]{|c|c|c|}
 					\hline
 					\multicolumn{1}{|c|}{\textbf{real}} &
 					\multicolumn{1}{c|}{\textbf{user}}  &
-					\multicolumn{1}{c|}{\textbf{sys}}                        \\
+					\multicolumn{1}{c|}{\textbf{sys}}                         \\
 					\hline
-					1m11.445s                           & 0m4.325s & 0m6.508 \\
+					1m45.303s                           & 0m3.544s & 0m6.513s \\
+					\hline
+					1m43.955s                           & 0m3.476s & 0m6.326s \\
+					\hline
+					1m43.938s                           & 0m3.523s & 0m6.382s \\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -1120,11 +1132,56 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 					\multicolumn{1}{c|}{\textbf{user}}  &
 					\multicolumn{1}{c|}{\textbf{sys}}                         \\
 					\hline
-					3m9.988s                            & 0m8.048s & 0m2.277s \\
+					3m16.849s                           & 0m8.208s & 0m2.255s \\
+					\hline
+					2m45.881s                           & 0m7.431s & 0m2.095s \\
+					\hline
+					2m57.825s                           & 0m7.761s & 0m2.115s \\
 					\hline
 				\end{tabular}
 			\end{center}
 			\caption{ansible first target}
+		\end{table}
+		\begin{table}[H]
+			\begin{center}
+				\begin{tabular}[c]{|c|c|c|}
+					\hline
+					\multicolumn{1}{|c|}{\textbf{real}} &
+					\multicolumn{1}{c|}{\textbf{user}}  &
+					\multicolumn{1}{c|}{\textbf{sys}}                         \\
+					\hline
+					2m48.054s                           & 0m7.488s & 0m2.119s \\
+					\hline
+					2m53.974s                           & 0m7.598s & 0m2.123s \\
+					\hline
+					2m.13.947s                          & 0m7.341s & 0m2.040s \\
+					\hline
+				\end{tabular}
+			\end{center}
+			\caption{ansible second target}
+		\end{table}
+	\end{adjustwidth}
+	\subsubsection{Ansible Multi Target}
+	\begin{adjustwidth}{20pt}{}
+		Pada percobaan ini, dijalankan menggunakan perintah ansible-playbook dengan dua
+		target secara paralel.
+		\begin{table}[H]
+			\begin{center}
+				\begin{tabular}[c]{|c|c|c|}
+					\hline
+					\multicolumn{1}{|c|}{\textbf{real}} &
+					\multicolumn{1}{c|}{\textbf{user}}  &
+					\multicolumn{1}{c|}{\textbf{sys}}                         \\
+					\hline
+					2m12.327s                           & 0m9.902s & 0m3.188s \\
+					\hline
+					1m56.784s                           & 0m9.654s & 0m3.147s \\
+					\hline
+					2m2.801s                            & 0m9.889s & 0m2.932s \\
+					\hline
+				\end{tabular}
+			\end{center}
+			\caption{ansible multi target}
 		\end{table}
 	\end{adjustwidth}
 	\subsection{Penerapan ulang setelah pasca install.}
@@ -1133,7 +1190,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		setelah pengujian Pasca Install tanpa perubahan apapun pada file konfigurasi. Pengujian ini
 		akan dijalankan sebanyak tiga kali.
 	\end{adjustwidth}
-	\vspace{-3mm}
+	\subsubsection{NixOS}
 	\begin{table}[H]
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|}
@@ -1142,11 +1199,11 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\multicolumn{1}{c|}{\textbf{user}}  &
 				\multicolumn{1}{c|}{\textbf{sys}}                         \\
 				\hline
-				0m4.256s                            & 0m0.192s & 0m0.084s \\
+				0m5.128s                            & 0m0.210s & 0m0.086s \\
 				\hline
-				0m2.562s                            & 0m0.192s & 0m0.089s \\
+				0m4.186s                            & 0m0.229s & 0m0.073s \\
 				\hline
-				0m2.506s                            & 0m0.200s & 0m0.078s \\
+				0m2.774s                            & 0m0.228s & 0m0.076s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1160,15 +1217,71 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\multicolumn{1}{c|}{\textbf{user}}  &
 				\multicolumn{1}{c|}{\textbf{sys}}                         \\
 				\hline
-				0m3.868s                            & 0m0.194s & 0m0.087s \\
+				0m4.870s                            & 0m0.222s & 0m0.083s \\
 				\hline
-				0m2.670s                            & 0m0.194s & 0m0.087s \\
+				0m4.222s                            & 0m0.228s & 0m0.071s \\
 				\hline
-				0m2.658s                            & 0m0.192s & 0m0.008s \\
+				0m2.765s                            & 0m0.234s & 0m0.072s \\
 				\hline
 			\end{tabular}
 		\end{center}
 		\caption{nixos-rebuild second target}
+	\end{table}
+	\subsubsection{Ansible single target}
+	\begin{table}[H]
+		\begin{center}
+			\begin{tabular}[c]{|c|c|c|}
+				\hline
+				\multicolumn{1}{|c|}{\textbf{real}} &
+				\multicolumn{1}{c|}{\textbf{user}}  &
+				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\hline
+				0m16.252s                           & 0m4.075s & 0m0.997s \\
+				\hline
+				0m12.563s                           & 0m3.931s & 0m0.921s \\
+				\hline
+				0m13.220s                           & 0m3.965s & 0m0.975s \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\caption{Ansible first target}
+	\end{table}
+	\begin{table}[H]
+		\begin{center}
+			\begin{tabular}[c]{|c|c|c|}
+				\hline
+				\multicolumn{1}{|c|}{\textbf{real}} &
+				\multicolumn{1}{c|}{\textbf{user}}  &
+				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\hline
+				0m13.381s                           & 0m4.021s & 0m0.976s \\
+				\hline
+				0m12.683s                           & 0m3.924s & 0m0.968s \\
+				\hline
+				0m12.958s                           & 0m3.883s & 0m0.951s \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\caption{Ansible first target}
+	\end{table}
+	\subsubsection{Ansible multi target}
+	\begin{table}[H]
+		\begin{center}
+			\begin{tabular}[c]{|c|c|c|}
+				\hline
+				\multicolumn{1}{|c|}{\textbf{real}} &
+				\multicolumn{1}{c|}{\textbf{user}}  &
+				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\hline
+				0m14.552s                           & 0m6.628s & 0m1.886s \\
+				\hline
+				0m13.874s                           & 0m6.402s & 0m1.857s \\
+				\hline
+				0m14.230s                           & 0m6.501s & 0m1.818s \\
+				\hline
+			\end{tabular}
+		\end{center}
+		\caption{Ansible first target}
 	\end{table}
 	\subsection{Penambahan Paket}
 	\begin{adjustwidth}{20pt}{}
@@ -1176,7 +1289,6 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Pengujian ini akan dilakukan tiga kali dengan satu kali perubahan pada file
 		konfigurasi.
 	\end{adjustwidth}
-	\vspace{-3mm}
 	\begin{table}[H]
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|}
@@ -1185,11 +1297,11 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\multicolumn{1}{c|}{\textbf{user}}  &
 				\multicolumn{1}{c|}{\textbf{sys}}                         \\
 				\hline
-				0m52.362s                           & 0m7.317s & 0m2.315s \\
+				0m50.808s                           & 0m6.168s & 0m2.358s \\
 				\hline
-				0m2.674s                            & 0m0.180s & 0m0.092s \\
+				0m46.404s                           & 0m5.879s & 0m1.860s \\
 				\hline
-				0m2.550s                            & 0m0.189s & 0m0.090s \\
+				0m36.898s                           & 0m5.832s & 0m2.003s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1203,9 +1315,11 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\multicolumn{1}{c|}{\textbf{user}}  &
 				\multicolumn{1}{c|}{\textbf{sys}}                         \\
 				\hline
-				0m5.292s                            & 0m0.530s & 0m0.366s \\
-				0m2.655s                            & 0m0.202s & 0m0.081s \\
-				0m2.635s                            & 0m0.203s & 0m0.072s \\
+				0m29.654s                           & 0m5.908s & 0m1.833s \\
+				\hline
+				0m41.280s                           & 0m7.002s & 0m2.446s \\
+				\hline
+				0m39.303s                           & 0m6.856s & 0m1.958s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1225,11 +1339,11 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\multicolumn{1}{c|}{\textbf{user}}  &
 				\multicolumn{1}{c|}{\textbf{sys}}                         \\
 				\hline
-				0m2.685s                            & 0m0.200s & 0m0.081s \\
+				0m3.007s                            & 0m0.219s & 0m0.078s \\
 				\hline
-				0m2.540s                            & 0m0.198s & 0m0.081s \\
+				0m2.918s                            & 0m0.219s & 0m0.085s \\
 				\hline
-				0m2.569s                            & 0m0.192s & 0m0.084s \\
+				0m3.190s                            & 0m0.218s & 0m0.088s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1243,11 +1357,11 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\multicolumn{1}{c|}{\textbf{user}}  &
 				\multicolumn{1}{c|}{\textbf{sys}}                         \\
 				\hline
-				0m2.785s                            & 0m0.225s & 0m0.080s \\
+				0m2.859s                            & 0m0.218s & 0m0.083s \\
 				\hline
-				0m2.768s                            & 0m0.217s & 0m0.081s \\
+				0m2.582s                            & 0m0.232s & 0m0.067s \\
 				\hline
-				0m2.781s                            & 0m0.234s & 0m0.069s \\
+				0m2.929s                            & 0m0.219s & 0m0.081s \\
 				\hline
 			\end{tabular}
 		\end{center}
