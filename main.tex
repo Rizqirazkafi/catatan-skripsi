@@ -46,15 +46,17 @@
 \newenvironment{code}{\captionsetup{type=listing}}{\vspace{3mm}}
 \SetupFloatingEnvironment{listing}{name=Source Code}
 \setcounter{secnumdepth}{3}
-\renewcommand{\contentsname}{DAFTAR ISI}
+\renewcommand{\contentsname}{DAFTAR ISI\hfill}
 \renewcommand{\listtablename}{DAFTAR TABEL}
 \renewcommand{\listfigurename}{DAFTAR GAMBAR}
 \renewcommand{\thechapter}{\Roman{chapter}}
 \renewcommand{\thefigure}{\arabic{chapter}.\arabic{figure}}
 \renewcommand{\thetable}{\arabic{chapter}.\arabic{table}}
 \renewcommand{\thelisting}{\arabic{chapter}.\arabic{listing}}
-\renewcommand{\cftloftitlefont}{\hfill\Large\bfseries} % Center align and increase size of "List of Figures" title
-\renewcommand{\cftlottitlefont}{\hfill\Large\bfseries} % Center align and increase size of "Tables Overview" title
+\renewcommand{\cftloftitlefont}{\hfill\normalsize\bfseries} % Center align and increase size of "List of Figures" title
+\renewcommand{\cftlottitlefont}{\hfill\normalsize\bfseries} % Center align and increase size of "Tables Overview" title
+\renewcommand{\cfttoctitlefont}{\hfill\normalsize\bfseries} % Center align and increase size of "Tables Overview" title
+\renewcommand{\cftaftertoctitle}{\hfill} % Center align "List of Figures" title
 \renewcommand{\cftafterloftitle}{\hfill} % Center align "List of Figures" title
 \renewcommand{\cftafterlottitle}{\hfill} % Center align "Tables Overview" title
 \titleformat{\section}[block]{\normalfont\bfseries\fontsize{12}{12}}{\makebox[1em][l]{\thesection.}}{10pt}{\fontsize{10}{10}\selectfont}
@@ -808,36 +810,37 @@ yang telah ditentukan sebelumnya.\\
 	berulang untuk mendapatkan rata-rata waktu yang dibutuhkan untuk menerapkan
 	konfigurasi.\\
 \end{adjustwidth}
-\section{Time Schedule}
-\begin{adjustwidth}{20pt}{}
-	Berikut \textit{time schedule} yang penulis susun sebagai acuan pelaksanaan
-	kegiatan:
-	\begin{table}[H]
-		\caption{Time Schedule}
-		\begin{tabular}{|p{2cm}|c|c|c|c|c|c|}
-			\hline
-			\multicolumn{1}{|c|}{\multirow{2}{*}{\centering{\textbf{Kegiatan}}}} & \textbf{2023}     & \multicolumn{5}{|c|}{\textbf{2024}}                                                                                 \\
-			\cline{2-7}
-			                                                                     & Des               & Jan                                 & Feb               & Mar               & Apr               & Mei               \\
-			\hline
-			Identifikasi Masalah                                                 & \cellcolor{green} &                                     &                   &                   &                   &                   \\
-			\hline
-			Studi Literatur                                                      &                   & \cellcolor{green}                   &                   &                   &                   &                   \\
-			\hline
-			Analisis Kebutuhan                                                   &                   & \cellcolor{green}                   &                   &                   &                   &                   \\
-			\hline
-			Perancangan Sistem                                                   &                   &                                     & \cellcolor{green} & \cellcolor{green} &                   &                   \\
-			\hline
-			Implementasi dan Pengujian                                           &                   &                                     &                   &                   & \cellcolor{green} &                   \\
-			\hline
-			Analisis Hasil                                                       &                   &                                     &                   &                   &                   & \cellcolor{green} \\
-			\hline
-			Kesimpulan                                                           &                   &                                     &                   &                   &                   & \cellcolor{green} \\
-			\hline
-		\end{tabular}
-	\end{table}
-
-\end{adjustwidth}
+% Time Schedule dihapus saat semhas
+% \section{Time Schedule}
+% \begin{adjustwidth}{20pt}{}
+% 	Berikut \textit{time schedule} yang penulis susun sebagai acuan pelaksanaan
+% 	kegiatan:
+% 	\begin{table}[H]
+% 		\caption{Time Schedule}
+% 		\begin{tabular}{|p{2cm}|c|c|c|c|c|c|}
+% 			\hline
+% 			\multicolumn{1}{|c|}{\multirow{2}{*}{\centering{\textbf{Kegiatan}}}} & \textbf{2023}     & \multicolumn{5}{|c|}{\textbf{2024}}                                                                                 \\
+% 			\cline{2-7}
+% 			                                                                     & Des               & Jan                                 & Feb               & Mar               & Apr               & Mei               \\
+% 			\hline
+% 			Identifikasi Masalah                                                 & \cellcolor{green} &                                     &                   &                   &                   &                   \\
+% 			\hline
+% 			Studi Literatur                                                      &                   & \cellcolor{green}                   &                   &                   &                   &                   \\
+% 			\hline
+% 			Analisis Kebutuhan                                                   &                   & \cellcolor{green}                   &                   &                   &                   &                   \\
+% 			\hline
+% 			Perancangan Sistem                                                   &                   &                                     & \cellcolor{green} & \cellcolor{green} &                   &                   \\
+% 			\hline
+% 			Implementasi dan Pengujian                                           &                   &                                     &                   &                   & \cellcolor{green} &                   \\
+% 			\hline
+% 			Analisis Hasil                                                       &                   &                                     &                   &                   &                   & \cellcolor{green} \\
+% 			\hline
+% 			Kesimpulan                                                           &                   &                                     &                   &                   &                   & \cellcolor{green} \\
+% 			\hline
+% 		\end{tabular}
+% 	\end{table}
+%
+% \end{adjustwidth}
 \chapter{HASIL PENELITIAN DAN PEMBAHASAN}
 Hasil dari penelitian peneliti berupa data-data terkait waktu eksekusi yang
 dibutuhkan untuk penerapan manajemen konfigurasi dari eksekusi nixos-rebuild
@@ -1123,6 +1126,10 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	konfigurasi yang telah dibuat. Pengujian dilakukan dengan menggunakan perintah
 	"\textit{time}" pada eksekusi setiap kali dijalankan perintah untuk penerapan manajemen
 	konfigurasi.
+
+  Pengujian berikutnya ialah menguji apakah baik Ansible maupun NixOS bersifat 
+  deklaratif dalam penerapannya menggunakan perbandingan dari apa yang telah 
+  di deklarasikan di konfigurasi dengan hasil akhir pada sistem.
 	\subsection{Pasca Install}
 	\begin{adjustwidth}{20pt}{}
 		Pengujian dilakukan dengan menjalankan Ansible Playbook dan nixos-rebuild
@@ -1735,10 +1742,6 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
       dengan \textit{tool} manajemen konfigurasi. Dari penelitian ini, peneliti
       mendapati berbagai poin berikut:
       \begin{enumerate}[label=\alph*.]
-      \item Ansible Playbook berhasil menerapkan sebagian dari playbook tanpa 
-        perlu memulai ulang sistem kecuali SSH yang dimana apabila \textit{service}
-          di restart maka Ansible Playbook akan error. Ini disebabkan karena 
-          Ansible menggunakan SSH untuk menerapkan konfigurasi.
         \item Apabila task atau bagian dari Ansible Playbook dihapus, maka 
           bagian tersebut akan tetap ada di sistem setelah Ansible Playbook 
           dijalankan. Contohnya adalah ketika kita menghapus \textit{package}
@@ -1749,15 +1752,10 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
           bahwa Ansible Playbook bersifat \textit{imperatif} dimana Ansible 
           Playbook hanya melakukan apa yang diperintahkan dan tidak memanifestasikan
           hasil akhir yang di inginkan.
-        \item NixOS dengan nixos-rebuild dapat menghasilkan sistem yang 
-          sesuai dengan konfigurasi yang telah dibuat. Berbeda dengan Ansible 
-          Playbook, nixos-rebuild mampu merubah konfigurasi SSH tanpa harus 
-          memulai ulang sistem. 
-        \item Apabila \textit{service} atau \textit{package} dihapus dari 
-          konfigurasi, maka \textit{service} akan di hentikan dan \textit{package}
-          akan dihapus \textit{symbolic link} nya dari sistem. Ini membuat konfigurasi
-          NixOS bersifat deklaratif, dimana apa yang ada dalam konfigurasi merupakan
-          manifestasi nyata dari hasil akhir yang di inginkan.
+        \item NixOS dengan nixos-rebuild mampu memanifestasikan konfigurasi 
+          yang diterapkan pada sistem. Apabila \textit{package} atau 
+          \textit{service} dihapus dari konfigurasi, maka \textit{package}
+          atau \textit{service} tersebut akan dihapus dari target.
     \end{enumerate}
   \item Setelah melakukan pengujian dari waktu eksekusi kedua \textit{tool} 
     manajemen konfigurasi yaitu Ansible dan NixOS, hasilnya adalah sebagai berikut:
