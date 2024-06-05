@@ -50,7 +50,9 @@ nix-uefi -> nix-target-5 192.168.100.26
 0m2.765s | 0m0.234s | 0m0.072s |
 
 ## NixOS 3
+no-cache
 nix-uefi -> nix-target-4 192.168.100.25
+
 |real | user | sys|
 |-----|------|----|
 0m50.808s | 0m6.168s | 0m2.358s 
@@ -63,6 +65,22 @@ nix-uefi -> nix-target-5 192.168.100.26
 0m29.654s | 0m5.908s | 0m1.833s |
 0m41.280s | 0m7.002s | 0m2.446s
 0m39.303s | 0m6.856s | 0m1.958s
+
+cache
+nix-uefi -> nix-target-4 192.168.100.25
+
+|real | user | sys|
+|-----|------|----|
+0m11.358s | 0m0.483s | 0m0.553s 
+0m10.317s | 0m0.512s | 0m0.477s
+0m10.658s | 0m0.486s | 0m0.500s
+
+nix-uefi -> nix-target-5 192.168.100.26
+|real | user | sys|
+|-----|------|----|
+0m10.730s | 0m0.498s | 0m0.642s
+0m9.745s | 0m0.455s | 0m0.474s
+0m10.176s | 0m0.488s | 0m0.470s
 
 ## NixOS 4 
 nix-uefi -> nix-target-4 192.168.100.25
