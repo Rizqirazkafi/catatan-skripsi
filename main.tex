@@ -44,6 +44,7 @@
 \renewcommand\thesubsection{\arabic{subsection}}
 \renewcommand\thesubsubsection{\alph{subsubsection}}
 \newenvironment{code}{\captionsetup{type=listing}}{\vspace{3mm}}
+\captionsetup{aboveskip=0pt, belowskip=-5pt}
 \SetupFloatingEnvironment{listing}{name=Source Code}
 \setcounter{secnumdepth}{3}
 \renewcommand{\contentsname}{DAFTAR ISI\hfill}
@@ -108,7 +109,6 @@
 \begin{document}
 \input{title}
 \chapter*{KATA PENGANTAR}
-  
 \pagenumbering{roman}
 \begin{justify}
 	Puji syukur kepada Tuhan Yang Maha Esa yang telah melimpahkan rahmat dan
@@ -131,87 +131,87 @@
 \newpage
 \chapter*{ABSTRAK}
 \begin{adjustwidth}{0.0cm}{}
-  \begin{center}
-    \textbf{PERBANDINGAN WAKTU EKSEKUSI OTOMASI MANAJEMEN KONFIGURASI SISTEM OPERASI GNU/LINUX ANTARA ANSIBLE DENGAN NIXOS}
-  \end{center}
-  \medskip
+	\begin{center}
+		\textbf{PERBANDINGAN WAKTU EKSEKUSI OTOMASI MANAJEMEN KONFIGURASI SISTEM OPERASI GNU/LINUX ANTARA ANSIBLE DENGAN NIXOS}
+	\end{center}
+	\medskip
 	\begin{adjustwidth}{0.0cm}{}
-    \begin{tabular}{@{}ll}
-			Nama          & : M. Rizqi R        \\
-			NIM            & : 20051204034 \\
-			Program Studi            & : S1 Teknik Informatika                        \\
-			Fakultas & : Teknik \\
-      Nama Lembaga & : Universitas Negeri Surabaya \\
-      Pembimbing & : Agus Prihanto, S.T, M.Kom \\
+		\begin{tabular}{@{}ll}
+			Nama          & : M. Rizqi R                  \\
+			NIM           & : 20051204034                 \\
+			Program Studi & : S1 Teknik Informatika       \\
+			Fakultas      & : Teknik                      \\
+			Nama Lembaga  & : Universitas Negeri Surabaya \\
+			Pembimbing    & : Agus Prihanto, S.T, M.Kom   \\
 		\end{tabular}
 	\end{adjustwidth}
-  \medskip
+	\medskip
 
 	Pentingnya melakukan manajemen konfigurasi dengan tujuan untuk menghindari
 	penulisan manual konfigurasi sistem operasi secara manual setiap kali
 	menyiapkan sistem operasi. Manajemen konfigurasi juga digunakan untuk
 	mencapai konsistensi dalam setiap kali penerapan sehingga hasil akhir yang
 	diinginkan akan sama setiap kali dilakukan.
-  Terdapat beberapa \textit{tool} untuk melakukan manajemen konfigurasi sistem operasi,
+	Terdapat beberapa \textit{tool} untuk melakukan manajemen konfigurasi sistem operasi,
 	terutama untuk sistem operasi berbasis GNU/Linux. Ansible dan NixOS menjadi
 	dua dari banyak pilihan untuk melakukan manajemen sistem operasi. Keduanya
 	memiliki tujuan memudahkan proses manajemen konfigurasi dan memastikan hasil
-  akhir yang diinginkan akan sama setiap kali eksekusi. Sebagai \textit{tool}
-  manajemen konfigurasi, Ansible memiliki waktu eksekusi lebih cepat dari NixOS 
-  dengan nixos-rebuild. Namun dari segi deklaratif, NixOS terbukti lebih deklaratif 
-  karena semua yang ada dalam konfigurasi di manifestasi dalam sistem. Berbeda 
-  dengan Ansible yang hanya mengerjakan apa yang ada dalam Ansible Playbook dan 
-  tidak menjadi manifestasi dari sistem.
-  \medskip
+	akhir yang diinginkan akan sama setiap kali eksekusi. Sebagai \textit{tool}
+	manajemen konfigurasi, Ansible memiliki waktu eksekusi lebih cepat dari NixOS
+	dengan nixos-rebuild. Namun dari segi deklaratif, NixOS terbukti lebih deklaratif
+	karena semua yang ada dalam konfigurasi di manifestasi dalam sistem. Berbeda
+	dengan Ansible yang hanya mengerjakan apa yang ada dalam Ansible Playbook dan
+	tidak menjadi manifestasi dari sistem.
+	\medskip
 
-  \noindent\textbf{Kata Kunci} - Ansible, NixOS, \textit{declarative}, \textit{imperative},
-  Manajemen Konfigurasi
-\addcontentsline{toc}{chapter}{\textbf{ABSTRAK}}
+	\noindent\textbf{Kata Kunci} - Ansible, NixOS, \textit{declarative}, \textit{imperative},
+	Manajemen Konfigurasi
+	\addcontentsline{toc}{chapter}{\textbf{ABSTRAK}}
 \end{adjustwidth}
 \newpage
 \chapter*{ABSTRACT}
 \begin{adjustwidth}{0.0cm}{}
-  \begin{center}
-    \textbf{OPERATING SYSTEM CONFIGURATION MANAJEMEN TIME EXECUTION COMPARISON BETWEEN NIXOS AND ANSIBLE}
-  \end{center}
-  \medskip
+	\begin{center}
+		\textbf{OPERATING SYSTEM CONFIGURATION MANAJEMEN TIME EXECUTION COMPARISON BETWEEN NIXOS AND ANSIBLE}
+	\end{center}
+	\medskip
 	\begin{adjustwidth}{0.0cm}{}
-    \begin{tabular}{@{}ll}
-			Author          & : M. Rizqi R        \\
-			NIM            & : 20051204034 \\
-			Study Program            & : Bachelor's Degree of Informatics Engineering                        \\
-			Faculty & : Engineering \\
-      Institution Name & : State University of Surabaya \\
-      Advisor & : Agus Prihanto, S.T, M.Kom \\
+		\begin{tabular}{@{}ll}
+			Author           & : M. Rizqi R                                   \\
+			NIM              & : 20051204034                                  \\
+			Study Program    & : Bachelor's Degree of Informatics Engineering \\
+			Faculty          & : Engineering                                  \\
+			Institution Name & : State University of Surabaya                 \\
+			Advisor          & : Agus Prihanto, S.T, M.Kom                    \\
 		\end{tabular}
 	\end{adjustwidth}
-  \medskip
+	\medskip
 
-The importance of performing configuration management with
-the purpose of avoiding writing the operating system configuration manual
-operating system configuration manual every time setting up the operating system.
-Configuration management is also used to achieve
-consistency in each application so that the desired
-so that the desired end result will be the same every time it is done. There are
-several tools to perform operating system configuration management
-operating system, especially for GNU/Linux-based operating systems.
-Ansible and NixOS are two of the many choices for operating system management.
-to do operating system management. Both have
-goal of easing the configuration management process and
-ensure the desired end result will be the same every time
-execution. As a configuration management tool, Ansible has
-faster execution time than NixOS with nixos-rebuild.
-However, from a declarative point of view, NixOS proved to be more declarative
-because everything in the configuration is manifested in the system.
-system. Unlike Ansible which only does
-what is in the Ansible Playbook and does not become a manifestation of the system.
-manifestation of the system.
+	The importance of performing configuration management with
+	the purpose of avoiding writing the operating system configuration manual
+	operating system configuration manual every time setting up the operating system.
+	Configuration management is also used to achieve
+	consistency in each application so that the desired
+	so that the desired end result will be the same every time it is done. There are
+	several tools to perform operating system configuration management
+	operating system, especially for GNU/Linux-based operating systems.
+	Ansible and NixOS are two of the many choices for operating system management.
+	to do operating system management. Both have
+	goal of easing the configuration management process and
+	ensure the desired end result will be the same every time
+	execution. As a configuration management tool, Ansible has
+	faster execution time than NixOS with nixos-rebuild.
+	However, from a declarative point of view, NixOS proved to be more declarative
+	because everything in the configuration is manifested in the system.
+	system. Unlike Ansible which only does
+	what is in the Ansible Playbook and does not become a manifestation of the system.
+	manifestation of the system.
 
-  \medskip
+	\medskip
 
-  \noindent\textbf{Kata Kunci} - Ansible, NixOS, \textit{declarative}, \textit{imperative},
-  Configuration Management
-\addcontentsline{toc}{chapter}{\textbf{ABSTRACT}}
+	\noindent\textbf{Kata Kunci} - Ansible, NixOS, \textit{declarative}, \textit{imperative},
+	Configuration Management
+	\addcontentsline{toc}{chapter}{\textbf{ABSTRACT}}
 \end{adjustwidth}
 \tableofcontents
 \newpage
@@ -230,7 +230,7 @@ manifestation of the system.
 	mencapai konsistensi dalam setiap kali penerapan sehingga hasil akhir yang
 	diinginkan akan sama setiap kali dilakukan.
 
-  Terdapat beberapa \textit{tool} untuk melakukan manajemen konfigurasi sistem operasi,
+	Terdapat beberapa \textit{tool} untuk melakukan manajemen konfigurasi sistem operasi,
 	terutama untuk sistem operasi berbasis GNU/Linux. Ansible dan NixOS menjadi
 	dua dari banyak pilihan untuk melakukan manajemen sistem operasi. Keduanya
 	memiliki tujuan memudahkan proses manajemen konfigurasi dan memastikan hasil
@@ -379,47 +379,47 @@ manifestation of the system.
 
 \begin{longtable}[r]{|c|p{0.22\textwidth}|p{0.15\textwidth}|R|}
 	\caption{Penelitian Terdahulu} \tabularnewline  \hline
-  \centering\raisebox{-0.2cm}{\centering\textbf{No.}}                             & \centering\raisebox{-0.2cm}{{\textbf{Judul}}}                                                                                                                                      & \centering{\textbf{Nama Peneliti}}       & \centering\raisebox{-0.2cm}{\centering{\textbf{Kesimpulan}}} \\
+	\centering\raisebox{-0.2cm}{\centering\textbf{No.}} & \centering\raisebox{-0.2cm}{{\textbf{Judul}}}                                                                                                                   & \centering{\textbf{Nama Peneliti}}       & \centering\raisebox{-0.2cm}{\centering{\textbf{Kesimpulan}}} \\
 	\endfirsthead
 	\hline
-  \centering\raisebox{-0.2cm}{\centering\textbf{No.}}                             & \centering\raisebox{-0.2cm}{{\textbf{Judul}}}                                                                                                                                      & \centering{\textbf{Nama Peneliti}}       & \centering\raisebox{-0.2cm}{\centering{\textbf{Kesimpulan}}} \\
+	\centering\raisebox{-0.2cm}{\centering\textbf{No.}} & \centering\raisebox{-0.2cm}{{\textbf{Judul}}}                                                                                                                   & \centering{\textbf{Nama Peneliti}}       & \centering\raisebox{-0.2cm}{\centering{\textbf{Kesimpulan}}} \\
 	\endhead
 
 	\hline
-	1                                       & \textit{Configuration Management} dengan Ansible dan Telegram Untuk
-	Automasi Laboratorium Komputer di JTIK  & Thufail Qolba Aufar                                                                                                                                             & Sistem
+	1                                                   & \textit{Configuration Management} dengan Ansible dan Telegram Untuk
+	Automasi Laboratorium Komputer di JTIK              & Thufail Qolba Aufar                                                                                                                                             & Sistem
 	Configuration Management dengan Ansible dan Telegram berhasil dibuat sesuai
 	dengan fungsionalitas dan rancangan yang telah dibuat. Hal Ini dibuktikan
 	dari pengujian fungsionalitas dengan black box testing yang telah dilakukan
 	bahwa setiap tugas dieksekusi dapat berjalan dengan persentase keberhasilan
-	sebesar 100.                                                                                                                                                                                                                                                                           \\
+	sebesar 100.                                                                                                                                                                                                                                                                                                                    \\
 
 	\hline
-	2                                       & \textit{Implementation Of Configuration Management Virtual Private Server
-	Using Ansible}                          & Putu Hariyadi, Khairan Marzuki                                                                                                                                  & Manajemen otomasi VPS
+	2                                                   & \textit{Implementation Of Configuration Management Virtual Private Server
+	Using Ansible}                                      & Putu Hariyadi, Khairan Marzuki                                                                                                                                  & Manajemen otomasi VPS
 	secara keseluruhan bekerja dengan baik dan dapat diterapkan di Proxmox
 	Virtual Environment (PVE) cluster. Playbook dapat memulai dan menghentikan
-	containers per kelompok siswa secara dinamis berdasarkan jadwal praktikum.                                                                                                                                                                                                             \\
+	containers per kelompok siswa secara dinamis berdasarkan jadwal praktikum.                                                                                                                                                                                                                                                      \\
 
 	\hline
-	3                                       & \textit{NixOS: Järjestelmä konfiguraation Hallintaan Erikoistunut Linux
-	jakelu}                                 & Kalle Kumpulai nen                                                                                                                                              & Distribusi ini pada awalnya dibuat untuk
+	3                                                   & \textit{NixOS: Järjestelmä konfiguraation Hallintaan Erikoistunut Linux
+	jakelu}                                             & Kalle Kumpulai nen                                                                                                                                              & Distribusi ini pada awalnya dibuat untuk
 	memecahkan masalah asli distribusi perangkat lunak dan manajemen konfigurasi
 	sistem operasi, seperti keamanan dan determinisme fungsi yang diinginkan.
 	Untuk mengatasi masalah ini, NixOS diimplementasikan sejak awal dengan cara
 	yang sangat tidak biasa dibandingkan dengan distribusi Linux terkenal
-	lainnya.                                                                                                                                                                                                                                                                               \\
+	lainnya.                                                                                                                                                                                                                                                                                                                        \\
 
 	\hline
-	4                                       & Analisis Perbandingan Manajemen Konfigurasi Menggunakan Ansible dan Shell
-	Script Pada Cloud Server Deployment AWS & Tedi Alfiandi, T.M Diansyah, Risko
-	Liza                                    & Penggunaan tool manajemen konfigurasi dapat memperingkas pekerjaan
-	dalam membangun web server                                                                                                                                                                                                                                                             \\
+	4                                                   & Analisis Perbandingan Manajemen Konfigurasi Menggunakan Ansible dan Shell
+	Script Pada Cloud Server Deployment AWS             & Tedi Alfiandi, T.M Diansyah, Risko
+	Liza                                                & Penggunaan tool manajemen konfigurasi dapat memperingkas pekerjaan
+	dalam membangun web server                                                                                                                                                                                                                                                                                                      \\
 	\hline
 
-	5                                       & Otomasi Manajemen dan Pengawasan Linux Container (LXC) Pada Proxmox VE Menggunakan Ansible
-	                                        & Muh. Akromi Arya Pratama dan I Putu Hariyadi
-	                                        & Ansible mampu melakukan otomasi untuk membuat, menjalankan, menghentikan dan menghapus LXC serta mengatur \textit{user permission} dalam lingkup \textit{batch}                                                                              \\
+	5                                                   & Otomasi Manajemen dan Pengawasan Linux Container (LXC) Pada Proxmox VE Menggunakan Ansible
+	                                                    & Muh. Akromi Arya Pratama dan I Putu Hariyadi
+	                                                    & Ansible mampu melakukan otomasi untuk membuat, menjalankan, menghentikan dan menghapus LXC serta mengatur \textit{user permission} dalam lingkup \textit{batch}                                                                                                           \\
 	\hline
 \end{longtable}
 
@@ -528,7 +528,6 @@ manifestation of the system.
 	tunggal menjadi beberapa mesin virtual / virtual machine, tiap-tiap mesin
 	virtual memiliki sistem operasi dan aplikasi miliknya sendiri (IBM, 2024)
 \end{adjustwidth}
-
 
 \chapter{METODE PENELITIAN}
 Metodologi yang digunakan untuk penelitian ini memiliki beberapa tahapan
@@ -658,48 +657,47 @@ yang telah ditentukan sebelumnya.\\
 	beberapa bagian, yaitu:
 \end{adjustwidth}
 \begin{adjustwidth}{20pt}{}
-	\subsection{Kebutuhan perangkat keras \{\textit{hardware}\}}
+	\subsection{Kebutuhan perangkat keras (\textit{hardware})}
 	\vspace{-2mm}
 	\begin{adjustwidth}{20pt}{}
 		Perangkat keras yang diperlukan guna tujuan penelitian yaitu Laptop sebagai
 		uji coba dengan spesifikasi berikut:
 	\end{adjustwidth}
-	\begin{adjustwidth}{4mm}{}
+	\begin{adjustwidth}{5mm}{}
 		\begin{tabular}{ll}
-			Processor      & : Intel Core i5 11400H        \\
-			RAM            & : 24 GB                       \\
-			SSD            & : 1 TB                        \\
-			Sistem Operasi & : NixOS 23.11 (Tapir) x86\_64 \\
+			Processor      & : Intel Core i5 11400H         \\
+			RAM            & : 24 GB                        \\
+			SSD            & : 1 TB                         \\
+			Sistem Operasi & : NixOS 24.05 (Uakari) x86\_64 \\
 		\end{tabular}
 	\end{adjustwidth}
 \end{adjustwidth}
 \begin{adjustwidth}{20pt}{}
-	\subsection{Kebutuhan perangkat lunak\{\textit{software}\} }
+	\subsection{Kebutuhan perangkat lunak (\textit{software}) }
 	\vspace{-2mm}
 	\begin{adjustwidth}{20pt}{}
 		Perangkat lunak berfungsi untuk pengoperasian sistem pada penelitian ini.
 		Pada penelitian ini, sistem operasi yang digunakan berbasis GNU/Linux.\\
 		\begin{longtable}[r]{|c|p{2cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
 			\caption{Kebutuhan perangkat lunak} \tabularnewline  \hline
-      \hline
-      \centering\raisebox{-0.4cm}{\textbf{No.}} & \centering\textbf{Nama Perangkat Lunak} & \centering\raisebox{-0.4cm}{\textbf{Keterangan}}                                                       \\
-			\endfirsthead
-      \hline
-      \centering\raisebox{-0.4cm}{\textbf{No.}} & \centering\textbf{Nama Perangkat Lunak} & \centering\raisebox{-0.4cm}{\textbf{Keterangan}}                                                       \\
 			\hline
+			\centering\raisebox{-0.4cm}{\textbf{No.}} & \centering\textbf{Nama Perangkat Lunak} & \centering\raisebox{-0.4cm}{\textbf{Keterangan}}                          \\
+			\endfirsthead
+			\hline
+			\centering\raisebox{-0.4cm}{\textbf{No.}} & \centering\textbf{Nama Perangkat Lunak} & \centering\raisebox{-0.4cm}{\textbf{Keterangan}}                          \\
 			\endhead
 			\hline
-			1            & Ansible                       & Alat yang digunakan untuk manajemen konfigurasi                           \\
+			1                                         & Ansible                                 & Alat yang digunakan untuk manajemen konfigurasi                           \\
 			\hline
-			2            & NixOS                         & Sistem Operasi dengan fitur manajemen konfigurasi                         \\
+			2                                         & NixOS                                   & Sistem Operasi dengan fitur manajemen konfigurasi                         \\
 			\hline
-			3            & Ubuntu Server 24.04 LTS       & Sistem Operasi yang digunakan untuk target Ansible                        \\
+			3                                         & Ubuntu Server 24.04 LTS                 & Sistem Operasi yang digunakan untuk target Ansible                        \\
 			\hline
-			4            & Nix Flakes                    & Alat yang digunakan untuk manajemen \textit{inputs} pada NixOS            \\
+			4                                         & Nix Flakes                              & Alat yang digunakan untuk manajemen \textit{inputs} pada NixOS            \\
 			\hline
-			5            & Home Manager                  & Alat yang digunakan untuk manajemen konfigurasi level pengguna pada NixOS \\
+			5                                         & Home Manager                            & Alat yang digunakan untuk manajemen konfigurasi level pengguna pada NixOS \\
 			\hline
-			6            & \textit{time}                 & Alat yang digunakan untuk mencatat lama waktu eksekusi perintah           \\
+			6                                         & \textit{time}                           & Alat yang digunakan untuk mencatat lama waktu eksekusi perintah           \\
 			\hline
 		\end{longtable}
 	\end{adjustwidth}
@@ -712,10 +710,11 @@ yang telah ditentukan sebelumnya.\\
 	sistem yang akan dibangun dapat berjalan sesuai dengan tujuan penelitian.
 	\subsection{Perancangan Virtual Machine}
 	\begin{adjustwidth}{20pt}{}
-		Perancangan sistem pada penelitian ini secara keseluruhan menggunakan dua
-		\textit{virtual machine}, yang terdiri dari satu \textit{instance} Debian
-		12 minimal sebagai host dan target Ansible. \textit{Virtual machine} kedua
-		merupakan guest kosong yang akan digunakan sebagai instalasi NixOS minimal.
+		Perancangan sistem pada penelitian ini secara keseluruhan menggunakan enam
+		\textit{virtual machine}, yang terdiri dari tiga \textit{instance} Ubuntu
+		Server 24.04 LTS dan tiga \textit{instance} NixOS minimal.
+		Satu dari tiga \textit{virtual machine} bersifat sebagai \textit{master}
+		dan dua sebagai \textit{target}.
 	\end{adjustwidth}
 	\begin{table}[!htbp]
 		\caption{Spesifikasi Instance}
@@ -723,7 +722,7 @@ yang telah ditentukan sebelumnya.\\
 
 			\begin{tabular}{|l|l|}
 				\hline
-				\multicolumn{2}{|c|}{Instance Target Ansible}      \\
+				\multicolumn{2}{|c|}{\textit{Instance} Ansible}    \\
 				\hline
 				Sistem Operasi           & Ubuntu Server 24.04 LTS \\
 				\hline
@@ -735,7 +734,7 @@ yang telah ditentukan sebelumnya.\\
 				\hline
 				Jumlah \textit{instance} & 3                       \\
 				\hline
-				\multicolumn{2}{|c|}{Instance Target NixOS}        \\
+				\multicolumn{2}{|c|}{\textit{Instance} NixOS}      \\
 				\hline
 				Sistem Operasi           & NixOS 23.11             \\
 				\hline
@@ -750,6 +749,16 @@ yang telah ditentukan sebelumnya.\\
 			\end{tabular}
 		\end{center}
 	\end{table}
+	\begin{adjustwidth}{20pt}{}
+		Alasan perbedaan target dari Ansible dan NixOS adalah karena nixos-rebuild
+		tidak bisa dijalankan pada sistem operasi selain NixOS. Ansible juga tidak
+		dapat digunakan di NixOS karena sifat NixOS sendiri yang \textit{immutable}
+		membuat metode imperatif untuk konfigurasi sistem operasi tidak memungkinkan.
+		Namun untuk mengurangi aspek perbedaan pada saat \textit{benchmark},
+		maka akan ditambahkan percobaan dimana target Ansible juga menggunakan
+		nixpkgs untuk instalasi paket. Ini dikarenakan nixpkgs dapat di \textit{install}
+		di semua distribusi GNU/Linux.
+	\end{adjustwidth}
 	\subsection{Perancangan Topologi}
 	\begin{adjustwidth}{20pt}{}
 		\hspace\parindent
@@ -784,7 +793,7 @@ yang telah ditentukan sebelumnya.\\
 		\caption{Alur Penerapan Konfigurasi NixOS}
 	\end{figure}
 
-	Pada gambar 3.3 merupakan alur penerapan konfigurasi menggunakan NixOS.
+	Pada gambar 3.4 merupakan alur penerapan konfigurasi menggunakan NixOS.
 	Master akan melakukan \textit{clone} dari \textit{repository} nixpkgs,
 	home-manager dan website-testing untuk mengambil konfigurasi sistem serta
 	file \textit{website} yang akan di \textit{deploy}. Kemudian \textit{master}
@@ -856,6 +865,116 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 \vspace{3mm}
 \section{Implementasi}
 \begin{adjustwidth}{20pt}{}
+	\subsection{Persiapan Lingkungan NixOS}
+	\begin{adjustwidth}{20pt}{}
+		Untuk persiapan lingkungan NixOS baik \textit{master} maupun target
+		adalah sebagai berikut:
+	\end{adjustwidth}
+	\subsubsection{Download ISO dan konfigurasi VM}
+	\begin{adjustwidth}{20pt}{}
+		\textit{Download} ISO NixOS GNOME di \url{https://nixos.org}, kemudian
+		install dalam VM Proxmox dengan BIOS (OVMF) UEFI q35 dan CPU Type : host
+		agar kita dapat memanfaatkan semua instruction set dari CPU. Lanjutkan
+		dengan spesifikasi CPU, RAM, dan HDD seperti yang telah dicantumkan pada
+		BAB III. Untuk NixOS pada saat penulisan yaitu versi ISO 23.11 belum
+		mendukung \textit{secure boot} secara bawaan. Maka dari itu, perlu untuk
+		menonaktifkan \textit{secure boot} pada VM Proxmox agar ISO bisa dipakai.
+		Saat booting, \textit{spam} tombol 'Esc' untuk masuk ke boot menu dan
+		matikan \textit{Secure Boot} pada bagian \textit{Device Manager
+			-\textgreater Secure Boot Configuration -\textgreater Disable secure boot
+			next -\textgreater Attempt Secure Boot} kemudian klik spasi dan tekan 'y'.
+		Tekan 'F10' untuk menyimpan konfigurasi. Tekan 'Esc' dua kali untuk keluar
+		dan pilih 'Reset'. Setelah itu, kita akan disambut dengan GNOME
+		\textit{Desktop Environment} seperti berikut:
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.95\textwidth]{images/nixos-23.11-installer.png}
+			\end{center}
+			\caption{NixOS 23.11 installer GNOME}
+		\end{figure}
+	\end{adjustwidth}
+	\subsubsection{Instalasi}
+	\begin{adjustwidth}{20pt}{}
+		Kemudian kita masuk ke tahap instalasi NixOS sebagai berikut:
+		\begin{enumerate}
+			\item Atur lokasi ke Asia/Jakarta.
+			      \begin{figure}[H]
+				      \begin{center}
+					      \includegraphics[width=0.95\textwidth]{images/nixos-23.11-location.png}
+				      \end{center}
+				      \caption{NixOS 23.11 Location}
+			      \end{figure}
+			\item Atur keyboard ke US default.
+			      \begin{figure}[H]
+				      \begin{center}
+					      \includegraphics[width=0.95\textwidth]{images/nixos-23.11-keyboard.png}
+				      \end{center}
+				      \caption{NixOS 23.11 Keyboard}
+			      \end{figure}
+
+			\item Buat username dan password kemudian centang bagian "\textit{Use the
+				      same password for the administrator account}".
+			\item Untuk pilihan Desktop, pilih "No desktop" karena kita hanya butuh
+			      akses SSH.
+			\item Centang bagian "Allow Unfree Software".
+			\item Buat skema partisi seperti berikut dengan tabel partisi GPT:
+			      \begin{figure}[H]
+				      \begin{center}
+					      \includegraphics[width=0.95\textwidth]{images/nixos-install-partition.png}
+				      \end{center}
+				      \caption{NixOS Partition}
+			      \end{figure}
+			\item Lanjutkan hingga tahapan install.
+			\item Ketika proses instalasi, NixOS akan \textit{stuck} tepat pada 46\%.
+			      Ini karena NixOS sedang melakukan \textit{build derivation} untuk semua paket
+			      yang diperlukan.
+			\item Ketika instalasi sudah selesai, silahkan di \textit{restart}.
+			\item Setelah instalasi, kita akan disambut dengan \textit{console login} seperti berikut:
+			      \begin{figure}[H]
+				      \begin{center}
+					      \includegraphics[width=0.95\textwidth]{images/nixos-23.11-tty.png}
+				      \end{center}
+				      \caption{NixOS 23.11 tty}
+			      \end{figure}
+		\end{enumerate}
+	\end{adjustwidth}
+	\subsubsection{Setup SSH}
+	\begin{adjustwidth}{20pt}{}
+		Setelah itu, kita aktifkan SSH dan mematikan \textit{firewall} dengan
+		menambahkan baris dibawah ini kedalam file /etc/nixos/configuration.nix:
+		\begin{code}
+			\begin{minted}{nix}
+        services.openssh.enable = true;
+        services.openssh.settings.PermitRootLogin = "yes";
+        networking.firewall.enable = false;
+      \end{minted}
+			\caption{NixOS Enable SSH}
+		\end{code}
+
+		Kemudian, kita akan menambahkan beberapa paket untuk mempermudah dalam
+		melakukan penelitian. Kita akan menginstall neovim sebagai \textit{text editor}
+		dan tmux sebagai \textit{terminal multiplexer} untuk menjaga sesi SSH apabila koneksi
+		SSH ke \textit{server} terputus.
+
+		\begin{code}
+			\begin{minted}{nix}
+        environment.systemPackages = with pkgs; [
+          neovim
+          tmux
+        ];
+      \end{minted}
+			\caption{NixOS Enable SSH}
+		\end{code}
+
+		Untuk target, tambahkan opsi berikut agar nixos-rebuild dapat menginstall
+		systemd-boot dengan versi lebih rendah dari yang telah terinstall.
+		\begin{code}
+			\begin{minted}{nix}
+        environment.sessionVariables = {NIXOS_INSTALL_BOOTLOADER = "1"; };
+      \end{minted}
+			\caption{NixOS install bootloader}
+		\end{code}
+	\end{adjustwidth}
 	\subsection{Struktur Konfigurasi NixOS}
 	\begin{adjustwidth}{20pt}{}
 		\vspace{-3mm}
@@ -889,7 +1008,6 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
       \end{minted}
 			\caption{flake inputs}
 		\end{code}
-
 
 		Flake.nix berisi tiga inputs yang dimana terdiri dari nixpkgs, home-manager,
 		dan testing-website. Hasil dari inputs tadi digunakan dalam output untuk
@@ -952,7 +1070,6 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
       \end{minted}
 			\caption{nixpkgs lock di flake.lock}
 		\end{code}
-
 
 	\end{adjustwidth}
 	\subsection{Konfigurasi inti configuration.nix}
@@ -1127,9 +1244,9 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	"\textit{time}" pada eksekusi setiap kali dijalankan perintah untuk penerapan manajemen
 	konfigurasi.
 
-  Pengujian berikutnya ialah menguji apakah baik Ansible maupun NixOS bersifat 
-  deklaratif dalam penerapannya menggunakan perbandingan dari apa yang telah 
-  di deklarasikan di konfigurasi dengan hasil akhir pada sistem.
+	Pengujian berikutnya ialah menguji apakah baik Ansible maupun NixOS bersifat
+	deklaratif dalam penerapannya menggunakan perbandingan dari apa yang telah
+	di deklarasikan di konfigurasi dengan hasil akhir pada sistem.
 	\subsection{Pasca Install}
 	\begin{adjustwidth}{20pt}{}
 		Pengujian dilakukan dengan menjalankan Ansible Playbook dan nixos-rebuild
@@ -1164,6 +1281,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\end{tabular}
 		\end{center}
 	\end{table}
+	\vspace{-5mm}
 	\begin{table}[H]
 		\caption{nixos-rebuild second target}
 		\begin{center}
@@ -1206,6 +1324,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\end{tabular}
 			\end{center}
 		\end{table}
+		\vspace{-5mm}
 		\begin{table}[H]
 			\caption{nixos-rebuild second target}
 			\begin{center}
@@ -1247,6 +1366,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\end{tabular}
 			\end{center}
 		\end{table}
+		\vspace{-5mm}
 		\begin{table}[H]
 			\caption{ansible second target}
 			\begin{center}
@@ -1314,6 +1434,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\end{tabular}
 		\end{center}
 	\end{table}
+	\vspace{-5mm}
 	\begin{table}[H]
 		\caption{nixos-rebuild second target}
 		\begin{center}
@@ -1351,6 +1472,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\end{tabular}
 		\end{center}
 	\end{table}
+	\vspace{-5mm}
 	\begin{table}[H]
 		\caption{Ansible first target}
 		\begin{center}
@@ -1413,6 +1535,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\end{tabular}
 		\end{center}
 	\end{table}
+	\vspace{-5mm}
 	\begin{table}[H]
 		\caption{nixos-rebuild second target}
 		\begin{center}
@@ -1441,15 +1564,16 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\multicolumn{1}{c|}{\textbf{user}}  &
 				\multicolumn{1}{c|}{\textbf{sys}}                         \\
 				\hline
-0m11.358s & 0m0.483s & 0m0.553s \\
-\hline
-0m10.317s & 0m0.512s & 0m0.477s \\
-\hline
-0m10.658s & 0m0.486s & 0m0.500s \\
+				0m11.358s                           & 0m0.483s & 0m0.553s \\
+				\hline
+				0m10.317s                           & 0m0.512s & 0m0.477s \\
+				\hline
+				0m10.658s                           & 0m0.486s & 0m0.500s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
+	\vspace{-5mm}
 	\begin{table}[H]
 		\caption{nixos-rebuild second target}
 		\begin{center}
@@ -1459,11 +1583,11 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\multicolumn{1}{c|}{\textbf{user}}  &
 				\multicolumn{1}{c|}{\textbf{sys}}                         \\
 				\hline
-0m10.730s & 0m0.498s & 0m0.642s \\
-\hline
-0m9.745s & 0m0.455s & 0m0.474s \\ 
-\hline
-0m10.176s & 0m0.488s & 0m0.470s \\
+				0m10.730s                           & 0m0.498s & 0m0.642s \\
+				\hline
+				0m9.745s                            & 0m0.455s & 0m0.474s \\
+				\hline
+				0m10.176s                           & 0m0.488s & 0m0.470s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1487,6 +1611,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\end{tabular}
 		\end{center}
 	\end{table}
+	\vspace{-5mm}
 	\begin{table}[H]
 		\caption{ansible first target}
 		\begin{center}
@@ -1549,6 +1674,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\end{tabular}
 		\end{center}
 	\end{table}
+	\vspace{-5mm}
 	\begin{table}[H]
 		\caption{nixos-rebuild second target}
 		\begin{center}
@@ -1586,6 +1712,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\end{tabular}
 		\end{center}
 	\end{table}
+	\vspace{-5mm}
 	\begin{table}[H]
 		\caption{ansible second target}
 		\begin{center}
@@ -1653,17 +1780,17 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 					(Ansible single, 155.3) (Ansible multi, 123.3)};
 		\end{axis}
 	\end{tikzpicture}
-  \begin{adjustwidth}{20pt}{}
-    Dapat kita lihat bahwa NixOS tanpa cache butuh waktu lebih lama dikarenakan 
-    sistem \textit{package manager} yang akan mengunduh \textit{dependency} tiap 
-    paket secara terpisah apabila ada perbedaan versi. Faktor lain adalah 
-    tidak adanya sistem mirror seperti yang dimiliki oleh 
-    repository Ubuntu dimana paket bisa di simpan di server lain yang dekat, setidaknya
-    tidak secara langsung.
-    Namun apabila NixOS sudah menyimpan cache, maka NixOS hanya perlu menyalin 
-    data tersebut ke target dimana kecepatannya bergantung pada koneksi antara 
-    \textit{host} dan target. 
-  \end{adjustwidth}
+	\begin{adjustwidth}{20pt}{}
+		Dapat kita lihat bahwa NixOS tanpa cache butuh waktu lebih lama dikarenakan
+		sistem \textit{package manager} yang akan mengunduh \textit{dependency} tiap
+		paket secara terpisah apabila ada perbedaan versi. Faktor lain adalah
+		tidak adanya sistem mirror seperti yang dimiliki oleh
+		repository Ubuntu dimana paket bisa di simpan di server lain yang dekat, setidaknya
+		tidak secara langsung.
+		Namun apabila NixOS sudah menyimpan cache, maka NixOS hanya perlu menyalin
+		data tersebut ke target dimana kecepatannya bergantung pada koneksi antara
+		\textit{host} dan target.
+	\end{adjustwidth}
 	\subsubsection{Penerapan ulang setelah pasca install}
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -1682,12 +1809,12 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 					(ansible, 13.45) };
 		\end{axis}
 	\end{tikzpicture}
-  \begin{adjustwidth}{20pt}{}
-    Disini dapat dilihat Ansible membutuhkan waktu lebih lama untuk melakukan 
-    pengecekan dikarenakan Ansible melakukan pengecekan tiap \textit{task}
-    pada setiap target sedangkan NixOS hanya mengecek perubahan pada konfigurasi 
-    dan membandingkan \textit{clojure} yang ada pada target dengan \textit{host}.
-  \end{adjustwidth}
+	\begin{adjustwidth}{20pt}{}
+		Disini dapat dilihat Ansible membutuhkan waktu lebih lama untuk melakukan
+		pengecekan dikarenakan Ansible melakukan pengecekan tiap \textit{task}
+		pada setiap target sedangkan NixOS hanya mengecek perubahan pada konfigurasi
+		dan membandingkan \textit{clojure} yang ada pada target dengan \textit{host}.
+	\end{adjustwidth}
 	\subsubsection{Penambahan paket GO}
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -1702,13 +1829,13 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				nodes near coords align={vertical},
 				x tick label style={rotate=45,anchor=east},
 			]
-      \addplot coordinates {(nixos cache, 10.4 )(nixos tanpa cache, 40.6) 
+			\addplot coordinates {(nixos cache, 10.4 )(nixos tanpa cache, 40.6)
 					(ansible single, 26.2) (ansible multi, 34.1 ) };
 		\end{axis}
 	\end{tikzpicture}
-  \begin{adjustwidth}{20pt}{}
-    
-  \end{adjustwidth}
+	\begin{adjustwidth}{20pt}{}
+
+	\end{adjustwidth}
 	\subsubsection{Penghapusan paket GO}
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -1723,67 +1850,67 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				nodes near coords align={vertical},
 				x tick label style={rotate=45,anchor=east},
 			]
-      \addplot coordinates {(NixOS, 2.8) 
-          (Ansible single, 15.5) (Ansible multi,17.6)};
+			\addplot coordinates {(NixOS, 2.8)
+					(Ansible single, 15.5) (Ansible multi,17.6)};
 		\end{axis}
 	\end{tikzpicture}
 \end{adjustwidth}
 \chapter{KESIMPULAN DAN SARAN}
 \section{Kesimpulan}
 \begin{adjustwidth}{20pt}{}
-  \hspace\parindent 
-  Berdasarkan penelitian perbandingan performa waktu eksekusi otomasi manajemen 
-  konfigurasi sistem operasi GNU/Linux antara Ansible dengan NixOS yang telah 
-  berhasil dilakukan, mendapatkan kesimpulan yang berdasarkan rumusan masalah,
-  pembahasan, pengujian, dan hasil penelitian diantaranya:
-  \begin{enumerate}[label=\arabic*.]
-    \item Tujuan penulis adalah membuat sistem manajemen konfigurasi yang 
-      deklaratif dimana konfigurasi keseluruhan dari suatu sistem operasi diatur
-      dengan \textit{tool} manajemen konfigurasi. Dari penelitian ini, peneliti
-      mendapati berbagai poin berikut:
-      \begin{enumerate}[label=\alph*.]
-        \item Apabila task atau bagian dari Ansible Playbook dihapus, maka 
-          bagian tersebut akan tetap ada di sistem setelah Ansible Playbook 
-          dijalankan. Contohnya adalah ketika kita menghapus \textit{package}
-          atau \textit{service}, maka \textit{package} atau \textit{service}
-          tersebut akan tetap ada pada sistem. Apabila ingin menghapusnya, maka
-          kita harus mendefinisikan di Ansible Playbook agar \textit{package} 
-          atau \textit{service} tersebut tidak ada dalam sistem. Ini membuktikan
-          bahwa Ansible Playbook bersifat \textit{imperatif} dimana Ansible 
-          Playbook hanya melakukan apa yang diperintahkan dan tidak memanifestasikan
-          hasil akhir yang di inginkan.
-        \item NixOS dengan nixos-rebuild mampu memanifestasikan konfigurasi 
-          yang diterapkan pada sistem. Apabila \textit{package} atau 
-          \textit{service} dihapus dari konfigurasi, maka \textit{package}
-          atau \textit{service} tersebut akan dihapus dari target.
-    \end{enumerate}
-  \item Setelah melakukan pengujian dari waktu eksekusi kedua \textit{tool} 
-    manajemen konfigurasi yaitu Ansible dan NixOS, hasilnya adalah sebagai berikut:
-    \begin{enumerate}[label=\alph*.]
-      \item Dalam uji coba pasca install, urutan waktu eksekusi dari yang tercepat
-        hingga terlambat adalah NixOS dengan cache, Ansible \textit{multu} target, 
-        Ansible single target, NixOS tanpa cache.
-      \item Perintah nixos-rebuild tidak dapat digunakan untuk melakukan manajemen 
-        konfigurasi secara paralel sedangkan Ansible Playbook dapat dijalankan secara 
-        paralel. Ini berdampak pada penerapan dunia nyata dimana semakin banyak 
-        target maka waktu yang dibutuhkan untuk penerapan menggunakan nixos-rebuild 
-        akan memakan waktu lebih lama walaupun \textit{cache / clojure} telah di 
-        \textit{build}.
-    \end{enumerate}
-  \end{enumerate}
+	\hspace\parindent
+	Berdasarkan penelitian perbandingan performa waktu eksekusi otomasi manajemen
+	konfigurasi sistem operasi GNU/Linux antara Ansible dengan NixOS yang telah
+	berhasil dilakukan, mendapatkan kesimpulan yang berdasarkan rumusan masalah,
+	pembahasan, pengujian, dan hasil penelitian diantaranya:
+	\begin{enumerate}[label=\arabic*.]
+		\item Tujuan penulis adalah membuat sistem manajemen konfigurasi yang
+		      deklaratif dimana konfigurasi keseluruhan dari suatu sistem operasi diatur
+		      dengan \textit{tool} manajemen konfigurasi. Dari penelitian ini, peneliti
+		      mendapati berbagai poin berikut:
+		      \begin{enumerate}[label=\alph*.]
+			      \item Apabila task atau bagian dari Ansible Playbook dihapus, maka
+			            bagian tersebut akan tetap ada di sistem setelah Ansible Playbook
+			            dijalankan. Contohnya adalah ketika kita menghapus \textit{package}
+			            atau \textit{service}, maka \textit{package} atau \textit{service}
+			            tersebut akan tetap ada pada sistem. Apabila ingin menghapusnya, maka
+			            kita harus mendefinisikan di Ansible Playbook agar \textit{package}
+			            atau \textit{service} tersebut tidak ada dalam sistem. Ini membuktikan
+			            bahwa Ansible Playbook bersifat \textit{imperatif} dimana Ansible
+			            Playbook hanya melakukan apa yang diperintahkan dan tidak memanifestasikan
+			            hasil akhir yang di inginkan.
+			      \item NixOS dengan nixos-rebuild mampu memanifestasikan konfigurasi
+			            yang diterapkan pada sistem. Apabila \textit{package} atau
+			            \textit{service} dihapus dari konfigurasi, maka \textit{package}
+			            atau \textit{service} tersebut akan dihapus dari target.
+		      \end{enumerate}
+		\item Setelah melakukan pengujian dari waktu eksekusi kedua \textit{tool}
+		      manajemen konfigurasi yaitu Ansible dan NixOS, hasilnya adalah sebagai berikut:
+		      \begin{enumerate}[label=\alph*.]
+			      \item Dalam uji coba pasca install, urutan waktu eksekusi dari yang tercepat
+			            hingga terlambat adalah NixOS dengan cache, Ansible \textit{multu} target,
+			            Ansible single target, NixOS tanpa cache.
+			      \item Perintah nixos-rebuild tidak dapat digunakan untuk melakukan manajemen
+			            konfigurasi secara paralel sedangkan Ansible Playbook dapat dijalankan secara
+			            paralel. Ini berdampak pada penerapan dunia nyata dimana semakin banyak
+			            target maka waktu yang dibutuhkan untuk penerapan menggunakan nixos-rebuild
+			            akan memakan waktu lebih lama walaupun \textit{cache / clojure} telah di
+			            \textit{build}.
+		      \end{enumerate}
+	\end{enumerate}
 \end{adjustwidth}
 \section{Saran}
 \begin{adjustwidth}{20pt}{}
-  \hspace\parindent
-  Adapun saran yang dapat diberikan terkait hasil penelitian adalah sebagai berikut:
-  \begin{enumerate}
-    \item Disarankan membuat penelitian tentang perbandingan performa waktu eksekusi,
-      maka bisa menggunakan Colmena atau NixOps agar bisa menerapakan konfigurasi NixOS 
-      secara paralel.
-    \item Disarankan bagi peneliti untuk mengubah jenis penyimpanan target dari HDD 
-      ke SSD untuk melihat apakah kecepatan penyimpanan target berpengaruh pada waktu 
-      eksekusi.
-  \end{enumerate}
+	\hspace\parindent
+	Adapun saran yang dapat diberikan terkait hasil penelitian adalah sebagai berikut:
+	\begin{enumerate}
+		\item Disarankan membuat penelitian tentang perbandingan performa waktu eksekusi,
+		      maka bisa menggunakan Colmena atau NixOps agar bisa menerapakan konfigurasi NixOS
+		      secara paralel.
+		\item Disarankan bagi peneliti untuk mengubah jenis penyimpanan target dari HDD
+		      ke SSD untuk melihat apakah kecepatan penyimpanan target berpengaruh pada waktu
+		      eksekusi.
+	\end{enumerate}
 \end{adjustwidth}
 \addcontentsline{toc}{chapter}{\textbf{DAFTAR PUSTAKA}}
 \printbibliography[title={DAFTAR PUSTAKA}]
