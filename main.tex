@@ -31,12 +31,13 @@
   escapeinside=||,
   autogobble=true
 }
-\usepackage[backend=biber,style=apa]{biblatex}
+\usepackage[backend=biber,style=apa, ]{biblatex}
 \usepackage[nottoc,numbib]{tocbibind}
 \tolerance=10000
 \renewcommand\arraystretch{1.3}
 \sloppy \graphicspath{{images/}}
 \addbibresource{bibliography/reference.bib}
+\apptocmd{\bibsetup}{\emergencystretch=1em}{}{}
 \usepackage[a5paper, left=2.3cm, right=2cm, top=2.3cm, bottom=2cm, bindingoffset=20pt]{geometry}
 \titleformat{\chapter}[display]{\centering\normalfont\fontsize{12}{12}\selectfont\bfseries}{\thechapter}{12pt}{\fontsize{12}{12}\selectfont}
 \titlespacing*{\chapter}{0pt}{0pt}{10pt}
@@ -108,27 +109,157 @@
 
 \begin{document}
 \input{title}
-\chapter*{KATA PENGANTAR}
+% \chapter*{KATA PENGANTAR}
+% \pagenumbering{roman}
+% \begin{justify}
+% 	Puji syukur kepada Tuhan Yang Maha Esa yang telah melimpahkan rahmat dan
+% 	hidayah-Nya sehingga proposal penelitian dengan judul “Perbandingan
+% 	Waktu Eksekusi Otomasi Manajemen Konfigurasi Sistem Operasi GNU/Linux Antara Ansible dengan NixOS” ini
+% 	dapat terselesaikan. Penulis juga mengucapkan terima kasih kepada seluruh
+% 	yang telah membantu dalam pembuatan proposal penelitian ini.
+% 	\begin{enumerate}[leftmargin=0.45cm]
+% 		\item Kedua orang tua atas segala bantuan, bimbingan, dorongan serta doa restu yang diberikan.
+% 		\item Bapak Agus Prihanto, S.T., M. Kom. selaku dosen pembimbing yang telah memberikan arahan dan bimbingan dalam penyusunan proposal ini,.
+% 		\item Teman-teman Mahasiswa yang telah membantu dalam pengumpulan data dan informasi
+% 		\item Universitas Negeri Surabaya yang telah menyediakan fasilitas dan sarana prasarana yang diperlukan dalam penyusunan proposal ini.
+% 	\end{enumerate}
+% 	Kami menyadari bahwa proposal penelitian ini masih jauh dari sempurna. Oleh karena itu,m kami mengharapkan kritik dan saran yang membangin dari para pembaca.
+% 	Akhir kata, kami berharap proposal penelitian ini dapat bermanfaat bagi para pembaca.
+% \end{justify}
+% \begin{FlushRight}
+% 	penulis
+% \end{FlushRight}
+\shipout\null
 \pagenumbering{roman}
-\begin{justify}
-	Puji syukur kepada Tuhan Yang Maha Esa yang telah melimpahkan rahmat dan
-	hidayah-Nya sehingga proposal penelitian dengan judul “Perbandingan
-	Waktu Eksekusi Otomasi Manajemen Konfigurasi Sistem Operasi GNU/Linux Antara Ansible dengan NixOS” ini
-	dapat terselesaikan. Penulis juga mengucapkan terima kasih kepada seluruh
-	yang telah membantu dalam pembuatan proposal penelitian ini.
-	\begin{enumerate}[leftmargin=0.45cm]
-		\item Kedua orang tua atas segala bantuan, bimbingan, dorongan serta doa restu yang diberikan.
-		\item Bapak Agus Prihanto, S.T., M. Kom. selaku dosen pembimbing yang telah memberikan arahan dan bimbingan dalam penyusunan proposal ini,.
-		\item Teman-teman Mahasiswa yang telah membantu dalam pengumpulan data dan informasi
-		\item Universitas Negeri Surabaya yang telah menyediakan fasilitas dan sarana prasarana yang diperlukan dalam penyusunan proposal ini.
-	\end{enumerate}
-	Kami menyadari bahwa proposal penelitian ini masih jauh dari sempurna. Oleh karena itu,m kami mengharapkan kritik dan saran yang membangin dari para pembaca.
-	Akhir kata, kami berharap proposal penelitian ini dapat bermanfaat bagi para pembaca.
-\end{justify}
-\begin{FlushRight}
-	penulis
-\end{FlushRight}
+\chapter*{PERBANDINGAN WAKTU EKSEKUSI OTOMASI MANAJEMEN
+  KONFIGURASI SISTEM OPERASI GNU/LINUX ANTARA ANSIBLE DENGAN NIXOS}
+\begin{center}
+	\vspace{1cm}
+	SKRIPSI \\
+	\medskip
+	Diajukan kepada Universitas Negeri Surabaya\\
+	\medskip
+	untuk memenuhi persyaratan penyelesaian\\
+	\medskip
+	Program Sarjana Komputer\\
+	\vfill
+	\textbf{Oleh \\
+		\medskip
+		M. RIZQI R \\
+		\medskip
+		NIM 20051204034}
+	\vfill
+	\textbf{UNIVERSITAS NEGERI SURABAYA\\
+		\medskip
+		FAKULTAS TEKNIK\\
+		\medskip
+		PROGRAM STUDI TEKNIK INFORMATIKA\\
+		\medskip
+		2024}
+\end{center}
+\chapter*{HALAMAN PERSETUJUAN SKRIPSI}
+\begin{adjustwidth}{0.0cm}{}
+	\begin{tabular}{@{}lcp{0.6\linewidth}}
+		Nama Mahasiswa & : & M. Rizqi R                                    \\
+		NIM            & : & 20051204034                                   \\
+		Judul          & : & PERBANDINGAN WAKTU EKSEKUSI OTOMASI MANAJEMEN
+		KONFIGURASI SISTEM OPERASI GNU/LINUX ANTARA ANSIBLE DENGAN NIXOS   \\
+	\end{tabular}
+
+	\vspace{1cm}
+	\noindent
+	Ini telah disetujui dan dinyatakan memenuhi syarat untuk dilakukan penelitian.\\
+
+	\vspace{5cm}
+
+	\noindent
+	Surabaya, 11 Juni 2024\\
+	Dosen Pembimbing,\\
+	\vspace{2cm}
+
+	\noindent
+	Agus Prihanto, S.T., M.Kom. \\
+	NIP. 197908062006041001\\
+
+\end{adjustwidth}
 \newpage
+\chapter*{HALAMAN PENGESAHAN}
+\begin{adjustwidth}{0pt}{}
+	\begin{tabular}{@{}lcp{0.7\linewidth}}
+		Skripsi Oleh & : & M. Rizqi R                                                 \\
+		NIM          & : & 20051204034                                                \\
+		Judul        & : & \raggedright Perbandingan Waktu Eksekusi Otomasi Manajemen
+		Konfigurasi Sistem Operasi GNU/Linux Antara Ansible dengan NixOS              \\
+	\end{tabular}
+
+	\noindent Ini telah dipertahankan dihadapan dewan penguji pada tanggal 6 Juni 2024 \\
+\end{adjustwidth}
+\chapter*{SURAT PERNYATAAN KEORISINILAN SKRIPSI}
+\begin{adjustwidth}{0pt}{}
+
+	Yang bertandatangan dibawah ini:\\
+
+	\noindent
+	\begin{tabular}{@{}lcp{0.5\linewidth}}
+		Nama Mahasiswa           & : & M. Rizqi R                                                                                    \\
+		Tempat, Tangal Lahir     & : & Sidoarjo, 31 Juli 2001                                                                        \\
+		NIM                      & : & 20051204034                                                                                   \\
+		Program Studi / Angkatan & : & S1 Teknik Informatika                                                                         \\
+		Alamat                   & : & \raggedright WADUNGASIH, RT/RW 005/002 DESA WADUNGASIH, KECAMATAN BUDURAN, KABUPATEN SIDOARJO \\
+	\end{tabular}
+
+	\noindent
+	Menyatakan dengan sesungguhnya bahwa:
+	\begin{enumerate}
+		\item Skripsi yang ditulis dan diajukan ini benar-benar merupakan hasil
+		      karya saya sendiri (tidak berdiri berdasarkan pada data palsu, dan atau
+		      hasil plagiasi atau jiplakan atau autoplagiasi.
+		\item Apabila pada kemudian hari terbukti bahwa pernyataan saya tidak
+		      benar, maka saya akan menanggung segala resiko dan siap diperkarakan
+		      sesuai aturan yang berlaku.
+	\end{enumerate}
+
+	\noindent
+	Demikianlah surat pernyataan yang saya buat dengan sebenar-benarnya.
+
+	\vspace{1cm}
+
+	\begin{adjustwidth}{170pt}{}
+		\begin{tabular}{@{}l}
+			Surabaya, 11 Juni 2024
+			\vspace{2cm}
+			\\
+			\underline{M. Rizqi R} \\
+			NIM 20051204034        \\
+		\end{tabular}
+	\end{adjustwidth}
+\end{adjustwidth}
+\chapter*{HALAMAN PERSEMBAHAN}
+\begin{adjustwidth}{0pt}{}
+	Skripsi ini saya tujukan dan perembahkan kepada:
+	\begin{enumerate}
+		\item Allah SWT, oleh karena rahmat dan hidayah-Nya, serta segala
+		      kenikamatan duniawi sehingga skripsi ini dapat ditulis dan disusun dengan
+		      baik dan selesai pada waktunya.
+		\item Orang tua terkasih, Bapak Wahyu Diarto dan Ibu Elmi Solichah yang
+		      selalu mendukung peneliti dalam segala aspek terutama menempuh
+		      pendidikan.
+		\item Adik-adik peneliti, yaitu M. Hilman AS dan Anis Wahyu yang secara
+		      tidak langsung memberi hiburan kepada peneliti ketika pulang ke rumah.
+		\item Teman-teman Asisten Laboratorium Jaringan Komputer dan Asisten
+		      Laboratorium Sistem Informasi, terutama Dani Maulana Ferdiansyah, Jerry
+		      Yan Krismanto, Firdaus Bagus Wicaksono, serta anggota Aslab lain yang
+		      membantu peneliti baik dalam proses penelitian maupun pemberkasan.
+		\item Rekan selingkup Teknik Informatika, khususnya Ahmad Fikry Husaini,
+		      Dito Arya Saputra, Mochammad Subhan Zuliananta, Richardo Sinulingga yang
+		      telah menemani peneliti bermain game saat jenuh.
+		\item Vimjoyer dan IogaMaster atas channel YouTube dan forum Discord yang
+		      telah membantu dalam mempelajari NixOS
+		\item Diri sendiri, yang selalu mencoba untuk bangkit kembali dari
+		      kemalasan untuk mengerjakan skripsi sehingga dapat lulus tepat waktu dan
+		      tidak membayar UKT untuk penambahan semester.
+	\end{enumerate}
+\end{adjustwidth}
 \chapter*{ABSTRAK}
 \begin{adjustwidth}{0.0cm}{}
 	\begin{center}
@@ -239,7 +370,7 @@
 	perangkat lunak, dan mengatur alur kerja tingkat lanjut untuk mendukung
 	penerapan aplikasi, pembaruan sistem, dan banyak lagi \parencite{AnsibleRedHat}.
 
-	Ansible memungkinkan kita mendeklarasikan konfigurasi sistem kita dalam
+	Ansible memungkinkan kita mendeklarasikan konfigurasi sistem operasi kita dalam
 	sebuah Ansible Playbook. Ansible Playbook akan dijalankan pada sebuah sistem
 	yang telah memiliki sistem operasi. Konfigurasi Ansible Playbook ditulis
 	menggunakan format yml yang merupakan format khusus untuk konfigurasi baik
@@ -250,9 +381,10 @@
 	memiliki hasil akhir yang sama.
 
 	NixOS adalah sistem operasi berbasis GNU/Linux yang dibangun dengan Nix build
-	system \parencite{hownixworks} . NixOS menggunakan file dalam format “.nix” yang disebut sebagai NixOS
-	module untuk mendeklarasikan sebuah sistem. Dalam file tersebut terdapat
-	seluruh konfigurasi sistem mulai dari \textit{bootloader, packages, users, system services.}
+	system \parencite{hownixworks} . NixOS menggunakan file dalam format “.nix”
+	yang disebut sebagai NixOS module untuk mendeklarasikan sebuah sistem. Dalam
+	file tersebut terdapat seluruh konfigurasi sistem mulai dari
+	\textit{bootloader, packages, users, system services.}
 
 	Apa yang tertulis dalam module tersebut adalah manifestasi dari sistem yang
 	dideklarasikan menggunakan bahasa nix yang merupakan bahasa pemrograman
@@ -263,8 +395,8 @@
 	Banyak kelebihan dan beberapa kekurangan yang dimiliki oleh metode deklaratif
 	dari NixOS dan metode campuran (imperatif dan deklaratif) dari Ansible.
 	Berdasarkan landasan tersebut, maka penulis ingin meneliti dan membandingkan
-	dari segi performa waktu eksekusi yang dibutuhkan oleh masing-masing \textit{tool} manajemen
-	konfigurasi.
+	dari segi performa waktu eksekusi yang dibutuhkan oleh masing-masing
+	\textit{tool} manajemen konfigurasi dengan hasil akhir konfigurasi yang serupa.
 \end{adjustwidth}
 \vspace{3mm}
 \section{Rumusan Masalah}
@@ -273,7 +405,7 @@
 	Adapun rumusan masalah berdasarkan latar belakang diatas yaitu:
 	\begin{enumerate}[leftmargin=0.45cm]
 		\item Bagaimana membuat sistem GNU/Linux yang terdeklarasi menggunakan \textit{tool}
-		      manajemen konfigurasi.
+		      manajemen konfigurasi dengan konfigurasi yang serupa.
 		\item Berapa lama waktu eksekusi \textit{tool} manajemen konfigurasi yang diimplementasikan.
 	\end{enumerate}
 \end{adjustwidth}
@@ -283,8 +415,9 @@
 	Adapun tujuan dalam penelitian ini adalah:
 	\begin{enumerate}[leftmargin=0.45cm]
 		\item Membuat sistem GNU/Linux yang terdeklarasi menggunakan NixOS dan
-		      Ansible
-		\item Mengukur waktu eksekusi \textit{tool} manajemen konfigurasi NixOS dan Ansible
+		      Ansible dengan target akhir hasil konfigurasi yang serupa.
+		\item Mengukur waktu eksekusi \textit{tool} manajemen konfigurasi NixOS menggunakan nixos-rebuild
+		      dan Ubuntu menggunakan Ansible
 	\end{enumerate}
 \end{adjustwidth}
 \vspace{3mm}
@@ -310,7 +443,8 @@
 		\item Kasus studi dalam menggunakan NixOS menggunakan file konfigurasi
 		      dasar, flake, dan home-manager.
 		\item Manajemen konfigurasi yang dilakukan meliputi setup dari sistem
-		      kosong ke konfigurasi yang diinginkan oleh penulis.
+		      kosong ke konfigurasi yang diinginkan oleh penulis dimana hasil akhirnya
+		      serupa.
 		\item Perbandingan akan dilihat berdasarkan waktu yang dibutuhkan untuk
 		      eksekusi penerapan konfigurasi.
 		\item Untuk nixos-rebuild hanya dijalankan di target NixOS dan Ansible hanya
@@ -780,8 +914,8 @@ yang telah ditentukan sebelumnya.\\
 	\hspace\parindent
 	Perancangan pengujian pada penelitian ini akan melakukan instalasi berbagai
 	macam perangkat lunak. Perangkat lunak yang diinstall adalah tmux, vim,
-	neovim, htop. Kemudian akan dilakukan beberapa konfigurasi perangkat lunak
-	yaitu konfigurasi untuk tmux, vim, neovim, openssh, firewall.
+	htop. Kemudian akan dilakukan beberapa konfigurasi perangkat lunak
+	yaitu konfigurasi untuk tmux, vim, openssh, firewall.
 
 	Kemudian akan dihadirkan service tambahan yaitu berupa \textit{web server}
 	menggunakan Nginx. Nginx juga akan dikonfigurasi untuk menampilkan
@@ -1126,8 +1260,6 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\begin{adjustwidth}{20pt}{}
 		Untuk konfigurasi Home Manager, ada beberapa yang dimasukkan yaitu :
 		\begin{enumerate}
-			\item LSP server yang dibutuhkan untuk Neovim
-			\item plugin untuk Neovim
 			\item userName dan userEmail git
 			\item enableCompletion untuk BASH
 		\end{enumerate}
@@ -1140,39 +1272,17 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
         {
           home.username = "rizqirazkafi";
           home.homeDirectory = "/home/rizqirazkafi";
-          programs.neovim = let
-          toLua = str: ''
-          lua << EOF
-          ${str}
-          EOF
-          '';
-          toLuaFile = file: ''
-          lua << EOF
-          ${builtins.readFile file}
-          EOF
-          '';
-          in {
+          programs.git = {
             enable = true;
-            extraPackages = with pkgs; [
-              # list of lsp
-              xclip
-              luajitPackages.lua-lsp
-              rnix-lsp
-              ansible-language-server
-              nodePackages.bash-language-server
-              shfmt
-              ansible-lint
-            ];
-            plugins = with pkgs.vimPlugins; [
-              vim-tmux-navigator
-              nvim-lspconfig
-              auto-pairs
-              undotree
-              {
-                plugin = comment-nvim;
-                config = toLua ''require("Comment").setup()'';
-              }
-            ];
+            userName = "Rizqirazkafi";
+            userEmail = "rizqir****@gmail.com";
+          };
+
+          programs.bash = {
+            enable = true;
+            shellAliases = { ll = "ls -la"; };
+            enableCompletion = true;
+            initExtra = ''echo "Hello, what good shall I do today?"'';
           };
         }
       \end{minted}
@@ -1248,7 +1358,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\begin{adjustwidth}{20pt}{}
 		\hspace\parindent
 		Untuk Ansible menggunakan konfigurasi yang lebih sederhana dengan menyalin
-		file konfigurasi dari vim, neovim, tmux, ssh, dan nginx ke
+		file konfigurasi dari vim, tmux, ssh, dan nginx ke
 		\textit{directory} konfigurasi sesuai Filesystem Hierarchial Standard
 		(FHS). Untuk paket yang dibutuhkan di definisikan secara \textit{global
 			packages} dimana paket di install untuk semua \textit{user}.
@@ -1331,25 +1441,32 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 
 	\subsubsection{NixOS tanpa cache}
 	\begin{adjustwidth}{20pt}{}
-		Pada percobaan ini, nixos-rebuild akan mengunduh semua \textit{binary} dan
-		\textit{dependency} kemudian akan melakukan \textit{build} berdasarkan
+		Pada percobaan ini, \textit{master} akan mengunduh semua \textit{binary}
+		dan \textit{dependency} kemudian akan melakukan \textit{build} berdasarkan
 		\textit{derivation} yang telah di definisikan oleh nixpkgs. Hasil dari
-		\textit{derivation} berupa \textit{closure} yang disalin ke target.
+		\textit{derivation} berupa \textit{closure} yang disalin ke target. Karena
+		nixos-rebuild tidak dapat berjalan secara paralel, maka percobaan dilakukan secara bergantian
+		untuk masing-masing target. Setelah nixos-rebuild menyalin \textit{closure}
+		ke target, maka waktu eksekusi telah didapat.Setelah waktu eksekusi
+		didapat, baik VM untuk target dan \textit{master} akan dikembalikan ke
+		\textit{snapshot} sebelum dijalankannya nixos-rebuild. Percobaan dilakukan
+		tiga kali untuk masing-masing target.
 	\end{adjustwidth}
 	\begin{table}[H]
 		\caption{nixos-rebuild first target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                           \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                              \\
 				\hline
-				3m38.709s                           & 0m12.379s & 0m11.836s \\
+				1                                          & 3m38.709s & 0m12.379s & 0m11.836s \\
 				\hline
-				3m34.648s                           & 0m12.282s & 0m11.082s \\
+				2                                          & 3m34.648s & 0m12.282s & 0m11.082s \\
 				\hline
-				3m39.477s                           & 0m12.199s & 0m11.162s \\
+				3                                          & 3m39.477s & 0m12.199s & 0m11.162s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1358,41 +1475,44 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\begin{table}[H]
 		\caption{nixos-rebuild second target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                           \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                              \\
 				\hline
-				3m31.792s                           & 0m12.334s & 0m11.336s \\
+				1                                          & 3m31.792s & 0m12.334s & 0m11.336s \\
 				\hline
-				3m33.855s                           & 0m12.200s & 0m11.512s \\
+				2                                          & 3m33.855s & 0m12.200s & 0m11.512s \\
 				\hline
-				3m35.859s                           & 0m12.278s & 0m11.968s \\
+				3                                          & 3m35.859s & 0m12.278s & 0m11.968s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\subsubsection{NixOS dengan Cache}
 	\begin{adjustwidth}{20pt}{}
-		Pada percobaan ini, nixos-rebuild akan mengunduh semua \textit{binary} dan
-		\textit{dependency} kemudian akan melakukan \textit{build} berdasarkan
-		\textit{derivation} yang telah di definisikan oleh nixpkgs. Hasil dari
-		\textit{derivation} berupa \textit{closure} yang disalin ke target.
+		\hspace\parindent Pada percobaan ini, nixos-rebuild tidak lagi perlu mengunduh binary karena sudah
+		di \textit{build} di \textit{master}. \textit{Master} hanya perlu menyalin \textit{closure}
+		ke target. Percobaan dilakukan sebanyak tiga kali, dimana sebelum percobaan, VM
+		dan target akan di \textit{snapshot} sehingga dapat kembali ke \textit{state}
+		sebelum diterapkannya konfigurasi.
 		\begin{table}[H]
 			\caption{nixos-rebuild first target}
 			\begin{center}
-				\begin{tabular}[c]{|c|c|c|}
+				\begin{tabular}[c]{|c|c|c|c|}
 					\hline
-					\multicolumn{1}{|c|}{\textbf{real}} &
-					\multicolumn{1}{c|}{\textbf{user}}  &
-					\multicolumn{1}{c|}{\textbf{sys}}                         \\
+					\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+					\multicolumn{1}{|c|}{\textbf{real}}        &
+					\multicolumn{1}{c|}{\textbf{user}}         &
+					\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 					\hline
-					1m40.721s                           & 0m3.563s & 0m6.304s \\
+					1                                          & 1m40.721s & 0m3.563s & 0m6.304s \\
 					\hline
-					1m39.842s                           & 0m3.500s & 0m6.616s \\
+					2                                          & 1m39.842s & 0m3.500s & 0m6.616s \\
 					\hline
-					1m40.714s                           & 0m3.463s & 0m6.367s \\
+					3                                          & 1m40.714s & 0m3.463s & 0m6.367s \\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -1401,40 +1521,49 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\begin{table}[H]
 			\caption{nixos-rebuild second target}
 			\begin{center}
-				\begin{tabular}[c]{|c|c|c|}
+				\begin{tabular}[c]{|c|c|c|c|}
 					\hline
-					\multicolumn{1}{|c|}{\textbf{real}} &
-					\multicolumn{1}{c|}{\textbf{user}}  &
-					\multicolumn{1}{c|}{\textbf{sys}}                         \\
+					\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+					\multicolumn{1}{|c|}{\textbf{real}}        &
+					\multicolumn{1}{c|}{\textbf{user}}         &
+					\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 					\hline
-					1m45.303s                           & 0m3.544s & 0m6.513s \\
+					1                                          & 1m45.303s & 0m3.544s & 0m6.513s \\
 					\hline
-					1m43.955s                           & 0m3.476s & 0m6.326s \\
+					2                                          & 1m43.955s & 0m3.476s & 0m6.326s \\
 					\hline
-					1m43.938s                           & 0m3.523s & 0m6.382s \\
+					3                                          & 1m43.938s & 0m3.523s & 0m6.382s \\
 					\hline
 				\end{tabular}
 			\end{center}
 		\end{table}
+		Patut diketahui bahwa kecepatan untuk menyalin \textit{closure} dari \textit{master}
+		ke target bergantung kepada koneksi antara keduanya. Dalam percobaan ini,
+		antara \textit{master} dengan target terkoneksi dengan \textit{bandwidth} sebesar
+		1 Gbps.
 	\end{adjustwidth}
 	\subsubsection{Ansible Single Target}
 	\begin{adjustwidth}{20pt}{}
 		Pada percobaan ini, dijalankan menggunakan perintah ansible-playbook dengan
-		satu target pada satu waktu. Total target yang di tuju adalah dua.
+		satu target pada satu waktu. Total target yang di tuju adalah dua dengan
+		setiap kali dijalankan, VM target akan dikembalikan ke \textit{snapshot}
+		yang berisi \textit{state} sebelum ansible-playbook diterapkan ke target.
+		Percobaan ini dilakukan tiga kali di masing-masing target.
 		\begin{table}[H]
 			\caption{ansible first target}
 			\begin{center}
-				\begin{tabular}[c]{|c|c|c|}
+				\begin{tabular}[c]{|c|c|c|c|}
 					\hline
-					\multicolumn{1}{|c|}{\textbf{real}} &
-					\multicolumn{1}{c|}{\textbf{user}}  &
-					\multicolumn{1}{c|}{\textbf{sys}}                         \\
+					\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+					\multicolumn{1}{|c|}{\textbf{real}}        &
+					\multicolumn{1}{c|}{\textbf{user}}         &
+					\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 					\hline
-					3m16.849s                           & 0m8.208s & 0m2.255s \\
+					1                                          & 3m16.849s & 0m8.208s & 0m2.255s \\
 					\hline
-					2m45.881s                           & 0m7.431s & 0m2.095s \\
+					2                                          & 2m45.881s & 0m7.431s & 0m2.095s \\
 					\hline
-					2m57.825s                           & 0m7.761s & 0m2.115s \\
+					3                                          & 2m57.825s & 0m7.761s & 0m2.115s \\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -1443,17 +1572,18 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\begin{table}[H]
 			\caption{ansible second target}
 			\begin{center}
-				\begin{tabular}[c]{|c|c|c|}
+				\begin{tabular}[c]{|c|c|c|c|}
 					\hline
-					\multicolumn{1}{|c|}{\textbf{real}} &
-					\multicolumn{1}{c|}{\textbf{user}}  &
-					\multicolumn{1}{c|}{\textbf{sys}}                         \\
+					\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+					\multicolumn{1}{|c|}{\textbf{real}}        &
+					\multicolumn{1}{c|}{\textbf{user}}         &
+					\multicolumn{1}{c|}{\textbf{sys}}                                             \\
 					\hline
-					2m48.054s                           & 0m7.488s & 0m2.119s \\
+					1                                          & 2m48.054s  & 0m7.488s & 0m2.119s \\
 					\hline
-					2m53.974s                           & 0m7.598s & 0m2.123s \\
+					2                                          & 2m53.974s  & 0m7.598s & 0m2.123s \\
 					\hline
-					2m.13.947s                          & 0m7.341s & 0m2.040s \\
+					3                                          & 2m.13.947s & 0m7.341s & 0m2.040s \\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -1462,21 +1592,23 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\subsubsection{Ansible Multi Target}
 	\begin{adjustwidth}{20pt}{}
 		Pada percobaan ini, dijalankan menggunakan perintah ansible-playbook dengan dua
-		target secara paralel.
+		target secara paralel. Setiap kali sebelum ansible-playbook diterapkan ke target,
+		target akan dikembalikan ke \textit{snapshot} sebelum ansible-playbook diterapkan.
 		\begin{table}[H]
 			\caption{ansible multi target}
 			\begin{center}
-				\begin{tabular}[c]{|c|c|c|}
+				\begin{tabular}[c]{|c|c|c|c|}
 					\hline
-					\multicolumn{1}{|c|}{\textbf{real}} &
-					\multicolumn{1}{c|}{\textbf{user}}  &
-					\multicolumn{1}{c|}{\textbf{sys}}                         \\
+					\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+					\multicolumn{1}{|c|}{\textbf{real}}        &
+					\multicolumn{1}{c|}{\textbf{user}}         &
+					\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 					\hline
-					2m12.327s                           & 0m9.902s & 0m3.188s \\
+					1                                          & 2m12.327s & 0m9.902s & 0m3.188s \\
 					\hline
-					1m56.784s                           & 0m9.654s & 0m3.147s \\
+					2                                          & 1m56.784s & 0m9.654s & 0m3.147s \\
 					\hline
-					2m2.801s                            & 0m9.889s & 0m2.932s \\
+					3                                          & 2m2.801s  & 0m9.889s & 0m2.932s \\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -1489,20 +1621,26 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		akan dijalankan sebanyak tiga kali.
 	\end{adjustwidth}
 	\subsubsection{NixOS}
+	\begin{adjustwidth}{20pt}{}
+		Untuk NixOS, dijalankan perintah nixos-rebuild dengan dua target. Masing-masing target
+		dijalankan sebanyak tiga kali tanpa perlu mengembalikan VM ke kondisi sebelumnya dengan
+		\textit{snapshot}. Berikut hasil pengujiannya:
+	\end{adjustwidth}
 	\begin{table}[H]
 		\caption{nixos-rebuild first target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                           \\
 				\hline
-				0m5.128s                            & 0m0.210s & 0m0.086s \\
+				1                                          & 0m5.128s & 0m0.210s & 0m0.086s \\
 				\hline
-				0m4.186s                            & 0m0.229s & 0m0.073s \\
+				2                                          & 0m4.186s & 0m0.229s & 0m0.073s \\
 				\hline
-				0m2.774s                            & 0m0.228s & 0m0.076s \\
+				3                                          & 0m2.774s & 0m0.228s & 0m0.076s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1511,36 +1649,44 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\begin{table}[H]
 		\caption{nixos-rebuild second target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                           \\
 				\hline
-				0m4.870s                            & 0m0.222s & 0m0.083s \\
+				1                                          & 0m4.870s & 0m0.222s & 0m0.083s \\
 				\hline
-				0m4.222s                            & 0m0.228s & 0m0.071s \\
+				2                                          & 0m4.222s & 0m0.228s & 0m0.071s \\
 				\hline
-				0m2.765s                            & 0m0.234s & 0m0.072s \\
+				3                                          & 0m2.765s & 0m0.234s & 0m0.072s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\subsubsection{Ansible single target}
+	\begin{adjustwidth}{20pt}{}
+		Untuk percobaan Ansible \textit{single target}, perintah ansible-playbook dijalankan
+		ke satu target dalam satu waktu. Ini digunakan untuk mendapatkan hasil perbandingan
+		yang setara dengan nixos-rebuild yang hanya mampu mengkonfigurasi satu target
+		dalam satu waktu.
+	\end{adjustwidth}
 	\begin{table}[H]
 		\caption{Ansible first target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m16.252s                           & 0m4.075s & 0m0.997s \\
+				1                                          & 0m16.252s & 0m4.075s & 0m0.997s \\
 				\hline
-				0m12.563s                           & 0m3.931s & 0m0.921s \\
+				2                                          & 0m12.563s & 0m3.931s & 0m0.921s \\
 				\hline
-				0m13.220s                           & 0m3.965s & 0m0.975s \\
+				3                                          & 0m13.220s & 0m3.965s & 0m0.975s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1549,36 +1695,42 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\begin{table}[H]
 		\caption{Ansible first target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m13.381s                           & 0m4.021s & 0m0.976s \\
+				1                                          & 0m13.381s & 0m4.021s & 0m0.976s \\
 				\hline
-				0m12.683s                           & 0m3.924s & 0m0.968s \\
+				2                                          & 0m12.683s & 0m3.924s & 0m0.968s \\
 				\hline
-				0m12.958s                           & 0m3.883s & 0m0.951s \\
+				3                                          & 0m12.958s & 0m3.883s & 0m0.951s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\subsubsection{Ansible multi target}
+	\begin{adjustwidth}{20pt}{}
+		Untuk percobaan Ansible \textit{multi target}, perintah ansible-playbook dijalankan
+		ke dua target secara paralel. Berikut merupakan hasil dari percobaan Ansible \textit{multi target}:
+	\end{adjustwidth}
 	\begin{table}[H]
-		\caption{Ansible first target}
+		\caption{Ansible multi target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m14.552s                           & 0m6.628s & 0m1.886s \\
+				1                                          & 0m14.552s & 0m6.628s & 0m1.886s \\
 				\hline
-				0m13.874s                           & 0m6.402s & 0m1.857s \\
+				2                                          & 0m13.874s & 0m6.402s & 0m1.857s \\
 				\hline
-				0m14.230s                           & 0m6.501s & 0m1.818s \\
+				3                                          & 0m14.230s & 0m6.501s & 0m1.818s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1590,20 +1742,40 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		konfigurasi.
 	\end{adjustwidth}
 	\subsubsection{NixOS tanpa cache}
+	\begin{adjustwidth}{20pt}{}
+		Untuk NixOS, penambahan konfigurasi dilakukan pada file configuration.nix, pada
+		bagian environment.systemPackages sebagai berikut:
+		\begin{code}
+			\begin{minted}{nix}
+        environment.systemPackages = with pkgs; [
+          go
+        ];
+      \end{minted}
+			\caption{NixOS Go Package}
+		\end{code}
+		Pengujian dilakukan dengan pertama mengembalikan kondisi sistem baik
+		\textit{master} maupun target ke konfigurasi setelah pasca install,
+		kemudian menambahkan "go" kedalam konfigurasi. Ini dimaksudkan agar NixOS tidak
+		menyimpan cache hasil \textit{build} untuk paket Go. Konfigurasi kemudian
+		diterapkan dengan nixos-rebuild oleh \textit{master} ke target. Setelah
+		master melakukan \textit{build}, master kemudian menyalin hasilnya ke
+		target. Percobaan ini dilakukan berulang sebanyak tiga kali per target.
+	\end{adjustwidth}
 	\begin{table}[H]
 		\caption{nixos-rebuild first target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m50.808s                           & 0m6.168s & 0m2.358s \\
+				1                                          & 0m50.808s & 0m6.168s & 0m2.358s \\
 				\hline
-				0m46.404s                           & 0m5.879s & 0m1.860s \\
+				2                                          & 0m46.404s & 0m5.879s & 0m1.860s \\
 				\hline
-				0m36.898s                           & 0m5.832s & 0m2.003s \\
+				3                                          & 0m36.898s & 0m5.832s & 0m2.003s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1612,36 +1784,44 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\begin{table}[H]
 		\caption{nixos-rebuild second target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m29.654s                           & 0m5.908s & 0m1.833s \\
+				1                                          & 0m29.654s & 0m5.908s & 0m1.833s \\
 				\hline
-				0m41.280s                           & 0m7.002s & 0m2.446s \\
+				2                                          & 0m41.280s & 0m7.002s & 0m2.446s \\
 				\hline
-				0m39.303s                           & 0m6.856s & 0m1.958s \\
+				3                                          & 0m39.303s & 0m6.856s & 0m1.958s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\subsubsection{NixOS dengan cache}
+	\begin{adjustwidth}{20pt}{}
+		Pada percobaan ini, NixOS telah melakukan \textit{build} untuk paket GO dan
+		nixos-rebuild hanya perlu menyalin hasilnya ke target. Dari percobaan tersebut,
+		didapatkan hasil sebagai berikut dengan pertimbangan \textit{bandwidth} dari
+		\textit{master} ke target adalah 1 Gbps.
+	\end{adjustwidth}
 	\begin{table}[H]
 		\caption{nixos-rebuild first target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m11.358s                           & 0m0.483s & 0m0.553s \\
+				1                                          & 0m11.358s & 0m0.483s & 0m0.553s \\
 				\hline
-				0m10.317s                           & 0m0.512s & 0m0.477s \\
+				2                                          & 0m10.317s & 0m0.512s & 0m0.477s \\
 				\hline
-				0m10.658s                           & 0m0.486s & 0m0.500s \\
+				3                                          & 0m10.658s & 0m0.486s & 0m0.500s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1650,36 +1830,57 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\begin{table}[H]
 		\caption{nixos-rebuild second target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m10.730s                           & 0m0.498s & 0m0.642s \\
+				1                                          & 0m10.730s & 0m0.498s & 0m0.642s \\
 				\hline
-				0m9.745s                            & 0m0.455s & 0m0.474s \\
+				2                                          & 0m9.745s  & 0m0.455s & 0m0.474s \\
 				\hline
-				0m10.176s                           & 0m0.488s & 0m0.470s \\
+				3                                          & 0m10.176s & 0m0.488s & 0m0.470s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\subsubsection{Ansible single target}
+	\begin{adjustwidth}{20pt}{}
+		Pada percobaan Ansible \textit{single target}, penambahan paket "GO" di definisikan
+		dalam file yml yang digunakan seperti berikut:
+		\begin{code}
+			\begin{minted}{yaml}
+      - name: install go
+        ansible.builtin.apt:
+          pkg:
+            - golang-go
+          state: present
+      \end{minted}
+			\caption{Ansible penambahan paket GO}
+		\end{code}
+		Pada konfigurasi tersebut, "state: absent" digunakan untuk memberitahu
+		Ansible untuk memastikan apakah paket "golang-go" benar-benar ada pada
+		sistem. Percobaan ini dilakukan sebanyak tiga kali untuk masing-masing
+		target dan setiap sebelum percobaan kondisi VM akan dikembalikan ke
+		\textit{snapshot} pasca install.
+	\end{adjustwidth}
 	\begin{table}[H]
 		\caption{ansible first target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m31.965s                           & 0m4.378s & 0m1.145s \\
+				1                                          & 0m31.965s & 0m4.378s & 0m1.145s \\
 				\hline
-				0m23.455s                           & 0m4.274s & 0m1.025s \\
+				2                                          & 0m23.455s & 0m4.274s & 0m1.025s \\
 				\hline
-				0m24.020s                           & 0m4.283s & 0m1.003s \\
+				3                                          & 0m24.020s & 0m4.283s & 0m1.003s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1688,36 +1889,43 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\begin{table}[H]
 		\caption{ansible first target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m26.637s                           & 0m4.281s & 0m1.120s \\
+				1                                          & 0m26.637s & 0m4.281s & 0m1.120s \\
 				\hline
-				0m26.256s                           & 0m4.327s & 0m1.027s \\
+				2                                          & 0m26.256s & 0m4.327s & 0m1.027s \\
 				\hline
-				0m25.256s                           & 0m4.310s & 0m1.046s \\
+				3                                          & 0m25.256s & 0m4.310s & 0m1.046s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\subsubsection{Ansible multi target}
+	\begin{adjustwidth}{20pt}{}
+		Pada percobaan Ansible \textit{multi target}, sama seperti percobaan Ansible \textit{single target}
+		pada bagian konfigurasi dan \textit{snapshot}. Namun yang membedakan adalah, perintah
+		ansible-playbook dijalankan pada dua target secara paralel. Berikut untuk hasilnya:
+	\end{adjustwidth}
 	\begin{table}[H]
 		\caption{ansible multi target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m33.164s                           & 0m6.848s & 0m2.088s \\
+				1                                          & 0m33.164s & 0m6.848s & 0m2.088s \\
 				\hline
-				0m32.873s                           & 0m7.054s & 0m2.088s \\
+				2                                          & 0m32.873s & 0m7.054s & 0m2.088s \\
 				\hline
-				0m36.413s                           & 0m7.368s & 0m2.129s \\
+				3                                          & 0m36.413s & 0m7.368s & 0m2.129s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1729,20 +1937,35 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		konfigurasi.
 	\end{adjustwidth}
 	\subsubsection{NixOS}
+	\begin{adjustwidth}{20pt}{}
+		Pada pengujian ini, deskripsi paket Go akan dihapus atau dikomen pada file konfigurasi
+		configuration.nix seperti berikut:
+		\begin{code}
+			\begin{minted}{nix}
+        environment.systemPackages = with pkgs; [
+          # go
+        ];
+      \end{minted}
+			\caption{Penghapusan paket GO pada konfigurasi NixOS}
+		\end{code}
+		Perintah nixos-rebuild kemudian dijalankan pada masing-masing target sebanyak tiga
+		kali dan hasilnya sebagai berikut:
+	\end{adjustwidth}
 	\begin{table}[H]
 		\caption{nixos-rebuild first target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                           \\
 				\hline
-				0m3.007s                            & 0m0.219s & 0m0.078s \\
+				1                                          & 0m3.007s & 0m0.219s & 0m0.078s \\
 				\hline
-				0m2.918s                            & 0m0.219s & 0m0.085s \\
+				2                                          & 0m2.918s & 0m0.219s & 0m0.085s \\
 				\hline
-				0m3.190s                            & 0m0.218s & 0m0.088s \\
+				3                                          & 0m3.190s & 0m0.218s & 0m0.088s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1751,36 +1974,55 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\begin{table}[H]
 		\caption{nixos-rebuild second target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                           \\
 				\hline
-				0m2.859s                            & 0m0.218s & 0m0.083s \\
+				1                                          & 0m2.859s & 0m0.218s & 0m0.083s \\
 				\hline
-				0m2.582s                            & 0m0.232s & 0m0.067s \\
+				2                                          & 0m2.582s & 0m0.232s & 0m0.067s \\
 				\hline
-				0m2.929s                            & 0m0.219s & 0m0.081s \\
+				3                                          & 0m2.929s & 0m0.219s & 0m0.081s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\subsubsection{Ansible single target}
+	\begin{adjustwidth}{20pt}{}
+		Untuk Ansible, kita hanya perlu mengganti "\textit{state}" untuk paket Go
+		dari "\textit{present}" menjadi "\textit{absent}". Dengan ini kita
+		memberitahu Ansible untuk memastikan paket "golang-go" tidak ada pada
+		target. Perintah ansible-playbook kemudian dijalankan pada satu target dalam satu
+		waktu sebanyak tiga kali dengan hasil dan konfigurasinya adalah sebagai berikut:
+		\begin{code}
+			\begin{minted}{yaml}
+      - name: install go
+        ansible.builtin.apt:
+          pkg:
+            - golang-go
+          state: absent
+      \end{minted}
+			\caption{Konfigurasi penghapusan paket Go pada Ansible}
+		\end{code}
+	\end{adjustwidth}
 	\begin{table}[H]
 		\caption{ansible first target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m15.627s                           & 0m3.954s & 0m0.988s \\
+				1                                          & 0m15.627s & 0m3.954s & 0m0.988s \\
 				\hline
-				0m15.153s                           & 0m3.928s & 0m0.960s \\
+				2                                          & 0m15.153s & 0m3.928s & 0m0.960s \\
 				\hline
-				0m15.504s                           & 0m3.925s & 0m0.979s \\
+				3                                          & 0m15.504s & 0m3.925s & 0m0.979s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1789,36 +2031,44 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\begin{table}[H]
 		\caption{ansible second target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m16.187s                           & 0m4.021s & 0m1.028s \\
+				1                                          & 0m16.187s & 0m4.021s & 0m1.028s \\
 				\hline
-				0m15.441s                           & 0m3.892s & 0m1.019s \\
+				2                                          & 0m15.441s & 0m3.892s & 0m1.019s \\
 				\hline
-				0m15.391s                           & 0m3.925s & 0m0.989s \\
+				3                                          & 0m15.391s & 0m3.925s & 0m0.989s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\subsubsection{Ansible multi target}
+	\begin{adjustwidth}{20pt}{}
+		Untuk percobaan Ansible \textit{multi target} sama seperti Ansible \textit{single target}.
+		Pembedanya terletak hanya di jumlah target yang dituju dimana untuk Ansible \textit{multi target}
+		adalah sebanyak dua target dalam percobaan ini. Berikut adalah hasil dari percobaan
+		ini:
+	\end{adjustwidth}
 	\begin{table}[H]
 		\caption{ansible multi target}
 		\begin{center}
-			\begin{tabular}[c]{|c|c|c|}
+			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
-				\multicolumn{1}{|c|}{\textbf{real}} &
-				\multicolumn{1}{c|}{\textbf{user}}  &
-				\multicolumn{1}{c|}{\textbf{sys}}                         \\
+				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
+				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{user}}         &
+				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				0m17.768s                           & 0m6.649s & 0m1.986s \\
+				1                                          & 0m17.768s & 0m6.649s & 0m1.986s \\
 				\hline
-				0m17.426s                           & 0m6.628s & 0m1.950s \\
+				2                                          & 0m17.426s & 0m6.628s & 0m1.950s \\
 				\hline
-				0m18.449s                           & 0m6.859s & 0m2.088s \\
+				3                                          & 0m18.449s & 0m6.859s & 0m2.088s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1886,7 +2136,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Disini dapat dilihat Ansible membutuhkan waktu lebih lama untuk melakukan
 		pengecekan dikarenakan Ansible melakukan pengecekan tiap \textit{task}
 		pada setiap target sedangkan NixOS hanya mengecek perubahan pada konfigurasi
-		dan membandingkan \textit{clojure} yang ada pada target dengan \textit{host}.
+		dan membandingkan \textit{closure} yang ada pada target dengan \textit{host}.
 	\end{adjustwidth}
 	\subsubsection{Penambahan paket GO}
 	\begin{tikzpicture}
@@ -1927,12 +2177,28 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 					(Ansible single, 15.5) (Ansible multi,17.6)};
 		\end{axis}
 	\end{tikzpicture}
+	\subsection{Deklaratif dan Imperatif}
+	\begin{adjustwidth}{20pt}{}
+		Dalam percobaan diatas, terdapat beberapa hal yang ditemui oleh penguji tentang
+		\textit{tool} manajemen konfigurasi. Ansible Playbook menggunakan metode imperatif
+		dalam praktiknya, dimana Ansible Playbook berisi mengenai apa-apa saja yang harus dilakukan
+		oleh Ansible. Ini menyebabkan ketidak cocokan antara Ansible Playbook dengan
+		kondisi akhir sistem. Apabila kita mendeskripsikan \textit{task} untuk menginstall
+		dan menjalankan Nginx lalu kita terapkan, maka Nginx akan terinstall. Namun
+		apabila \textit{task} tersebut dihapus dari Ansible Playbook kemudian kita
+		jalankan, maka Nginx akan tetap berjalan.
+
+		Pada sisi lain, konfigurasi NixOS merupakan representasi dari kondisi akhir sistem.
+		Apabila kita pada awalnya mendeskripsikan \textit{service} Nginx, maka Nginx akan
+		berjalan pada sistem. Apabila kita menghapus pendeskripsian Nginx dari file konfigurasi,
+		maka Nginx tidak akan berjalan. Metode inilah yang disebut dengan Deklaratif oleh
+		NixOS.
+	\end{adjustwidth}
 \end{adjustwidth}
 % bab V
 \chapter{KESIMPULAN DAN SARAN}
 \section{Kesimpulan}
 \begin{adjustwidth}{20pt}{}
-	\hspace\parindent
 	Berdasarkan penelitian perbandingan performa waktu eksekusi otomasi manajemen
 	konfigurasi sistem operasi GNU/Linux antara Ansible dengan NixOS yang telah
 	berhasil dilakukan, mendapatkan kesimpulan yang berdasarkan rumusan masalah,
@@ -1943,39 +2209,30 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		      dengan \textit{tool} manajemen konfigurasi. Dari penelitian ini, peneliti
 		      mendapati berbagai poin berikut:
 		      \begin{enumerate}[label=\alph*.]
-			      \item Apabila task atau bagian dari Ansible Playbook dihapus, maka
-			            bagian tersebut akan tetap ada di sistem setelah Ansible Playbook
-			            dijalankan. Contohnya adalah ketika kita menghapus \textit{package}
-			            atau \textit{service}, maka \textit{package} atau \textit{service}
-			            tersebut akan tetap ada pada sistem. Apabila ingin menghapusnya, maka
-			            kita harus mendefinisikan di Ansible Playbook agar \textit{package}
-			            atau \textit{service} tersebut tidak ada dalam sistem. Ini membuktikan
-			            bahwa Ansible Playbook bersifat \textit{imperatif} dimana Ansible
-			            Playbook hanya melakukan apa yang diperintahkan dan tidak memanifestasikan
-			            hasil akhir yang di inginkan.
-			      \item NixOS dengan nixos-rebuild mampu memanifestasikan konfigurasi
-			            yang diterapkan pada sistem. Apabila \textit{package} atau
-			            \textit{service} dihapus dari konfigurasi, maka \textit{package}
-			            atau \textit{service} tersebut akan dihapus dari target.
+			      \item Ansible mampu mengkonfigurasi sistem operasi berbasis
+			            GNU/Linux (pada kasus ini Ubuntu Server), namun hanya mampu pada
+			            tingkat imperatif dan bukan deklaratif.
+			      \item NixOS dengan nixos-rebuild mampu mengkonfigurasi sistem
+			            operasi berbasis GNU/Linux (pada kasus ini NixOS) secara
+			            deklaratif.
 		      \end{enumerate}
 		\item Setelah melakukan pengujian dari waktu eksekusi kedua \textit{tool}
 		      manajemen konfigurasi yaitu Ansible dan NixOS, hasilnya adalah sebagai berikut:
 		      \begin{enumerate}[label=\alph*.]
 			      \item Dalam uji coba pasca install, urutan waktu eksekusi dari yang tercepat
-			            hingga terlambat adalah NixOS dengan cache, Ansible \textit{multu} target,
+			            hingga terlambat adalah NixOS dengan cache, Ansible \textit{multi} target,
 			            Ansible single target, NixOS tanpa cache.
 			      \item Perintah nixos-rebuild tidak dapat digunakan untuk melakukan manajemen
 			            konfigurasi secara paralel sedangkan Ansible Playbook dapat dijalankan secara
 			            paralel. Ini berdampak pada penerapan dunia nyata dimana semakin banyak
 			            target maka waktu yang dibutuhkan untuk penerapan menggunakan nixos-rebuild
-			            akan memakan waktu lebih lama walaupun \textit{cache / clojure} telah di
+			            akan memakan waktu lebih lama walaupun \textit{cache / closure} telah di
 			            \textit{build}.
 		      \end{enumerate}
 	\end{enumerate}
 \end{adjustwidth}
 \section{Saran}
 \begin{adjustwidth}{20pt}{}
-	\hspace\parindent
 	Adapun saran yang dapat diberikan terkait hasil penelitian adalah sebagai berikut:
 	\begin{enumerate}
 		\item Disarankan membuat penelitian tentang perbandingan performa waktu eksekusi,
