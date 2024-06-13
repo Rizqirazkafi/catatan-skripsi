@@ -1451,42 +1451,55 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		didapat, baik VM untuk target dan \textit{master} akan dikembalikan ke
 		\textit{snapshot} sebelum dijalankannya nixos-rebuild. Percobaan dilakukan
 		tiga kali untuk masing-masing target.
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{images/nix-target/nix-pasca-install-25-com.png}
+			\end{center}
+			\caption{nixos-rebuild first target tanpa cache}
+		\end{figure}
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{images/nix-target/nix-pasca-install-26-com.png}
+			\end{center}
+			\caption{nixos-rebuild second target tanpa cache}
+		\end{figure}
+
 	\end{adjustwidth}
 	\begin{table}[H]
-		\caption{nixos-rebuild first target}
+		\caption{nixos-rebuild first target tanpa cache}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                              \\
 				\hline
-				1                                          & 3m38.709s & 0m12.379s & 0m11.836s \\
+				1                                          & 3m29.511s & 0m12.695s & 0m14.709s \\
 				\hline
-				2                                          & 3m34.648s & 0m12.282s & 0m11.082s \\
+				2                                          & 3m27.362s & 0m12.970s & 0m14.277s \\
 				\hline
-				3                                          & 3m39.477s & 0m12.199s & 0m11.162s \\
+				3                                          & 3m28.368s & 0m12.887s & 0m14.580s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\vspace{-5mm}
 	\begin{table}[H]
-		\caption{nixos-rebuild second target}
+		\caption{nixos-rebuild second target tanpa cache}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                              \\
 				\hline
-				1                                          & 3m31.792s & 0m12.334s & 0m11.336s \\
+				1                                          & 3m28.804s & 0m12.822s & 0m14.634s \\
 				\hline
-				2                                          & 3m33.855s & 0m12.200s & 0m11.512s \\
+				2                                          & 3m27.731s & 0m12.900s & 0m14.437s \\
 				\hline
-				3                                          & 3m35.859s & 0m12.278s & 0m11.968s \\
+				3                                          & 3m36.570s & 0m13.163s & 0m14.496s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1498,21 +1511,36 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		ke target. Percobaan dilakukan sebanyak tiga kali, dimana sebelum percobaan, VM
 		dan target akan di \textit{snapshot} sehingga dapat kembali ke \textit{state}
 		sebelum diterapkannya konfigurasi.
+
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{images/nix-target/nix-pasca-cache-25-com.png}
+			\end{center}
+			\caption{nixos-rebuild first target dengan cache}
+		\end{figure}
+
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{images/nix-target/nix-pasca-cache-26-com.png}
+			\end{center}
+			\caption{nixos-rebuild second target dengan cache}
+		\end{figure}
+
 		\begin{table}[H]
-			\caption{nixos-rebuild first target}
+			\caption{nixos-rebuild first target dengan cache}
 			\begin{center}
 				\begin{tabular}[c]{|c|c|c|c|}
 					\hline
 					\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-					\multicolumn{1}{|c|}{\textbf{real}}        &
+					\multicolumn{1}{c|}{\textbf{real}}         &
 					\multicolumn{1}{c|}{\textbf{user}}         &
 					\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 					\hline
-					1                                          & 1m40.721s & 0m3.563s & 0m6.304s \\
+					1                                          & 1m4.359s  & 0m3.129s & 0m6.261s \\
 					\hline
-					2                                          & 1m39.842s & 0m3.500s & 0m6.616s \\
+					2                                          & 1m9.078s  & 0m3.287s & 0m7.239s \\
 					\hline
-					3                                          & 1m40.714s & 0m3.463s & 0m6.367s \\
+					3                                          & 1m13.626s & 0m3.178s & 0m6.930s \\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -1524,15 +1552,15 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				\begin{tabular}[c]{|c|c|c|c|}
 					\hline
 					\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-					\multicolumn{1}{|c|}{\textbf{real}}        &
+					\multicolumn{1}{c|}{\textbf{real}}         &
 					\multicolumn{1}{c|}{\textbf{user}}         &
 					\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 					\hline
-					1                                          & 1m45.303s & 0m3.544s & 0m6.513s \\
+					1                                          & 1m12.569s & 0m3.389s & 0m6.435s \\
 					\hline
-					2                                          & 1m43.955s & 0m3.476s & 0m6.326s \\
+					2                                          & 1m12.321s & 0m3.414s & 0m6.465s \\
 					\hline
-					3                                          & 1m43.938s & 0m3.523s & 0m6.382s \\
+					3                                          & 1m13.510s & 0m3.168s & 0m6.520s \\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -1549,41 +1577,55 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		setiap kali dijalankan, VM target akan dikembalikan ke \textit{snapshot}
 		yang berisi \textit{state} sebelum ansible-playbook diterapkan ke target.
 		Percobaan ini dilakukan tiga kali di masing-masing target.
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=\textwidth]{images/ansible/single/ansible-pasca-27-com.png}
+			\end{center}
+			\caption{Ansible first target pasca install}
+		\end{figure}
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=\textwidth]{images/ansible/single/ansible-pasca-28-com.png}
+			\end{center}
+			\caption{Ansible second target pasca install}
+		\end{figure}
+
 		\begin{table}[H]
-			\caption{ansible first target}
+			\caption{Ansible first target pasca install}
 			\begin{center}
 				\begin{tabular}[c]{|c|c|c|c|}
 					\hline
 					\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-					\multicolumn{1}{|c|}{\textbf{real}}        &
+					\multicolumn{1}{c|}{\textbf{real}}         &
 					\multicolumn{1}{c|}{\textbf{user}}         &
 					\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 					\hline
-					1                                          & 3m16.849s & 0m8.208s & 0m2.255s \\
+					1                                          & 2m5.295s  & 0m7.074s & 0m2.062s \\
 					\hline
-					2                                          & 2m45.881s & 0m7.431s & 0m2.095s \\
+					2                                          & 1m54.364s & 0m6.795s & 0m1.970s \\
 					\hline
-					3                                          & 2m57.825s & 0m7.761s & 0m2.115s \\
+					3                                          & 2m35.291s & 0m7.698s & 0m2.109s \\
 					\hline
 				\end{tabular}
 			\end{center}
 		\end{table}
 		\vspace{-5mm}
+
 		\begin{table}[H]
-			\caption{ansible second target}
+			\caption{ansible second target pasca install}
 			\begin{center}
 				\begin{tabular}[c]{|c|c|c|c|}
 					\hline
 					\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-					\multicolumn{1}{|c|}{\textbf{real}}        &
+					\multicolumn{1}{c|}{\textbf{real}}         &
 					\multicolumn{1}{c|}{\textbf{user}}         &
 					\multicolumn{1}{c|}{\textbf{sys}}                                             \\
 					\hline
-					1                                          & 2m48.054s  & 0m7.488s & 0m2.119s \\
+					1                                          & 2m32.026s & 0m10.997s & 0m3.703s \\
 					\hline
-					2                                          & 2m53.974s  & 0m7.598s & 0m2.123s \\
+					2                                          & 3m19.488s & 0m12.124s & 0m3.995s \\
 					\hline
-					3                                          & 2m.13.947s & 0m7.341s & 0m2.040s \\
+					3                                          & 4m23.604s & 0m13.486s & 0m4.481s \\
 					\hline
 				\end{tabular}
 			\end{center}
@@ -1594,13 +1636,19 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Pada percobaan ini, dijalankan menggunakan perintah ansible-playbook dengan dua
 		target secara paralel. Setiap kali sebelum ansible-playbook diterapkan ke target,
 		target akan dikembalikan ke \textit{snapshot} sebelum ansible-playbook diterapkan.
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=\textwidth]{images/ansible/multi/ansible-pasca-multi-com.png}
+			\end{center}
+			\caption{Ansible multi target pasca install}
+		\end{figure}
 		\begin{table}[H]
-			\caption{ansible multi target}
+			\caption{ansible multi target pasca install}
 			\begin{center}
 				\begin{tabular}[c]{|c|c|c|c|}
 					\hline
 					\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-					\multicolumn{1}{|c|}{\textbf{real}}        &
+					\multicolumn{1}{c|}{\textbf{real}}         &
 					\multicolumn{1}{c|}{\textbf{user}}         &
 					\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 					\hline
@@ -1625,42 +1673,56 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Untuk NixOS, dijalankan perintah nixos-rebuild dengan dua target. Masing-masing target
 		dijalankan sebanyak tiga kali tanpa perlu mengembalikan VM ke kondisi sebelumnya dengan
 		\textit{snapshot}. Berikut hasil pengujiannya:
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{images/nix-target/nix-rerun-25-com.png}
+			\end{center}
+			\caption{nixos-rebuild first target pasca install rerun}
+		\end{figure}
+
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{images/nix-target/nix-rerun-26-com.png}
+			\end{center}
+			\caption{nixos-rebuild second target pasca install rerun}
+		\end{figure}
+
 	\end{adjustwidth}
 	\begin{table}[H]
-		\caption{nixos-rebuild first target}
+		\caption{nixos-rebuild first target pasca install rerun}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                           \\
 				\hline
-				1                                          & 0m5.128s & 0m0.210s & 0m0.086s \\
+				1                                          & 0m6.881s & 0m0.241s & 0m0.088s \\
 				\hline
-				2                                          & 0m4.186s & 0m0.229s & 0m0.073s \\
+				2                                          & 0m3.998s & 0m0.223s & 0m0.088s \\
 				\hline
-				3                                          & 0m2.774s & 0m0.228s & 0m0.076s \\
+				3                                          & 0m2.899s & 0m0.227s & 0m0.086s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\vspace{-5mm}
 	\begin{table}[H]
-		\caption{nixos-rebuild second target}
+		\caption{nixos-rebuild second target pasca install rerun}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                           \\
 				\hline
-				1                                          & 0m4.870s & 0m0.222s & 0m0.083s \\
+				1                                          & 0m7.471s & 0m0.247s & 0m0.089s \\
 				\hline
-				2                                          & 0m4.222s & 0m0.228s & 0m0.071s \\
+				2                                          & 0m4.524s & 0m0.231s & 0m0.078s \\
 				\hline
-				3                                          & 0m2.765s & 0m0.234s & 0m0.072s \\
+				3                                          & 0m2.802s & 0m0.235s & 0m0.079s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1672,41 +1734,54 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		yang setara dengan nixos-rebuild yang hanya mampu mengkonfigurasi satu target
 		dalam satu waktu.
 	\end{adjustwidth}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{images/ansible/single/ansible-rerun-27-com.png}
+		\end{center}
+		\caption{Ansible first target rerun}
+	\end{figure}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{images/ansible/single/ansible-rerun-28-com.png}
+		\end{center}
+		\caption{Ansible second target rerun}
+	\end{figure}
+
 	\begin{table}[H]
-		\caption{Ansible first target}
+		\caption{Ansible first target rerun}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m16.252s & 0m4.075s & 0m0.997s \\
+				1                                          & 0m16.025s & 0m4.309s & 0m1.108s \\
 				\hline
-				2                                          & 0m12.563s & 0m3.931s & 0m0.921s \\
+				2                                          & 0m15.725s & 0m4.270s & 0m1.122s \\
 				\hline
-				3                                          & 0m13.220s & 0m3.965s & 0m0.975s \\
+				3                                          & 0m15.583s & 0m4.270s & 0m1.096s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\vspace{-5mm}
 	\begin{table}[H]
-		\caption{Ansible first target}
+		\caption{Ansible second target rerun}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m13.381s & 0m4.021s & 0m0.976s \\
+				1                                          & 0m15.709s & 0m4.323s & 0m1.083s \\
 				\hline
-				2                                          & 0m12.683s & 0m3.924s & 0m0.968s \\
+				2                                          & 0m15.445s & 0m4.272s & 0m1.089s \\
 				\hline
-				3                                          & 0m12.958s & 0m3.883s & 0m0.951s \\
+				3                                          & 0m15.491s & 0m4.253s & 0m1.086s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1716,21 +1791,28 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Untuk percobaan Ansible \textit{multi target}, perintah ansible-playbook dijalankan
 		ke dua target secara paralel. Berikut merupakan hasil dari percobaan Ansible \textit{multi target}:
 	\end{adjustwidth}
+	\begin{figure}
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{images/ansible/multi/ansible-rerun-multi-com.png}
+		\end{center}
+		\caption{Ansible multi target rerun}
+	\end{figure}
+
 	\begin{table}[H]
 		\caption{Ansible multi target}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m14.552s & 0m6.628s & 0m1.886s \\
+				1                                          & 0m17.521s & 0m6.973s & 0m2.093s \\
 				\hline
-				2                                          & 0m13.874s & 0m6.402s & 0m1.857s \\
+				2                                          & 0m17.259s & 0m6.898s & 0m2.137s \\
 				\hline
-				3                                          & 0m14.230s & 0m6.501s & 0m1.818s \\
+				3                                          & 0m17.250s & 0m6.837s & 0m2.196s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1761,21 +1843,34 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		master melakukan \textit{build}, master kemudian menyalin hasilnya ke
 		target. Percobaan ini dilakukan berulang sebanyak tiga kali per target.
 	\end{adjustwidth}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{images/nix-target/nix-go-25-com.png}
+		\end{center}
+		\caption{nixos-rebuild first target install Go}
+	\end{figure}
+
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{images/nix-target/nix-go-26-com.png}
+		\end{center}
+		\caption{nixos-rebuild second target install Go}
+	\end{figure}
 	\begin{table}[H]
 		\caption{nixos-rebuild first target}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m50.808s & 0m6.168s & 0m2.358s \\
+				1                                          & 0m39.727s & 0m7.400s & 0m2.589s \\
 				\hline
-				2                                          & 0m46.404s & 0m5.879s & 0m1.860s \\
+				2                                          & 0m38.222s & 0m7.297s & 0m2.637s \\
 				\hline
-				3                                          & 0m36.898s & 0m5.832s & 0m2.003s \\
+				3                                          & 0m40.365s & 0m7.118s & 0m2.905s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1787,15 +1882,15 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m29.654s & 0m5.908s & 0m1.833s \\
+				1                                          & 0m39.300s & 0m7.285s & 0m2.546s \\
 				\hline
-				2                                          & 0m41.280s & 0m7.002s & 0m2.446s \\
+				2                                          & 0m39.190s & 0m7.257s & 0m2.687s \\
 				\hline
-				3                                          & 0m39.303s & 0m6.856s & 0m1.958s \\
+				3                                          & 0m39.117s & 0m7.305s & 0m2.556s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1807,41 +1902,55 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		didapatkan hasil sebagai berikut dengan pertimbangan \textit{bandwidth} dari
 		\textit{master} ke target adalah 1 Gbps.
 	\end{adjustwidth}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{images/nix-target/nix-go-cache-25-com.png}
+		\end{center}
+		\caption{nixos-rebuild first target install Go cache}
+	\end{figure}
+
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{images/nix-target/nix-go-cache-26-com.png}
+		\end{center}
+		\caption{nixos-rebuild second target install Go cache}
+	\end{figure}
+
 	\begin{table}[H]
-		\caption{nixos-rebuild first target}
+		\caption{nixos-rebuild first target install Go cache}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m11.358s & 0m0.483s & 0m0.553s \\
+				1                                          & 0m14.169s & 0m0.476s & 0m0.523s \\
 				\hline
-				2                                          & 0m10.317s & 0m0.512s & 0m0.477s \\
+				2                                          & 0m13.795s & 0m0.505s & 0m0.451s \\
 				\hline
-				3                                          & 0m10.658s & 0m0.486s & 0m0.500s \\
+				3                                          & 0m14.796s & 0m0.485s & 0m0.464s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\vspace{-5mm}
 	\begin{table}[H]
-		\caption{nixos-rebuild second target}
+		\caption{nixos-rebuild second target install Go cache}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m10.730s & 0m0.498s & 0m0.642s \\
+				1                                          & 0m11.527s & 0m0.484s & 0m0.470s \\
 				\hline
-				2                                          & 0m9.745s  & 0m0.455s & 0m0.474s \\
+				2                                          & 0m14.384s & 0m0.492s & 0m0.454s \\
 				\hline
-				3                                          & 0m10.176s & 0m0.488s & 0m0.470s \\
+				3                                          & 0m13.683s & 0m0.481s & 0m0.475s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1866,33 +1975,46 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		target dan setiap sebelum percobaan kondisi VM akan dikembalikan ke
 		\textit{snapshot} pasca install.
 	\end{adjustwidth}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{images/ansible/single/ansible-go-27-com.png}
+		\end{center}
+		\caption{Ansible first target install Go}
+	\end{figure}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{images/ansible/single/ansible-go-28-com.png}
+		\end{center}
+		\caption{Ansible second target install Go}
+	\end{figure}
+
 	\begin{table}[H]
 		\caption{ansible first target}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m31.965s & 0m4.378s & 0m1.145s \\
+				1                                          & 0m34.498s & 0m4.762s & 0m1.237s \\
 				\hline
-				2                                          & 0m23.455s & 0m4.274s & 0m1.025s \\
+				2                                          & 0m26.016s & 0m4.552s & 0m1.165s \\
 				\hline
-				3                                          & 0m24.020s & 0m4.283s & 0m1.003s \\
+				3                                          & 0m26.752s & 0m4.584s & 0m1.180s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\vspace{-5mm}
 	\begin{table}[H]
-		\caption{ansible first target}
+		\caption{ansible second target}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
@@ -1911,21 +2033,28 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		pada bagian konfigurasi dan \textit{snapshot}. Namun yang membedakan adalah, perintah
 		ansible-playbook dijalankan pada dua target secara paralel. Berikut untuk hasilnya:
 	\end{adjustwidth}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.95\textwidth]{images/ansible/multi/ansible-go-multi-com.png}
+		\end{center}
+		\caption{Ansible multi target install Go}
+	\end{figure}
+
 	\begin{table}[H]
-		\caption{ansible multi target}
+		\caption{Ansible multi target install Go}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m33.164s & 0m6.848s & 0m2.088s \\
+				1                                          & 0m29.149s & 0m7.147s & 0m2.230s \\
 				\hline
-				2                                          & 0m32.873s & 0m7.054s & 0m2.088s \\
+				2                                          & 0m33.052s & 0m7.427s & 0m2.308s \\
 				\hline
-				3                                          & 0m36.413s & 0m7.368s & 0m2.129s \\
+				3                                          & 0m33.041s & 0m7.393s & 0m2.407s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -1951,41 +2080,54 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Perintah nixos-rebuild kemudian dijalankan pada masing-masing target sebanyak tiga
 		kali dan hasilnya sebagai berikut:
 	\end{adjustwidth}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{images/nix-target/nix-remove-go-25-com.png}
+		\end{center}
+		\caption{nixos-rebuild first target uninstall Go}
+	\end{figure}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.8\textwidth]{images/nix-target/nix-remove-go-26-com.png}
+		\end{center}
+		\caption{nixos-rebuild second target uninstall Go}
+	\end{figure}
+
 	\begin{table}[H]
-		\caption{nixos-rebuild first target}
+		\caption{nixos-rebuild first target uninstall Go}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                           \\
 				\hline
-				1                                          & 0m3.007s & 0m0.219s & 0m0.078s \\
+				1                                          & 0m3.299s & 0m0.236s & 0m0.072s \\
 				\hline
-				2                                          & 0m2.918s & 0m0.219s & 0m0.085s \\
+				2                                          & 0m3.088s & 0m0.231s & 0m0.080s \\
 				\hline
-				3                                          & 0m3.190s & 0m0.218s & 0m0.088s \\
+				3                                          & 0m2.886s & 0m0.224s & 0m0.092s \\
 				\hline
 			\end{tabular}
 		\end{center}
 	\end{table}
 	\vspace{-5mm}
 	\begin{table}[H]
-		\caption{nixos-rebuild second target}
+		\caption{nixos-rebuild second target uninstall Go}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                           \\
 				\hline
-				1                                          & 0m2.859s & 0m0.218s & 0m0.083s \\
+				1                                          & 0m3.046s & 0m0.241s & 0m0.068s \\
 				\hline
-				2                                          & 0m2.582s & 0m0.232s & 0m0.067s \\
+				2                                          & 0m2.913s & 0m0.233s & 0m0.082s \\
 				\hline
-				3                                          & 0m2.929s & 0m0.219s & 0m0.081s \\
+				3                                          & 0m2.819s & 0m0.229s & 0m0.082s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -2008,21 +2150,34 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\caption{Konfigurasi penghapusan paket Go pada Ansible}
 		\end{code}
 	\end{adjustwidth}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.95\textwidth]{images/ansible/single/ansible-go-remove-27-com.png}
+		\end{center}
+		\caption{Ansible first target uninstall Go}
+	\end{figure}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.95\textwidth]{images/ansible/single/ansible-go-remove-28-com.png}
+		\end{center}
+		\caption{Ansible second target uninstall Go}
+	\end{figure}
+
 	\begin{table}[H]
 		\caption{ansible first target}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m15.627s & 0m3.954s & 0m0.988s \\
+				1                                          & 0m18.857s & 0m4.435s & 0m1.113s \\
 				\hline
-				2                                          & 0m15.153s & 0m3.928s & 0m0.960s \\
+				2                                          & 0m19.608s & 0m4.435s & 0m1.145s \\
 				\hline
-				3                                          & 0m15.504s & 0m3.925s & 0m0.979s \\
+				3                                          & 0m18.670s & 0m4.413s & 0m1.162s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -2034,15 +2189,15 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m16.187s & 0m4.021s & 0m1.028s \\
+				1                                          & 0m18.791s & 0m4.336s & 0m1.113s \\
 				\hline
-				2                                          & 0m15.441s & 0m3.892s & 0m1.019s \\
+				2                                          & 0m18.861s & 0m4.348s & 0m1.133s \\
 				\hline
-				3                                          & 0m15.391s & 0m3.925s & 0m0.989s \\
+				3                                          & 0m18.893s & 0m4.417s & 0m1.090s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -2054,21 +2209,27 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		adalah sebanyak dua target dalam percobaan ini. Berikut adalah hasil dari percobaan
 		ini:
 	\end{adjustwidth}
+	\begin{figure}[H]
+		\begin{center}
+			\includegraphics[width=0.95\textwidth]{images/ansible/multi/ansible-go-remove-multi-com.png}
+		\end{center}
+		\caption{Ansible multi target uninstall Go}
+	\end{figure}
 	\begin{table}[H]
 		\caption{ansible multi target}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
 				\hline
 				\multicolumn{1}{|c|}{\textbf{Iterasi ke-}} &
-				\multicolumn{1}{|c|}{\textbf{real}}        &
+				\multicolumn{1}{c|}{\textbf{real}}         &
 				\multicolumn{1}{c|}{\textbf{user}}         &
 				\multicolumn{1}{c|}{\textbf{sys}}                                            \\
 				\hline
-				1                                          & 0m17.768s & 0m6.649s & 0m1.986s \\
+				1                                          & 0m20.943s & 0m6.971s & 0m2.246s \\
 				\hline
-				2                                          & 0m17.426s & 0m6.628s & 0m1.950s \\
+				2                                          & 0m22.876s & 0m7.190s & 0m2.225s \\
 				\hline
-				3                                          & 0m18.449s & 0m6.859s & 0m2.088s \\
+				3                                          & 0m21.062s & 0m7.023s & 0m2.289s \\
 				\hline
 			\end{tabular}
 		\end{center}
@@ -2099,8 +2260,8 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				nodes near coords align={vertical},
 				x tick label style={rotate=45,anchor=east},
 			]
-			\addplot  coordinates {(NixOS cache,101.6) (NixOS tanpa cache,215)
-					(Ansible single, 155.3) (Ansible multi, 123.3)};
+			\addplot  coordinates {(NixOS cache,71) (NixOS tanpa cache,209)
+					(Ansible single, 130) (Ansible multi, 205)};
 		\end{axis}
 	\end{tikzpicture}
 	\begin{adjustwidth}{20pt}{}
@@ -2113,6 +2274,17 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Namun apabila NixOS sudah menyimpan cache, maka NixOS hanya perlu menyalin
 		data tersebut ke target dimana kecepatannya bergantung pada koneksi antara
 		\textit{host} dan target.
+
+		Untuk Ansible terutama untuk multi target memang rata-rata waktu lebih lama.
+		Namun melihat hasil yang didapat dari tiga kali percobaan, waktunya sangat
+		fluktuatif dan tidak konsisten.
+		Namun apabila kita tambahkan hasil dari NixOS tanpa cache dengan NixOS
+		dengan cache, maka total dari rata-ratanya adalah 280 detik untuk
+		sekali \textit{build} dan dua kali \textit{copy}.
+		Waktu eksekusi untuk NixOS tentu akan bertambah seiring bertambahnya
+		target yang perlu di konfigurasi pada satu waktu. Berbeda dengan Ansible yang
+		dapat bekerja secara paralel.
+
 	\end{adjustwidth}
 	\subsubsection{Penerapan ulang setelah pasca install}
 	\begin{tikzpicture}
@@ -2122,14 +2294,14 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				legend style={at={(0.5,-0.2)},
 						anchor=north,legend columns=-1},
 				ylabel={waktu dalam detik},
-				symbolic x coords={nixos, ansible},
+				symbolic x coords={nixos, ansible-single, ansible-multi},
 				xtick=data,
 				nodes near coords,
 				nodes near coords align={vertical},
 				x tick label style={rotate=45,anchor=east},
 			]
-			\addplot coordinates {(nixos, 4.9)
-					(ansible, 13.45) };
+			\addplot coordinates {(nixos, 4.7)
+					(ansible-single, 15.83) (ansible-multi, 17.34 )};
 		\end{axis}
 	\end{tikzpicture}
 	\begin{adjustwidth}{20pt}{}
@@ -2152,12 +2324,13 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				nodes near coords align={vertical},
 				x tick label style={rotate=45,anchor=east},
 			]
-			\addplot coordinates {(nixos cache, 10.4 )(nixos tanpa cache, 40.6)
-					(ansible single, 26.2) (ansible multi, 34.1 ) };
+			\addplot coordinates {(nixos cache, 13.72)(nixos tanpa cache, 39.32)
+					(ansible single, 27.82) (ansible multi, 31.74 ) };
 		\end{axis}
 	\end{tikzpicture}
 	\begin{adjustwidth}{20pt}{}
-
+		Pada grafik diatas, dapat dilihat lagi-lagi NixOS dengan cache lebih unggul
+		untuk kasus penambahan paket GO untuk satu target.
 	\end{adjustwidth}
 	\subsubsection{Penghapusan paket GO}
 	\begin{tikzpicture}
@@ -2173,10 +2346,17 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 				nodes near coords align={vertical},
 				x tick label style={rotate=45,anchor=east},
 			]
-			\addplot coordinates {(NixOS, 2.8)
-					(Ansible single, 15.5) (Ansible multi,17.6)};
+			\addplot coordinates {(NixOS, 3)
+					(Ansible single, 18.9) (Ansible multi, 21.06)};
 		\end{axis}
 	\end{tikzpicture}
+	\begin{adjustwidth}{20pt}{}
+		Pada grafik diatas dapat terlihat bahwa untuk menghapus paket, NixOS
+		lebih cepat daripada Ansible. Ini disebabkan karena NixOS tidak langsung menghapus
+		paket dari sistem, melainkan hanya mengapus \textit{symlink}. Binary tetap
+		disimpan apabila di kemudian hari paket dibutuhkan untuk diinstall kembali.
+		NixOS hanya menghapus paket apabila \textit{garbage collector} di eksekusi.
+	\end{adjustwidth}
 	\subsection{Deklaratif dan Imperatif}
 	\begin{adjustwidth}{20pt}{}
 		Dalam percobaan diatas, terdapat beberapa hal yang ditemui oleh penguji tentang
@@ -2193,6 +2373,84 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		berjalan pada sistem. Apabila kita menghapus pendeskripsian Nginx dari file konfigurasi,
 		maka Nginx tidak akan berjalan. Metode inilah yang disebut dengan Deklaratif oleh
 		NixOS.
+
+		Sebagai berikut contohnya:
+		\begin{code}
+			\begin{minted}{nix}
+        {
+        imports = [
+        # Include the results of the hardware scan.
+        ./hardware-configuration.nix
+        ./vim.nix
+        inputs.home-manager.nixosModules.home-manager
+        ./nginx.nix
+        ];
+        }
+      \end{minted}
+		\end{code}
+		Maka Nginx akan di konfigurasi dan berjalan di sistem target seperti berikut:
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{images/nix-nginx.png}
+			\end{center}
+			\caption{Nix Nginx enable}
+		\end{figure}
+
+		Dan apabila kita ubah sebagai berikut:
+		\begin{code}
+			\begin{minted}{nix}
+        {
+        imports = [
+        # Include the results of the hardware scan.
+        ./hardware-configuration.nix
+        ./vim.nix
+        inputs.home-manager.nixosModules.home-manager
+        # ./nginx.nix
+        ];
+        }
+      \end{minted}
+		\end{code}
+		Maka hasilnya akan seperti berikut dimana bahkan \textit{service} Nginx
+		dihapus dari sistem.
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{images/nix-nginx-removed.png}
+			\end{center}
+			\caption{Nix Nginx removed}
+		\end{figure}
+
+		Sedangkan untuk Ansible:
+		\begin{code}
+			\begin{minted}{yaml}
+    tasks:
+    - name: install packages
+      ansible.builtin.apt:
+        pkg:
+          - nginx
+    tasks: 
+    - name: enable nginx
+      ansible.builtin.service:
+        name: nginx
+        state: restarted
+      \end{minted}
+		\end{code}
+		Maka hasilnya akan sebagai berikut:
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=0.8\textwidth]{images/ansible-nginx.png}
+			\end{center}
+			\caption{Enable nginx}
+		\end{figure}
+		Dan apabila baris diatas kita beri komentar didepannya, maka hasilnya
+		sebagai berikut:
+		\begin{figure}
+			\begin{center}
+				\includegraphics[width=0.95\textwidth]{images/ansible-nginx-2.png}
+			\end{center}
+			\caption{Nginx masih berjalan}
+		\end{figure}
+		Hanya jika kita mengganti state dari "enable nginx" ke "stopped" dan mendefinisikan
+		"state" dari pkg Nginx ke "absent" barulah Nginx dihentikan dan dihapus dari sistem.
 	\end{adjustwidth}
 \end{adjustwidth}
 % bab V

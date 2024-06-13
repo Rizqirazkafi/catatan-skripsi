@@ -69,6 +69,21 @@ time { nixos-rebuild --flake .#nixos-vm --target-host root@192.168.100.26 switch
 0m39.190s | 0m7.257s | 0m2.687s
 0m39.117s | 0m7.305s | 0m2.556s
 
+## Install go cache
+192.168.100.25
+|real | user | sys|
+|-----|------|----|
+0m14.169s | 0m0.476s | 0m0.523s
+0m13.795s | 0m0.505s | 0m0.451s
+0m14.796s | 0m0.485s | 0m0.464s
+
+192.168.100.26
+|real | user | sys|
+|-----|------|----|
+0m11.527s | 0m0.484s | 0m0.470s
+0m14.384s | 0m0.492s | 0m0.454s
+0m13.683s | 0m0.481s | 0m0.475s
+
 ## Uninstall go
 
 192.168.100.26
