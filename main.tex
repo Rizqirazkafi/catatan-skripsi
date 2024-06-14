@@ -292,7 +292,10 @@
 	Namun dari segi deklaratif, NixOS terbukti lebih deklaratif karena semua yang
 	ada dalam konfigurasi di manifestasi dalam sistem. Berbeda dengan Ansible
 	yang hanya mengerjakan apa yang ada dalam Ansible Playbook dan tidak menjadi
-	manifestasi dari sistem.
+	manifestasi dari sistem. Pada sisi lain, Ansible terbukti lebih cepat dan
+	efektif apabila mengkonfigurasi sistem lebih dari satu karena Ansible memiliki
+	kemampuan paralelisasi sedangkan NixOS dengan nixos-rebuild belum mampu
+	melakukan paralelisasi.
 	\medskip
 
 	\noindent\textbf{Kata Kunci} - Ansible, NixOS, \textit{declarative}, \textit{imperative},
@@ -327,13 +330,18 @@
 	system configuration management operating system, especially for
 	GNU/Linux-based operating systems. Ansible and NixOS are two of the many
 	choices for operating system management. to do operating system management.
-	Both have goal of easing the configuration management process and ensure the
-	desired end result will be the same every time execution. As a configuration
-	management tool, Ansible has faster execution time than NixOS with
-	nixos-rebuild. However, from a declarative point of view, NixOS proved to be
-	more declarative because everything in the configuration is manifested in the
-	system. Unlike Ansible which only does what is in the Ansible Playbook and
-	does not become a manifestation of the system. manifestation of the system.
+	Both have the goal of facilitating the configuration management process and
+	ensure the desired end result will be the same every time execution. As a
+	configuration management tool, Ansible has a faster execution time than NixOS
+	with nixos-rebuild. However, from a declarative point of view, NixOS proved
+	to be to be more declarative because everything in the configuration is is
+	manifested in the system. Unlike Ansible which only does what is in the
+	Ansible Playbook and does not manifest in the system. and does not become a
+	manifestation of the system. On the other hand, Ansible proves to be faster
+	and more effective when configuring more than one system because Ansible has
+	the ability to configure more than one system because Ansible has the ability
+	to parallelize parallelization capabilities whereas NixOS with nixos-rebuild
+	is not yet capable of parallelization.
 
 	\medskip
 
@@ -2357,6 +2365,31 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		disimpan apabila di kemudian hari paket dibutuhkan untuk diinstall kembali.
 		NixOS hanya menghapus paket apabila \textit{garbage collector} di eksekusi.
 	\end{adjustwidth}
+	\subsection{Hasil Konfigurasi}
+	\subsubsection{NixOS}
+	\begin{adjustwidth}{20pt}{}
+		Dapat dilihat bahwa NixOS berhasil mengkonfigurasi target dengan paket dan
+		konfigurasi \textit{service} seperti Nginx dan SSH.
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.95\textwidth]{images/nix-result/result-full-nix.png}
+			\end{center}
+			\caption{Hasil konfigurasi NixOS}
+		\end{figure}
+	\end{adjustwidth}
+	\subsubsection{Ansible}
+	\begin{adjustwidth}{20pt}{}
+		Hasil dari Ansible juga menunjukkan bahwa Ansible mampu mengkonfigurasi
+		Ubuntu Server sesuai dengan konfigurasi dari keinginan penulis seperti
+		dibawah ini
+		\begin{figure}[H]
+			\begin{center}
+				\includegraphics[width=0.95\textwidth]{images/ansible-result/ansible-result-full.png}
+			\end{center}
+			\caption{Hasil konfigurasi Ansible}
+		\end{figure}
+
+	\end{adjustwidth}
 	\subsection{Deklaratif dan Imperatif}
 	\begin{adjustwidth}{20pt}{}
 		Dalam percobaan diatas, terdapat beberapa hal yang ditemui oleh penguji tentang
@@ -2412,7 +2445,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\end{code}
 		Maka hasilnya akan seperti berikut dimana bahkan \textit{service} Nginx
 		dihapus dari sistem.
-		\begin{figure}
+		\begin{figure}[H]
 			\begin{center}
 				\includegraphics[width=0.8\textwidth]{images/nix-nginx-removed.png}
 			\end{center}
@@ -2435,7 +2468,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
       \end{minted}
 		\end{code}
 		Maka hasilnya akan sebagai berikut:
-		\begin{figure}
+		\begin{figure}[H]
 			\begin{center}
 				\includegraphics[width=0.8\textwidth]{images/ansible-nginx.png}
 			\end{center}
@@ -2443,7 +2476,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\end{figure}
 		Dan apabila baris diatas kita beri komentar didepannya, maka hasilnya
 		sebagai berikut:
-		\begin{figure}
+		\begin{figure}[H]
 			\begin{center}
 				\includegraphics[width=0.95\textwidth]{images/ansible-nginx-2.png}
 			\end{center}
