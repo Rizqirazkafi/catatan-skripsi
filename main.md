@@ -62,6 +62,9 @@ Ansible merupakan
 * Doesn't really tell the whole system state
 * When old playbook deleted, the configuration state still exist on the system
 
+## ToDo
+* Add more test to NixOS pasca Install
+
 
 
 

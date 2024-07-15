@@ -1,4 +1,4 @@
-\documentclass[10pt,]{report}
+\documentclass[10pt,twoside]{report}
 \usepackage[utf8]{inputenc}
 \usepackage{pxfonts} 
 \usepackage{graphicx} 
@@ -20,6 +20,7 @@
 \usepackage{hyperref}
 \usepackage{titletoc}
 \usepackage{tocloft}
+\usepackage{fancyhdr}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepackage{textcomp}
@@ -157,109 +158,6 @@
 		\medskip
 		2024}
 \end{center}
-\chapter*{HALAMAN PERSETUJUAN SKRIPSI}
-\begin{adjustwidth}{0.0cm}{}
-	\begin{tabular}{@{}lcp{0.6\linewidth}}
-		Nama Mahasiswa & : & M. Rizqi R                                    \\
-		NIM            & : & 20051204034                                   \\
-		Judul          & : & PERBANDINGAN WAKTU EKSEKUSI OTOMASI MANAJEMEN
-		KONFIGURASI SISTEM OPERASI GNU/LINUX ANTARA ANSIBLE DENGAN NIXOS   \\
-	\end{tabular}
-
-	\vspace{1cm}
-	\noindent
-	Ini telah disetujui dan dinyatakan memenuhi syarat untuk dilakukan penelitian.\\
-
-	\vspace{5cm}
-
-	\noindent
-	Surabaya, 11 Juni 2024\\
-	Dosen Pembimbing,\\
-	\vspace{2cm}
-
-	\noindent
-	Agus Prihanto, S.T., M.Kom. \\
-	NIP. 197908062006041001\\
-
-\end{adjustwidth}
-\newpage
-\chapter*{HALAMAN PENGESAHAN}
-\begin{adjustwidth}{0pt}{}
-	\begin{tabular}{@{}lcp{0.7\linewidth}}
-		Skripsi Oleh & : & M. Rizqi R                                                 \\
-		NIM          & : & 20051204034                                                \\
-		Judul        & : & \raggedright Perbandingan Waktu Eksekusi Otomasi Manajemen
-		Konfigurasi Sistem Operasi GNU/Linux Antara Ansible dengan NixOS              \\
-	\end{tabular}
-
-	\noindent Ini telah dipertahankan dihadapan dewan penguji pada tanggal 6 Juni 2024 \\
-\end{adjustwidth}
-\chapter*{SURAT PERNYATAAN KEORISINILAN SKRIPSI}
-\begin{adjustwidth}{0pt}{}
-
-	Yang bertandatangan dibawah ini:\\
-
-	\noindent
-	\begin{tabular}{@{}lcp{0.5\linewidth}}
-		Nama Mahasiswa           & : & M. Rizqi R                                                                                    \\
-		Tempat, Tangal Lahir     & : & Sidoarjo, 31 Juli 2001                                                                        \\
-		NIM                      & : & 20051204034                                                                                   \\
-		Program Studi / Angkatan & : & S1 Teknik Informatika                                                                         \\
-		Alamat                   & : & \raggedright WADUNGASIH, RT/RW 005/002 DESA WADUNGASIH, KECAMATAN BUDURAN, KABUPATEN SIDOARJO \\
-	\end{tabular}
-
-	\noindent
-	Menyatakan dengan sesungguhnya bahwa:
-	\begin{enumerate}
-		\item Skripsi yang ditulis dan diajukan ini benar-benar merupakan hasil
-		      karya saya sendiri (tidak berdiri berdasarkan pada data palsu, dan atau
-		      hasil plagiasi atau jiplakan atau autoplagiasi.
-		\item Apabila pada kemudian hari terbukti bahwa pernyataan saya tidak
-		      benar, maka saya akan menanggung segala resiko dan siap diperkarakan
-		      sesuai aturan yang berlaku.
-	\end{enumerate}
-
-	\noindent
-	Demikianlah surat pernyataan yang saya buat dengan sebenar-benarnya.
-
-	\vspace{1cm}
-
-	\begin{adjustwidth}{170pt}{}
-		\begin{tabular}{@{}l}
-			Surabaya, 11 Juni 2024
-			\vspace{2cm}
-			\\
-			\underline{M. Rizqi R} \\
-			NIM 20051204034        \\
-		\end{tabular}
-	\end{adjustwidth}
-\end{adjustwidth}
-\chapter*{HALAMAN PERSEMBAHAN}
-\begin{adjustwidth}{0pt}{}
-	Skripsi ini saya tujukan dan perembahkan kepada:
-	\begin{enumerate}
-		\item Allah SWT, oleh karena rahmat dan hidayah-Nya, serta segala
-		      kenikamatan duniawi sehingga skripsi ini dapat ditulis dan disusun dengan
-		      baik dan selesai pada waktunya.
-		\item Orang tua terkasih, Bapak Wahyu Diarto dan Ibu Elmi Solichah yang
-		      selalu mendukung peneliti dalam segala aspek terutama menempuh
-		      pendidikan.
-		\item Adik-adik peneliti, yaitu M. Hilman AS dan Anis Wahyu yang secara
-		      tidak langsung memberi hiburan kepada peneliti ketika pulang ke rumah.
-		\item Teman-teman Asisten Laboratorium Jaringan Komputer dan Asisten
-		      Laboratorium Sistem Informasi, terutama Dani Maulana Ferdiansyah, Jerry
-		      Yan Krismanto, Firdaus Bagus Wicaksono, serta anggota Aslab lain yang
-		      membantu peneliti baik dalam proses penelitian maupun pemberkasan.
-		\item Rekan selingkup Teknik Informatika, khususnya Ahmad Fikry Husaini,
-		      Dito Arya Saputra, Mochammad Subhan Zuliananta, Richardo Sinulingga yang
-		      telah menemani peneliti bermain game saat jenuh.
-		\item Vimjoyer dan IogaMaster atas channel YouTube dan forum Discord yang
-		      telah membantu dalam mempelajari NixOS
-		\item Diri sendiri, yang selalu mencoba untuk bangkit kembali dari
-		      kemalasan untuk mengerjakan skripsi sehingga dapat lulus tepat waktu dan
-		      tidak membayar UKT untuk penambahan semester.
-	\end{enumerate}
-\end{adjustwidth}
 \chapter*{ABSTRAK}
 \begin{adjustwidth}{0.0cm}{}
 	\begin{center}
@@ -349,12 +247,133 @@
 	Configuration Management
 	\addcontentsline{toc}{chapter}{\textbf{ABSTRACT}}
 \end{adjustwidth}
+\chapter*{SURAT PERNYATAAN KEORISINILAN SKRIPSI}
+\begin{adjustwidth}{0pt}{}
+
+	Yang bertandatangan dibawah ini:\\
+
+	\noindent
+	\begin{tabular}{@{}lcp{0.5\linewidth}}
+		Nama Mahasiswa           & : & M. Rizqi R                                                                                    \\
+		Tempat, Tangal Lahir     & : & Sidoarjo, 31 Juli 2001                                                                        \\
+		NIM                      & : & 20051204034                                                                                   \\
+		Program Studi / Angkatan & : & S1 Teknik Informatika                                                                         \\
+		Alamat                   & : & \raggedright WADUNGASIH, RT/RW 005/002 DESA WADUNGASIH, KECAMATAN BUDURAN, KABUPATEN SIDOARJO \\
+	\end{tabular}
+
+	\noindent
+	Menyatakan dengan sesungguhnya bahwa:
+	\begin{enumerate}
+		\item Skripsi yang ditulis dan diajukan ini benar-benar merupakan hasil
+		      karya saya sendiri (tidak berdiri berdasarkan pada data palsu, dan atau
+		      hasil plagiasi atau jiplakan atau autoplagiasi.
+		\item Apabila pada kemudian hari terbukti bahwa pernyataan saya tidak
+		      benar, maka saya akan menanggung segala resiko dan siap diperkarakan
+		      sesuai aturan yang berlaku.
+	\end{enumerate}
+
+	\noindent
+	Demikianlah surat pernyataan yang saya buat dengan sebenar-benarnya.
+
+	\vspace{0.5cm}
+
+	\begin{adjustwidth}{170pt}{}
+		\begin{tabular}{@{}l}
+			Surabaya, 11 Juni 2024
+			\vspace{2.5cm}
+			\\
+			\underline{M. Rizqi R} \\
+			NIM 20051204034        \\
+		\end{tabular}
+	\end{adjustwidth}
+\end{adjustwidth}
+\chapter*{HALAMAN PERSETUJUAN SKRIPSI}
+\begin{figure}[H]
+	\hspace{-1cm}
+	\begin{centering}
+		\includegraphics[scale=0.5]{images/Halaman Persetujuan Penilaian.jpg};
+	\end{centering}
+\end{figure}
+\clearpage
+% \chapter*{HALAMAN PERSETUJUAN SKRIPSI}
+% \begin{adjustwidth}{0.0cm}{}
+% 	\begin{tabular}{@{}lcp{0.6\linewidth}}
+% 		Nama Mahasiswa & : & M. Rizqi R                                    \\
+% 		NIM            & : & 20051204034                                   \\
+% 		Judul          & : & PERBANDINGAN WAKTU EKSEKUSI OTOMASI MANAJEMEN
+% 		KONFIGURASI SISTEM OPERASI GNU/LINUX ANTARA ANSIBLE DENGAN NIXOS   \\
+% 	\end{tabular}
+%
+% 	\vspace{1cm}
+% 	\noindent
+% 	Ini telah disetujui dan dinyatakan memenuhi syarat untuk dilakukan penelitian.\\
+%
+% 	\vspace{5cm}
+%
+% 	\noindent
+% 	Surabaya, 11 Juni 2024\\
+% 	Dosen Pembimbing,\\
+% 	\vspace{2cm}
+%
+% 	\noindent
+% 	Agus Prihanto, S.T., M.Kom. \\
+% 	NIP. 197908062006041001\\
+%
+% \end{adjustwidth}
+\newpage
+\chapter*{HALAMAN PENGESAHAN}
+\begin{adjustwidth}{0pt}{}
+	\begin{tabular}{@{}lcp{0.7\linewidth}}
+		Skripsi Oleh & : & M. Rizqi R                                                 \\
+		NIM          & : & 20051204034                                                \\
+		Judul        & : & \raggedright Perbandingan Waktu Eksekusi Otomasi Manajemen
+		Konfigurasi Sistem Operasi GNU/Linux Antara Ansible dengan NixOS              \\
+	\end{tabular}
+
+	\noindent Ini telah dipertahankan dihadapan dewan penguji pada tanggal 6 Juni 2024 \\
+\end{adjustwidth}
+\chapter*{HALAMAN PERSEMBAHAN}
+\begin{adjustwidth}{0pt}{}
+	Skripsi ini saya tujukan dan perembahkan kepada:
+	\begin{enumerate}
+		\item Allah SWT, oleh karena rahmat dan hidayah-Nya, serta segala
+		      kenikamatan duniawi sehingga skripsi ini dapat ditulis dan disusun dengan
+		      baik dan selesai pada waktunya.
+		\item Orang tua terkasih, Bapak Wahyu Diarto dan Ibu Elmi Solichah yang
+		      selalu mendukung peneliti dalam segala aspek terutama menempuh
+		      pendidikan.
+		\item Adik-adik peneliti, yaitu M. Hilman AS dan Anis Wahyu yang secara
+		      tidak langsung memberi hiburan kepada peneliti ketika pulang ke rumah.
+		\item Teman-teman Asisten Laboratorium Jaringan Komputer dan Asisten
+		      Laboratorium Sistem Informasi, terutama Dani Maulana Ferdiansyah, Jerry
+		      Yan Krismanto, Firdaus Bagus Wicaksono, serta anggota Aslab lain yang
+		      membantu peneliti baik dalam proses penelitian maupun pemberkasan.
+		\item Rekan selingkup Teknik Informatika, khususnya Ahmad Fikry Husaini,
+		      Dito Arya Saputra, Mochammad Subhan Zuliananta, Richardo Sinulingga yang
+		      telah menemani peneliti bermain game saat jenuh.
+		\item Vimjoyer dan IogaMaster atas channel YouTube dan forum Discord yang
+		      telah membantu dalam mempelajari NixOS
+		\item Diri sendiri, yang selalu mencoba untuk bangkit kembali dari
+		      kemalasan untuk mengerjakan skripsi sehingga dapat lulus tepat waktu dan
+		      tidak membayar UKT untuk penambahan semester.
+	\end{enumerate}
+\end{adjustwidth}
+\newpage
 \tableofcontents
 \newpage
 \listoftables
 \newpage
 \listoffigures
 % bab I
+\fancypagestyle{mystyle}{
+	\fancyhf{} % Clear all header and footer fields
+	\fancyhead[LO]{\thepage} % Odd page numbers on the left
+	\fancyhead[RE]{\thepage} % Even page numbers on the right
+	\renewcommand{\headrulewidth}{0pt} % Remove the header line
+	\renewcommand{\marginparwidth}{0pt}
+	\renewcommand{\marginparsep}{-10pt}
+}
+\pagestyle{mystyle}
 \chapter{PENDAHULUAN}
 \pagenumbering{arabic}
 \section{Latar Belakang}
@@ -769,8 +788,8 @@ yang telah ditentukan sebelumnya.\\
 		mengetahui kecepatan penerapan konfigurasi dan konsistensi \textit{tool} manajemen
 		konfigurasi.Untuk mengetahui waktu yang dibutuhkan oleh \textit{tool} manajemen
 		konfigurasi untuk menerapkan konfigurasi, akan digunakan perintah “time”.
-		Untuk mengetahui konsistensi penerapan, akan dilihat berdasarkan versi
-		paket yang di install dalam rentan waktu yang berbeda.
+		Untuk mengetahui konsistensi penerapan, akan dilihat dari hasil akhir konfigurasi
+		setelah diterapkan secara berulang.
 	\end{adjustwidth}
 \end{adjustwidth}
 
@@ -1132,7 +1151,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Untuk struktur konfigurasi target yang digunakan adalah sebagai berikut:
 		\begin{figure}[H]
 			\centering
-			\includegraphics[width=0.4\textwidth]{images/directory-tree.png}
+			\includegraphics[width=0.6\textwidth]{images/nix-tree.png}
 			\caption{Directory-tree}
 		\end{figure}
 
