@@ -62,6 +62,12 @@
 \renewcommand{\cftaftertoctitle}{\hfill} % Center align "List of Figures" title
 \renewcommand{\cftafterloftitle}{\hfill} % Center align "List of Figures" title
 \renewcommand{\cftafterlottitle}{\hfill} % Center align "Tables Overview" title
+\setlength{\cftbeforetoctitleskip}{0pt}
+\setlength{\cftaftertoctitleskip}{0pt}
+\setlength{\cftbeforelottitleskip}{0pt}
+\setlength{\cftafterlottitleskip}{0pt}
+\setlength{\cftbeforeloftitleskip}{0pt}
+\setlength{\cftafterloftitleskip}{0pt}
 \titleformat{\section}[block]{\normalfont\bfseries\fontsize{12}{12}}{\makebox[1em][l]{\thesection.}}{10pt}{\fontsize{10}{10}\selectfont}
 \titleformat{\subsection}[block]{\normalfont\fontsize{12}{12}}{\makebox[1em][l]{\thesubsection.}}{10pt}{\fontsize{10}{10}\selectfont}
 \titleformat{\subsubsection}[block]{\normalfont\fontsize{12}{12}}{\makebox[1em][l]{\thesubsection.\thesubsubsection.}}{10pt}{\fontsize{10}{10}\selectfont}
@@ -185,15 +191,17 @@
 	operasi berbasis GNU/Linux. Ansible dan NixOS menjadi dua dari banyak pilihan
 	untuk melakukan manajemen sistem operasi. Keduanya memiliki tujuan memudahkan
 	proses manajemen konfigurasi dan memastikan hasil akhir yang diinginkan akan
-	sama setiap kali eksekusi. Sebagai \textit{tool} manajemen konfigurasi,
-	Ansible memiliki waktu eksekusi lebih cepat dari NixOS dengan nixos-rebuild.
-	Namun dari segi deklaratif, NixOS terbukti lebih deklaratif karena semua yang
-	ada dalam konfigurasi di manifestasi dalam sistem. Berbeda dengan Ansible
-	yang hanya mengerjakan apa yang ada dalam Ansible Playbook dan tidak menjadi
-	manifestasi dari sistem. Pada sisi lain, Ansible terbukti lebih cepat dan
-	efektif apabila mengkonfigurasi sistem lebih dari satu karena Ansible memiliki
-	kemampuan paralelisasi sedangkan NixOS dengan nixos-rebuild belum mampu
-	melakukan paralelisasi.
+	sama setiap kali eksekusi.
+
+	Sebagai \textit{tool} manajemen konfigurasi, Ansible memiliki waktu eksekusi
+	lebih cepat dari NixOS dengan nixos-rebuild. Namun dari segi deklaratif,
+	NixOS terbukti lebih deklaratif karena semua yang ada dalam konfigurasi di
+	manifestasi dalam sistem. Berbeda dengan Ansible yang hanya mengerjakan apa
+	yang ada dalam Ansible Playbook dan tidak menjadi manifestasi dari sistem.
+	Pada sisi lain, Ansible terbukti lebih cepat dan efektif apabila
+	mengkonfigurasi sistem lebih dari satu karena Ansible memiliki kemampuan
+	paralelisasi sedangkan NixOS dengan nixos-rebuild belum mampu melakukan
+	paralelisasi.
 	\medskip
 
 	\noindent\textbf{Kata Kunci} - Ansible, NixOS, \textit{declarative}, \textit{imperative},
@@ -229,11 +237,12 @@
 	GNU/Linux-based operating systems. Ansible and NixOS are two of the many
 	choices for operating system management. to do operating system management.
 	Both have the goal of facilitating the configuration management process and
-	ensure the desired end result will be the same every time execution. As a
-	configuration management tool, Ansible has a faster execution time than NixOS
-	with nixos-rebuild. However, from a declarative point of view, NixOS proved
-	to be to be more declarative because everything in the configuration is is
-	manifested in the system. Unlike Ansible which only does what is in the
+	ensure the desired end result will be the same every time execution.
+
+	As a configuration management tool, Ansible has a faster execution time than
+	NixOS with nixos-rebuild. However, from a declarative point of view, NixOS
+	proved to be to be more declarative because everything in the configuration
+	is is manifested in the system. Unlike Ansible which only does what is in the
 	Ansible Playbook and does not manifest in the system. and does not become a
 	manifestation of the system. On the other hand, Ansible proves to be faster
 	and more effective when configuring more than one system because Ansible has
@@ -365,6 +374,7 @@
 \newpage
 \listoffigures
 % bab I
+
 \fancypagestyle{mystyle}{
 	\fancyhf{} % Clear all header and footer fields
 	\fancyhead[LO]{\thepage} % Odd page numbers on the left
@@ -373,8 +383,8 @@
 	\renewcommand{\marginparwidth}{0pt}
 	\renewcommand{\marginparsep}{-10pt}
 }
-\pagestyle{mystyle}
 \chapter{PENDAHULUAN}
+\pagestyle{mystyle}
 \pagenumbering{arabic}
 \section{Latar Belakang}
 \begin{adjustwidth}{0.70cm}{}
