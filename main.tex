@@ -21,6 +21,9 @@
 \usepackage{titletoc}
 \usepackage{tocloft}
 \usepackage{fancyhdr}
+\usepackage{setspace}
+\usepackage{supertabular}
+\setstretch{1.2}
 \usepackage{pgfplots}
 \pgfplotsset{compat=1.18}
 \usepackage{textcomp}
@@ -35,13 +38,16 @@
 \usepackage[backend=biber,style=apa, ]{biblatex}
 \usepackage[nottoc,numbib]{tocbibind}
 \tolerance=10000
-\renewcommand\arraystretch{1.3}
+% \renewcommand\arraystretch{1.3}
 \sloppy \graphicspath{{images/}}
 \addbibresource{bibliography/reference.bib}
 \apptocmd{\bibsetup}{\emergencystretch=1em}{}{}
-\usepackage[a5paper, left=2.3cm, right=2cm, top=2.3cm, bottom=2cm, bindingoffset=20pt]{geometry}
+\usepackage[a5paper, left=2.3cm, right=2cm, top=2.3cm, bottom=2cm]{geometry}
 \titleformat{\chapter}[display]{\centering\normalfont\fontsize{12}{12}\selectfont\bfseries}{\thechapter}{12pt}{\fontsize{12}{12}\selectfont}
 \titlespacing*{\chapter}{0pt}{0pt}{10pt}
+\titlespacing*{\section}{0pt}{0pt}{0pt}
+\titlespacing*{\subsection}{0pt}{0pt}{0pt}
+\titlespacing*{\subsubsection}{0pt}{0pt}{0pt}
 \renewcommand\thesection{\Alph{section}}
 \renewcommand\thesubsection{\arabic{subsection}}
 \renewcommand\thesubsubsection{\alph{subsubsection}}
@@ -68,9 +74,9 @@
 \setlength{\cftafterlottitleskip}{0pt}
 \setlength{\cftbeforeloftitleskip}{0pt}
 \setlength{\cftafterloftitleskip}{0pt}
-\titleformat{\section}[block]{\normalfont\bfseries\fontsize{12}{12}}{\makebox[1em][l]{\thesection.}}{10pt}{\fontsize{10}{10}\selectfont}
-\titleformat{\subsection}[block]{\normalfont\fontsize{12}{12}}{\makebox[1em][l]{\thesubsection.}}{10pt}{\fontsize{10}{10}\selectfont}
-\titleformat{\subsubsection}[block]{\normalfont\fontsize{12}{12}}{\makebox[1em][l]{\thesubsection.\thesubsubsection.}}{10pt}{\fontsize{10}{10}\selectfont}
+\titleformat{\section}[block]{\normalfont\bfseries}{\makebox[1em][l]{\thesection.}}{10pt}{\fontsize{10}{0}\selectfont}
+\titleformat{\subsection}[block]{\normalfont}{\makebox[1em][l]{\thesubsection.}}{10pt}{\fontsize{10}{0}\selectfont}
+\titleformat{\subsubsection}[block]{\normalfont}{\makebox[1em][l]{\thesubsection.\thesubsubsection.}}{10pt}{\fontsize{10}{0}}
 \titleformat{\chapter}[block]
 {\normalfont\bfseries\filcenter}
 {BAB \Roman{chapter} \break}
@@ -82,7 +88,6 @@
   \section*{#1}% Membuat section tanpa nomor
   \addcontentsline{toc}{chapter}{\protect\numberline{\thesection}#1}% Opsi untuk menambahkan ke ToC
 }
-\titlespacing*{\section}{0pt}{0pt}{10pt}
 \DeclareCaptionFormat{custom}
 {
   \textit{#1#2#3}
@@ -124,7 +129,7 @@
 % 	Waktu Eksekusi Otomasi Manajemen Konfigurasi Sistem Operasi GNU/Linux Antara Ansible dengan NixOS” ini
 % 	dapat terselesaikan. Penulis juga mengucapkan terima kasih kepada seluruh
 % 	yang telah membantu dalam pembuatan proposal penelitian ini.
-% 	\begin{enumerate}[leftmargin=0.45cm]
+% 	\begin{enumerate}[nolistsep][leftmargin=0.45cm]
 % 		\item Kedua orang tua atas segala bantuan, bimbingan, dorongan serta doa restu yang diberikan.
 % 		\item Bapak Agus Prihanto, S.T., M. Kom. selaku dosen pembimbing yang telah memberikan arahan dan bimbingan dalam penyusunan proposal ini,.
 % 		\item Teman-teman Mahasiswa yang telah membantu dalam pengumpulan data dan informasi
@@ -258,9 +263,7 @@
 \end{adjustwidth}
 \chapter*{SURAT PERNYATAAN KEORISINILAN SKRIPSI}
 \begin{adjustwidth}{0pt}{}
-
 	Yang bertandatangan dibawah ini:\\
-
 	\noindent
 	\begin{tabular}{@{}lcp{0.5\linewidth}}
 		Nama Mahasiswa           & : & M. Rizqi R                                                                                    \\
@@ -269,10 +272,9 @@
 		Program Studi / Angkatan & : & S1 Teknik Informatika                                                                         \\
 		Alamat                   & : & \raggedright WADUNGASIH, RT/RW 005/002 DESA WADUNGASIH, KECAMATAN BUDURAN, KABUPATEN SIDOARJO \\
 	\end{tabular}
-
 	\noindent
 	Menyatakan dengan sesungguhnya bahwa:
-	\begin{enumerate}
+	\begin{enumerate}[nolistsep]
 		\item Skripsi yang ditulis dan diajukan ini benar-benar merupakan hasil
 		      karya saya sendiri (tidak berdiri berdasarkan pada data palsu, dan atau
 		      hasil plagiasi atau jiplakan atau autoplagiasi.
@@ -280,16 +282,13 @@
 		      benar, maka saya akan menanggung segala resiko dan siap diperkarakan
 		      sesuai aturan yang berlaku.
 	\end{enumerate}
-
 	\noindent
 	Demikianlah surat pernyataan yang saya buat dengan sebenar-benarnya.
-
 	\vspace{0.5cm}
-
 	\begin{adjustwidth}{170pt}{}
 		\begin{tabular}{@{}l}
 			Surabaya, 11 Juni 2024
-			\vspace{2.5cm}
+			\vspace{2.2cm}
 			\\
 			\underline{M. Rizqi R} \\
 			NIM 20051204034        \\
@@ -344,7 +343,7 @@
 \chapter*{HALAMAN PERSEMBAHAN}
 \begin{adjustwidth}{0pt}{}
 	Skripsi ini saya tujukan dan perembahkan kepada:
-	\begin{enumerate}
+	\begin{enumerate}[nolistsep]
 		\item Allah SWT, oleh karena rahmat dan hidayah-Nya, serta segala
 		      kenikamatan duniawi sehingga skripsi ini dapat ditulis dan disusun dengan
 		      baik dan selesai pada waktunya.
@@ -377,18 +376,18 @@
 
 \fancypagestyle{mystyle}{
 	\fancyhf{} % Clear all header and footer fields
-	\fancyhead[LO]{\thepage} % Odd page numbers on the left
-	\fancyhead[RE]{\thepage} % Even page numbers on the right
+	\fancyhead[LE]{\thepage} % Odd page numbers on the left
+	\fancyhead[RO]{\thepage} % Even page numbers on the right
 	\renewcommand{\headrulewidth}{0pt} % Remove the header line
 	\renewcommand{\marginparwidth}{0pt}
-	\renewcommand{\marginparsep}{-10pt}
+	% \renewcommand{\marginparsep}{-10pt}
 }
 \chapter{PENDAHULUAN}
 \pagestyle{mystyle}
 \pagenumbering{arabic}
 \section{Latar Belakang}
 \begin{adjustwidth}{0.70cm}{}
-	\vspace{-3mm}
+
 	\hspace\parindent
 	Pentingnya melakukan manajemen konfigurasi dengan tujuan untuk menghindari
 	penulisan manual konfigurasi sistem operasi secara manual setiap kali
@@ -437,20 +436,20 @@
 \end{adjustwidth}
 \vspace{3mm}
 \section{Rumusan Masalah}
-\vspace{-3mm}
+
 \begin{adjustwidth}{0.70cm}{}
 	Adapun rumusan masalah berdasarkan latar belakang diatas yaitu:
-	\begin{enumerate}[leftmargin=0.45cm]
+	\begin{enumerate}[leftmargin=0.45cm, nolistsep]
 		\item Bagaimana membuat sistem GNU/Linux yang terdeklarasi menggunakan \textit{tool}
 		      manajemen konfigurasi dengan konfigurasi yang serupa.
 		\item Berapa lama waktu eksekusi \textit{tool} manajemen konfigurasi yang diimplementasikan.
 	\end{enumerate}
 \end{adjustwidth}
 \section{Tujuan}
-\vspace{-3mm}
+
 \begin{adjustwidth}{0.70cm}{}
 	Adapun tujuan dalam penelitian ini adalah:
-	\begin{enumerate}[leftmargin=0.45cm]
+	\begin{enumerate}[leftmargin=0.45cm, nolistsep]
 		\item Membuat sistem GNU/Linux yang terdeklarasi menggunakan NixOS dan
 		      Ansible dengan target akhir hasil konfigurasi yang serupa.
 		\item Mengukur waktu eksekusi \textit{tool} manajemen konfigurasi NixOS menggunakan nixos-rebuild
@@ -459,10 +458,10 @@
 \end{adjustwidth}
 \vspace{3mm}
 \section{Manfaat}
-\vspace{-3mm}
+
 \begin{adjustwidth}{0.70cm}{}
 	Manfaat yang dapat dihasilkan dari penelitian ini antara lain:
-	\begin{enumerate}[leftmargin=0.45cm]
+	\begin{enumerate}[leftmargin=0.45cm, nolistsep]
 		\item Efisiensi waktu dalam melakukan manajemen konfigurasi sistem operasi berbasis GNU/Linux.
 		\item Konfigurasi sebuah sistem menjadi deklaratif dalam baris kode.
 		\item Mengurangi terjadinya human error dalam mengerjakan konfigurasi dan tugas yang berulang-ulang.
@@ -471,10 +470,10 @@
 \end{adjustwidth}
 \vspace{3mm}
 \section{Batasan Masalah}
-\vspace{-3mm}
+
 \begin{adjustwidth}{0.70cm}{}
 	Adapun batasan masalah yang digunakan untuk menghindari penyimpangan dari judul dan tujuan adalah sebagai berikut:
-	\begin{enumerate}[leftmargin=0.45cm]
+	\begin{enumerate}[leftmargin=0.45cm, nolistsep]
 		\item Tools yang digunakan untuk manajemen konfigurasi adalah Ansible dan
 		      NixOS.
 		\item Kasus studi dalam menggunakan NixOS menggunakan file konfigurasi
@@ -492,7 +491,7 @@
 \chapter{KAJIAN PUSTAKA}
 \section{Penelitian Terdahulu}
 \begin{adjustwidth}{0.70cm}{}
-	\vspace{-3mm}
+
 	\hspace\parindent
 	Sudah ada penelitian terdahulu terkait otomasi menggunakan Ansible. Salah
 	satu diantaranya adalah yang dilakukan oleh Thufail Qolba Aufar yang
@@ -547,16 +546,13 @@
 	\textit{user permission} dalam lingkup \textit{batch} \parencite{pratama_2021_otomasi}.\\
 \end{adjustwidth}
 
-\vspace{3cm}
-
-\begin{longtable}[r]{|c|p{0.22\textwidth}|p{0.15\textwidth}|R|}
+\begin{longtable}[H]{|c|p{0.22\textwidth}|p{0.15\textwidth}|R|}
 	\caption{Penelitian Terdahulu} \tabularnewline  \hline
 	\centering\raisebox{-0.2cm}{\centering\textbf{No.}} & \centering\raisebox{-0.2cm}{{\textbf{Judul}}}                                                                                                                   & \centering{\textbf{Nama Peneliti}}       & \centering\raisebox{-0.2cm}{\centering{\textbf{Kesimpulan}}} \\
 	\endfirsthead
 	\hline
 	\centering\raisebox{-0.2cm}{\centering\textbf{No.}} & \centering\raisebox{-0.2cm}{{\textbf{Judul}}}                                                                                                                   & \centering{\textbf{Nama Peneliti}}       & \centering\raisebox{-0.2cm}{\centering{\textbf{Kesimpulan}}} \\
 	\endhead
-
 	\hline
 	1                                                   & \textit{Configuration Management} dengan Ansible dan Telegram Untuk
 	Automasi Laboratorium Komputer di JTIK              & Thufail Qolba Aufar                                                                                                                                             & Sistem
@@ -565,7 +561,6 @@
 	dari pengujian fungsionalitas dengan black box testing yang telah dilakukan
 	bahwa setiap tugas dieksekusi dapat berjalan dengan persentase keberhasilan
 	sebesar 100.                                                                                                                                                                                                                                                                                                                    \\
-
 	\hline
 	2                                                   & \textit{Implementation Of Configuration Management Virtual Private Server
 	Using Ansible}                                      & Putu Hariyadi, Khairan Marzuki                                                                                                                                  & Manajemen otomasi VPS
@@ -577,7 +572,7 @@
 	3                                                   & \textit{NixOS: Järjestelmä konfiguraation Hallintaan Erikoistunut Linux
 	jakelu}                                             & Kalle Kumpulai nen                                                                                                                                              & Distribusi ini pada awalnya dibuat untuk
 	memecahkan masalah asli distribusi perangkat lunak dan manajemen konfigurasi
-	sistem operasi, seperti keamanan dan determinisme fungsi yang diinginkan.
+	sistem operasi,                                                                                                                                                                                                                                                                                                                 \\ \hline &  &  & seperti keamanan dan determinisme fungsi yang diinginkan.
 	Untuk mengatasi masalah ini, NixOS diimplementasikan sejak awal dengan cara
 	yang sangat tidak biasa dibandingkan dengan distribusi Linux terkenal
 	lainnya.                                                                                                                                                                                                                                                                                                                        \\
@@ -597,7 +592,7 @@
 
 \section{Manajemen Konfigurasi}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Manajemen konfigurasi adalah metode dimana sebuah sistem di manajemen
 	menggunakan file-file yang mendeskripsikan apa yang harus dilakukan sistem
 	tersebut. Harapan dari hasil file-file konfigurasi ini adalah konsistensi
@@ -608,7 +603,7 @@
 \end{adjustwidth}
 \section{Imperatif}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Dalam konteks manajemen konfigurasi, imperatif merupakan metode dimana
 	administrator menetapkan langkah-langkah yang perlu dilakukan sebuah sistem
 	untuk mencapai keadaan tertentu. Dalam kasus penelitian ini adalah Ansible
@@ -618,7 +613,7 @@
 \end{adjustwidth}
 \section{Deklaratif}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Dalam konteks manajemen konfigurasi, deklaratif merupakan metode dimana
 	administrator menetapkan rincian tentang keadaan akhir sistem dalam file-file
 	konfigurasi. Dalam kasus penelitian ini adalah NixOS Module yang berisikan
@@ -627,7 +622,7 @@
 \end{adjustwidth}
 \section{Immutable Distro}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Immutable Distro adalah kategori distribusi GNU/Linux yang dimana sistem
 	operasi read-only yang tidak mengijinkan modifikasi di root file system. Ini
 	berarti kita tidak bisa dengan mudah memodifikasi OS. Ini termasuk file
@@ -636,25 +631,25 @@
 \end{adjustwidth}
 \section{Reproducible}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Dalam konteks manajemen konfigurasi, reproducible merujuk pada hasil akhir
 	yang konsisten setiap kali konfigurasi diterapkan.
 \end{adjustwidth}
 \section{Repeatable}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Dalam konteks manajemen konfigurasi, repeatable merujuk pada tahapan-tahapan
 	yang dapat diulang dengan tujuan hasil serupa.
 \end{adjustwidth}
 \section{NixOS}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Distribusi sistem operasi GNU/Linux yang terintegrasi dengan Nix package
 	manager dimana konfigurasi sistem operasi dideklarasikan dalam Nix Module.
 \end{adjustwidth}
 \section{Ansible}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Ansible adalah perangkat lunak otomatisasi TI baris perintah yang ditulis dalam
 	bahasa Python. Aplikasi ini dapat mengonfigurasi sistem, menerapkan perangkat
 	lunak, dan mengatur alur kerja tingkat lanjut untuk mendukung penerapan
@@ -662,31 +657,31 @@
 \end{adjustwidth}
 \section{YAML}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Bahasa serialisasi data yang bisa dibaca oleh manusia. YAML umumnya digunakan
 	untuk file konfigurasi dan aplikasi dimana data disimpan atau
 	ditransmisikan.(Wikipedia)
 \end{adjustwidth}
 \section{BASH}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Bourne-Again Shell (BASH) adalah Unix-shell dan bahasa perintah yang biasanya
 	berjalan di jendela text dimana pengguna mengetik perintah yang mengakibatkan
 	aksi
 \end{adjustwidth}
 \section{NixOS Module}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Module yang berisi Nix expression dengan struktur yang spesifik dan digunakan
 	untuk membangun konfigurasi Nix yang utuh.
 \end{adjustwidth}
 \section{Flake}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm} Nix flakes menyediakan cara standar untuk menulis ekspresi Nix (dan juga paket-paket) yang ketergantungannya disematkan dalam file kunci, sehingga meningkatkan kemampuan reproduksi instalasi Nix.
+	Nix flakes menyediakan cara standar untuk menulis ekspresi Nix (dan juga paket-paket) yang ketergantungannya disematkan dalam file kunci, sehingga meningkatkan kemampuan reproduksi instalasi Nix.
 \end{adjustwidth}
 \section{Home Manager}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Home Manager adalah sistem untuk mengelola lingkungan pengguna dengan
 	menggunakan manajer paket Nix. Dengan kata lain, Home Manager memungkinkan
 	Anda menginstall perangkat lunak secara deklaratif pada profil user Anda,
@@ -695,7 +690,7 @@
 \end{adjustwidth}
 \section{Virtualisasi}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	Virtualisasi merupakan proses berbasis perangkat lunak yang membagi komputer
 	tunggal menjadi beberapa mesin virtual / virtual machine, tiap-tiap mesin
 	virtual memiliki sistem operasi dan aplikasi miliknya sendiri (IBM, 2024)
@@ -704,11 +699,11 @@
 \chapter{METODE PENELITIAN}
 Metodologi yang digunakan untuk penelitian ini memiliki beberapa tahapan
 sebagai pedoman agar hasil yang dicapai sesuai dan tidak menyimpang dari tujuan
-yang telah ditentukan sebelumnya.\\
+yang telah ditentukan sebelumnya.
 
 \section{Metode Penelitian}
 \begin{adjustwidth}{20pt}{}
-	\vspace{-3mm}
+
 	\hspace\parindent
 	Metode yang diterapkan pada penelitian ini adalah metode experimental design.
 	Penerapan metode bertujuan untuk menganalisa perbandingan manajemen
@@ -730,7 +725,6 @@ yang telah ditentukan sebelumnya.\\
 \end{adjustwidth}
 \begin{adjustwidth}{20pt}{}
 	\subsection{Identifikasi Masalah}
-	\vspace{-3mm}
 	\begin{adjustwidth}{20pt}{}
 		Tahapan awal untuk melakukan penelitian merupakan identifikasi masalah. Pada
 		tahapan ini, permasalahan yang diidentifikasi mengenai manajemen konfigurasi
@@ -742,7 +736,6 @@ yang telah ditentukan sebelumnya.\\
 \end{adjustwidth}
 \begin{adjustwidth}{20pt}{}
 	\subsection{Studi Literatur}
-	\vspace{-3mm}
 	\begin{adjustwidth}{20pt}{}
 		Peneliti mencari literatur yang relevan untuk menjadi referensi pendukung dalam
 		penelitian. Literatur yang digunakan dalam penelitian ini berhubungan
@@ -752,7 +745,6 @@ yang telah ditentukan sebelumnya.\\
 \end{adjustwidth}
 \begin{adjustwidth}{20pt}{}
 	\subsection{Analisis Kebutuhan}
-	\vspace{-3mm}
 	\begin{adjustwidth}{20pt}{}
 		Tahap ini bertujuan untuk mendapatkan pemahaman yang menyeluruh dan terperinci
 		tentang kebutuhan utama sistem seperti yang didefinisikan agar tujuan
@@ -762,7 +754,6 @@ yang telah ditentukan sebelumnya.\\
 \end{adjustwidth}
 \begin{adjustwidth}{20pt}{}
 	\subsection{Perancangan Sistem}
-	\vspace{-3mm}
 	\begin{adjustwidth}{20pt}{}
 		Perancangan dilakukan dengan menerapkan manajemen konfigurasi pada mesin
 		virtual agar mendapatkan hasil waktu yang dibutuhkan untuk menerapkan
@@ -778,7 +769,6 @@ yang telah ditentukan sebelumnya.\\
 \newpage
 \begin{adjustwidth}{20pt}{}
 	\subsection{Implementasi dan Pengujian}
-	\vspace{-3mm}
 	\begin{adjustwidth}{20pt}{}
 		Pada tahap ini, rancangan konfigurasi yang sudah dibuat akan
 		diimplementasikan sesuai alur kerja konfigurasi yang telah dibuat pada
@@ -792,7 +782,7 @@ yang telah ditentukan sebelumnya.\\
 \end{adjustwidth}
 \begin{adjustwidth}{20pt}{}
 	\subsection{Analisis Hasil}
-	\vspace{-3mm}
+
 	\begin{adjustwidth}{20pt}{}
 		Pada tahap ini, hasil dari implementasi dan pengujian akan dianalisis untuk
 		mengetahui kecepatan penerapan konfigurasi dan konsistensi \textit{tool} manajemen
@@ -805,7 +795,7 @@ yang telah ditentukan sebelumnya.\\
 
 \begin{adjustwidth}{20pt}{}
 	\subsection{Kesimpulan}
-	\vspace{-3mm}
+
 	\begin{adjustwidth}{20pt}{}
 		Tahapan terakhir dalam penelitian ini akan dilakukan penarikan kesimpulan
 		dan pemberian saran dari seluruh penelitian yang telah dilakukan
@@ -818,7 +808,7 @@ yang telah ditentukan sebelumnya.\\
 \end{adjustwidth}
 \vspace{3mm}
 \section{Analisis Kebutuhan}
-\vspace{-3mm}
+
 \begin{adjustwidth}{20pt}{}
 	Analisis kebutuhan merupakan analisis yang dibutuhkan untuk menentukan detail
 	kebutuhan pada penelitian analisis perbandingan manajemen konfigurasi sistem
@@ -830,7 +820,6 @@ yang telah ditentukan sebelumnya.\\
 \end{adjustwidth}
 \begin{adjustwidth}{20pt}{}
 	\subsection{Kebutuhan perangkat keras (\textit{hardware})}
-	\vspace{-2mm}
 	\begin{adjustwidth}{20pt}{}
 		Perangkat keras yang diperlukan guna tujuan penelitian yaitu Laptop sebagai
 		uji coba dengan spesifikasi berikut:
@@ -843,15 +832,13 @@ yang telah ditentukan sebelumnya.\\
 			Sistem Operasi & : NixOS 24.05 (Uakari) x86\_64 \\
 		\end{tabular}
 	\end{adjustwidth}
-\end{adjustwidth}
-\begin{adjustwidth}{20pt}{}
 	\subsection{Kebutuhan perangkat lunak (\textit{software}) }
 	\vspace{-2mm}
 	\begin{adjustwidth}{20pt}{}
 		Perangkat lunak berfungsi untuk pengoperasian sistem pada penelitian ini.
-		Pada penelitian ini, sistem operasi yang digunakan berbasis GNU/Linux.\\
-		\begin{longtable}[r]{|c|p{2cm}|>{\raggedright\arraybackslash}p{4.7cm}|}
-			\caption{Kebutuhan perangkat lunak} \tabularnewline  \hline
+		Pada penelitian ini, sistem operasi yang digunakan berbasis GNU/Linux.
+		\begin{longtable}[H]{|c|p{2.5cm}|>{\raggedright\arraybackslash}p{5.5cm}|}
+			\caption{Kebutuhan perangkat lunak} \tabularnewline
 			\hline
 			\centering\raisebox{-0.4cm}{\textbf{No.}} & \centering\textbf{Nama Perangkat Lunak} & \centering\raisebox{-0.4cm}{\textbf{Keterangan}}                          \\
 			\endfirsthead
@@ -876,7 +863,7 @@ yang telah ditentukan sebelumnya.\\
 \end{adjustwidth}
 
 \section{Perancangan Sistem}
-\vspace{-3mm}
+
 \begin{adjustwidth}{20pt}{}
 	Perancangan sistem dilakukan untuk membuat desain perencanaan arsitektur
 	sistem yang akan dibangun dapat berjalan sesuai dengan tujuan penelitian.
@@ -887,11 +874,9 @@ yang telah ditentukan sebelumnya.\\
 		Server 24.04 LTS dan tiga \textit{instance} NixOS minimal.
 		Satu dari tiga \textit{virtual machine} bersifat sebagai \textit{master}
 		dan dua sebagai \textit{target}.
-	\end{adjustwidth}
-	\begin{table}[!htbp]
-		\caption{Spesifikasi Instance}
-		\begin{center}
-
+		\begin{table}[H]
+			\centering
+			\caption{Spesifikasi Instance}
 			\begin{tabular}{|l|l|}
 				\hline
 				\multicolumn{2}{|c|}{\textit{Instance} Ansible}    \\
@@ -919,9 +904,7 @@ yang telah ditentukan sebelumnya.\\
 				Jumlah \textit{instance} & 3                       \\
 				\hline
 			\end{tabular}
-		\end{center}
-	\end{table}
-	\begin{adjustwidth}{20pt}{}
+		\end{table}
 		Alasan perbedaan target dari Ansible dan NixOS adalah karena nixos-rebuild
 		tidak bisa dijalankan pada sistem operasi selain NixOS. Ansible juga tidak
 		dapat digunakan di NixOS karena sifat NixOS sendiri yang \textit{immutable}
@@ -943,10 +926,11 @@ yang telah ditentukan sebelumnya.\\
 		\end{figure}
 		Dengan topologi ini, diharapkan penerapan manajemen konfigurasi terpusat
 		dan dapat diterapkan di dua mesin target dan memiliki hasil akhir yang sama
-		dan konsisten antar mesin.\\
+		dan konsisten antar mesin.
 	\end{adjustwidth}
 \end{adjustwidth}
 \section{Perancangan Pengujian}
+
 \begin{adjustwidth}{20pt}{}
 	\hspace\parindent
 	Perancangan pengujian pada penelitian ini akan melakukan instalasi berbagai
@@ -971,7 +955,7 @@ yang telah ditentukan sebelumnya.\\
 	akan melakukan build untuk konfigurasi keseluruhan sistem sehingga
 	menghasilkan nix derivation yang membentuk NixOS. Hasil dari derivation
 	tersebut kemudian akan di \textit{copy} dan diterapkan ke dua mesin target.
-
+	\newpage
 	\begin{figure}[H]
 		\centering
 		\includegraphics[width=\textwidth]{images/ansible-topology-revision.png}
@@ -1040,6 +1024,7 @@ ansible.posix.synchronize dan ansible.builtin.copy untuk menyalin /
 mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 \vspace{3mm}
 \section{Implementasi}
+
 \begin{adjustwidth}{20pt}{}
 	\subsection{Persiapan Lingkungan NixOS}
 	\begin{adjustwidth}{20pt}{}
@@ -1062,18 +1047,20 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Tekan 'F10' untuk menyimpan konfigurasi. Tekan 'Esc' dua kali untuk keluar
 		dan pilih 'Reset'. Setelah itu, kita akan disambut dengan GNOME
 		\textit{Desktop Environment} seperti berikut:
-		\begin{figure}[H]
-			\begin{center}
+		\begin{center}
+			\begin{figure}[h]
 				\includegraphics[width=0.95\textwidth]{images/nixos-23.11-installer.png}
-			\end{center}
-			\caption{NixOS 23.11 installer GNOME}
-		\end{figure}
+				\caption{NixOS 23.11 installer GNOME}
+			\end{figure}
+		\end{center}
 	\end{adjustwidth}
+
 	\subsubsection{Instalasi}
 	\begin{adjustwidth}{20pt}{}
 		Kemudian kita masuk ke tahap instalasi NixOS sebagai berikut:
-		\begin{enumerate}
+		\begin{enumerate}[nolistsep]
 			\item Atur lokasi ke Asia/Jakarta.
+			      \newpage
 			      \begin{figure}[H]
 				      \begin{center}
 					      \includegraphics[width=0.95\textwidth]{images/nixos-23.11-location.png}
@@ -1157,7 +1144,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 
 	\subsection{Struktur Konfigurasi NixOS}
 	\begin{adjustwidth}{20pt}{}
-		\vspace{-3mm}
+
 		Untuk struktur konfigurasi target yang digunakan adalah sebagai berikut:
 		\begin{figure}[H]
 			\centering
@@ -1253,7 +1240,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 
 	\end{adjustwidth}
 	\subsection{Konfigurasi inti configuration.nix}
-	\vspace{-3mm}
+
 	\begin{adjustwidth}{20pt}{}
 		File configuration.nix berisikan konfigurasi sistem seperti \textit{system
 			packages, services, user packages, ssh option, }dan lain-lain. File ini
@@ -1293,10 +1280,10 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\end{code}
 	\end{adjustwidth}
 	\subsection{Home Manager}
-	\vspace{-3mm}
+
 	\begin{adjustwidth}{20pt}{}
 		Untuk konfigurasi Home Manager, ada beberapa yang dimasukkan yaitu :
-		\begin{enumerate}
+		\begin{enumerate}[nolistsep]
 			\item userName dan userEmail git
 			\item enableCompletion untuk BASH
 		\end{enumerate}
@@ -1339,6 +1326,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\textit{secure boot} sepenuhnya, kita tidak perlu mematikan \textit{secure boot}
 		pada \textit{firmware setting} seperti NixOS.
 		Ketika sudah \textit{booting}, maka akan muncul tampilan sebagai berikut:
+		\newpage
 		\begin{figure}[H]
 			\begin{center}
 				\includegraphics[width=0.95\textwidth]{images/ansible-nix-0.png}
@@ -1350,7 +1338,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\subsubsection{Instalasi}
 	\begin{adjustwidth}{20pt}{}
 		Kemudian kita masuk ke tahap instalasi Ubuntu Server sebagai berikut:
-		\begin{enumerate}
+		\begin{enumerate}[nolistsep]
 			\item Pilih bahasa dan keyboard yang diinginkan, penulis memilih Bahasa
 			      Inggris dan \textit{layout} US.
 			\item Pilih basis instalasi Ubuntu Server.
@@ -1391,7 +1379,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\end{enumerate}
 	\end{adjustwidth}
 	\subsection{Konfigurasi Ansible}
-	\vspace{-3mm}
+
 	\begin{adjustwidth}{20pt}{}
 		\hspace\parindent
 		Untuk Ansible menggunakan konfigurasi yang lebih sederhana dengan menyalin
@@ -1556,6 +1544,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\caption{nixos-rebuild first target dengan cache}
 		\end{figure}
 
+		\newpage
 		\begin{figure}[H]
 			\begin{center}
 				\includegraphics[width=0.8\textwidth]{images/nix-target/nix-pasca-cache-26-com.png}
@@ -1620,6 +1609,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\end{center}
 			\caption{Ansible first target pasca install}
 		\end{figure}
+		\newpage
 		\begin{figure}[H]
 			\begin{center}
 				\includegraphics[width=\textwidth]{images/ansible/single/ansible-pasca-28-com.png}
@@ -1673,11 +1663,11 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Pada percobaan ini, dijalankan menggunakan perintah ansible-playbook dengan dua
 		target secara paralel. Setiap kali sebelum ansible-playbook diterapkan ke target,
 		target akan dikembalikan ke \textit{snapshot} sebelum ansible-playbook diterapkan.
-		\begin{figure}[H]
-			\begin{center}
-				\includegraphics[width=\textwidth]{images/ansible/multi/ansible-pasca-multi-com.png}
-			\end{center}
-			\caption{Ansible multi target pasca install}
+		\newpage
+		\begin{center}
+			\includegraphics[width=\textwidth]{images/ansible/multi/ansible-pasca-multi-com.png}
+		\end{center}
+		\caption{Ansible multi target pasca install}
 		\end{figure}
 		\begin{table}[H]
 			\caption{ansible multi target pasca install}
@@ -1828,6 +1818,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Untuk percobaan Ansible \textit{multi target}, perintah ansible-playbook dijalankan
 		ke dua target secara paralel. Berikut merupakan hasil dari percobaan Ansible \textit{multi target}:
 	\end{adjustwidth}
+	\newpage
 	\begin{figure}
 		\begin{center}
 			\includegraphics[width=0.8\textwidth]{images/ansible/multi/ansible-rerun-multi-com.png}
@@ -1886,7 +1877,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\end{center}
 		\caption{nixos-rebuild first target install Go}
 	\end{figure}
-
+	\newpage
 	\begin{figure}[H]
 		\begin{center}
 			\includegraphics[width=0.8\textwidth]{images/nix-target/nix-go-26-com.png}
@@ -1913,6 +1904,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\end{center}
 	\end{table}
 	\vspace{-5mm}
+	\newpage
 	\begin{table}[H]
 		\caption{nixos-rebuild second target}
 		\begin{center}
@@ -1939,6 +1931,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		didapatkan hasil sebagai berikut dengan pertimbangan \textit{bandwidth} dari
 		\textit{master} ke target adalah 1 Gbps.
 	\end{adjustwidth}
+	\newpage
 	\begin{figure}[H]
 		\begin{center}
 			\includegraphics[width=0.8\textwidth]{images/nix-target/nix-go-cache-25-com.png}
@@ -2012,6 +2005,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		target dan setiap sebelum percobaan kondisi VM akan dikembalikan ke
 		\textit{snapshot} pasca install.
 	\end{adjustwidth}
+	\newpage
 	\begin{figure}[H]
 		\begin{center}
 			\includegraphics[width=0.8\textwidth]{images/ansible/single/ansible-go-27-com.png}
@@ -2045,7 +2039,8 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\end{center}
 	\end{table}
 	\vspace{-5mm}
-	\begin{table}[H]
+	\newpage
+	\begin{table}[h]
 		\caption{ansible second target}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
@@ -2070,14 +2065,14 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		pada bagian konfigurasi dan \textit{snapshot}. Namun yang membedakan adalah, perintah
 		ansible-playbook dijalankan pada dua target secara paralel. Berikut untuk hasilnya:
 	\end{adjustwidth}
-	\begin{figure}[H]
+	\begin{figure}[h]
 		\begin{center}
-			\includegraphics[width=0.95\textwidth]{images/ansible/multi/ansible-go-multi-com.png}
+			\includegraphics[width=0.9\textwidth]{images/ansible/multi/ansible-go-multi-com.png}
 		\end{center}
 		\caption{Ansible multi target install Go}
 	\end{figure}
 
-	\begin{table}[H]
+	\begin{table}[h]
 		\caption{Ansible multi target install Go}
 		\begin{center}
 			\begin{tabular}[c]{|c|c|c|c|}
@@ -2117,7 +2112,8 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Perintah nixos-rebuild kemudian dijalankan pada masing-masing target sebanyak tiga
 		kali dan hasilnya sebagai berikut:
 	\end{adjustwidth}
-	\begin{figure}[H]
+	\newpage
+	\begin{figure}[p]
 		\begin{center}
 			\includegraphics[width=0.8\textwidth]{images/nix-target/nix-remove-go-25-com.png}
 		\end{center}
@@ -2187,6 +2183,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 			\caption{Konfigurasi penghapusan paket Go pada Ansible}
 		\end{code}
 	\end{adjustwidth}
+	\newpage
 	\begin{figure}[H]
 		\begin{center}
 			\includegraphics[width=0.95\textwidth]{images/ansible/single/ansible-go-remove-27-com.png}
@@ -2246,6 +2243,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		adalah sebanyak dua target dalam percobaan ini. Berikut adalah hasil dari percobaan
 		ini:
 	\end{adjustwidth}
+	\newpage
 	\begin{figure}[H]
 		\begin{center}
 			\includegraphics[width=0.95\textwidth]{images/ansible/multi/ansible-go-remove-multi-com.png}
@@ -2369,6 +2367,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		Pada grafik diatas, dapat dilihat lagi-lagi NixOS dengan cache lebih unggul
 		untuk kasus penambahan paket GO untuk satu target.
 	\end{adjustwidth}
+	\newpage
 	\subsubsection{Penghapusan paket GO}
 	\begin{tikzpicture}
 		\begin{axis}[
@@ -2399,6 +2398,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	\begin{adjustwidth}{20pt}{}
 		Dapat dilihat bahwa NixOS berhasil mengkonfigurasi target dengan paket dan
 		konfigurasi \textit{service} seperti Nginx dan SSH.
+		\newpage
 		\begin{figure}[H]
 			\begin{center}
 				\includegraphics[width=0.95\textwidth]{images/nix-result/result-full-nix.png}
@@ -2419,6 +2419,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		\end{figure}
 
 	\end{adjustwidth}
+	\newpage
 	\subsection{Deklaratif dan Imperatif}
 	\begin{adjustwidth}{20pt}{}
 		Dalam percobaan diatas, terdapat beberapa hal yang ditemui oleh penguji tentang
@@ -2523,12 +2524,12 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 	konfigurasi sistem operasi GNU/Linux antara Ansible dengan NixOS yang telah
 	berhasil dilakukan, mendapatkan kesimpulan yang berdasarkan rumusan masalah,
 	pembahasan, pengujian, dan hasil penelitian diantaranya:
-	\begin{enumerate}[label=\arabic*.]
+	\begin{enumerate}[label=\arabic*., nolistsep]
 		\item Tujuan penulis adalah membuat sistem manajemen konfigurasi yang
 		      deklaratif dimana konfigurasi keseluruhan dari suatu sistem operasi diatur
 		      dengan \textit{tool} manajemen konfigurasi. Dari penelitian ini, peneliti
 		      mendapati berbagai poin berikut:
-		      \begin{enumerate}[label=\alph*.]
+		      \begin{enumerate}[label=\alph*., nolistsep]
 			      \item Ansible mampu mengkonfigurasi sistem operasi berbasis
 			            GNU/Linux (pada kasus ini Ubuntu Server), namun hanya mampu pada
 			            tingkat imperatif dan bukan deklaratif.
@@ -2538,7 +2539,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 		      \end{enumerate}
 		\item Setelah melakukan pengujian dari waktu eksekusi kedua \textit{tool}
 		      manajemen konfigurasi yaitu Ansible dan NixOS, hasilnya adalah sebagai berikut:
-		      \begin{enumerate}[label=\alph*.]
+		      \begin{enumerate}[label=\alph*. , nolistsep]
 			      \item Dalam uji coba pasca install, urutan waktu eksekusi dari yang tercepat
 			            hingga terlambat adalah NixOS dengan cache, Ansible \textit{multi} target,
 			            Ansible single target, NixOS tanpa cache.
@@ -2554,7 +2555,7 @@ mensinkronisasi file konfigurasi setiap aplikasi dan \textit{services}.
 \section{Saran}
 \begin{adjustwidth}{20pt}{}
 	Adapun saran yang dapat diberikan terkait hasil penelitian adalah sebagai berikut:
-	\begin{enumerate}
+	\begin{enumerate}[nolistsep]
 		\item Disarankan membuat penelitian tentang perbandingan performa waktu eksekusi,
 		      maka bisa menggunakan Colmena atau NixOps agar bisa menerapakan konfigurasi NixOS
 		      secara paralel.
